@@ -1,28 +1,21 @@
 <?php
 
 require "connect.php";
-
-function insertIntoTable($conn, $tableName, $values) {
-	$conn->query("insert into shopping.".$tableName.' values ("'.implode('","', $values).'")');
-}
+require "helper.php";
 
 function queryTable($conn, $tableName, $column='*') {
 	return $conn->query("select ".$column." from shopping.".$tableName);
 }
 
 function getPassword($conn) {
-	// createTable($conn, "users", ["username varchar(20) primary key", "password varchar(20)"]);
 
-	// insertIntoTable($conn, "users", ["asdf@a.a","asdf"]);
-	// insertIntoTable($conn, "users", ["abchau","123"]);
-
-	$result=$conn->query("select password from shopping.users where username='".$_POST['username']."'");
+	$result=$conn->query("select password from shopping.users where email='".$_POST['email']."'");
 	return json_encode($result->fetch_assoc());
 }
 
 function addUser($conn) {
 	if (getPassword($conn)=="null"){
-		insertIntoTable($conn, "users", [$_POST['username'], $_POST['password']]);
+		insertIntoTable($conn, "users", [$_POST['email'], $_POST['password']]);
 		echo $conn->error;
 		echo "User added successfully";
 	}

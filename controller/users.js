@@ -3,12 +3,11 @@ script.src = 'https://code.jquery.com/jquery-3.4.1.min.js';
 script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 
-function verifyUser(username, password)
-{
+function verifyUser(email, password){
 	$.ajax({
 		type:'POST', 
 		url: '../model/users.php',
-		data: {'username':username, 'func':'getPassword'},
+		data: {'email':email, 'func':'getPassword'},
 		datatype: 'json',
 		success: function(response){
 
@@ -16,7 +15,7 @@ function verifyUser(username, password)
 			console.log(response);
 			response = JSON.parse(response);
 			if (response===null) {
-				console.log("Username incorrect");
+				console.log("email incorrect");
 				return;
 			}
 
@@ -27,14 +26,14 @@ function verifyUser(username, password)
 		},
 		error: function(){console.log('post error');}
 	})
-	return username+password;
+	return email+password;
 }
 
-function addUser(username, password) {
+function addUser(email, password, firstName, lastName, address){
 	$.ajax({
 		type:'POST', 
 		url: '../model/users.php',
-		data: {'username':username, 'password':password, 'func':'addUser'},
+		data: {'email':email, 'password':password, 'func':'addUser'},
 		datatype: 'json',
 		success: function(response){
 
@@ -42,7 +41,7 @@ function addUser(username, password) {
 			console.log(response);
 			// response = JSON.parse(response);
 			// if (response===null) {
-			// 	console.log("Username incorrect");
+			// 	console.log("Email incorrect");
 			// 	return;
 			// }
 
