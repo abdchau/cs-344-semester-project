@@ -1,0 +1,61 @@
+drop database if exists shopping;
+create database shopping;
+
+
+create table shopping.cities(
+		cityID int primary key,
+		cityName varchar(20)
+);
+
+create table shopping.addresses(
+		addressID int primary key,
+		address varchar(80),
+		postcode varchar(5),
+		cityID int, foreign key (cityID) references shopping.cities(cityID)
+);
+
+create table shopping.users(
+	userID int primary key auto_increment,
+	firstName varchar(20),
+	lastName varchar(20),
+	email varchar(20) unique not null,
+	password varchar(20),
+	addressID int, foreign key(addressID) references shopping.addresses(addressID)
+);
+
+create table shopping.categories(
+	categoryID int primary key auto_increment,
+    categoryName varchar(80)
+);
+
+create table shopping.products(
+	productID int primary key auto_increment,
+    categoryID int, foreign key(categoryID) references shopping.categories(categoryID),
+    productName varchar(80),
+    productDscrptn varchar(200),
+    price int,
+    imageURL varchar(100),
+    stock int,
+    sellerID int, foreign key(sellerID) references shopping.users(userID)
+);
+
+create table shopping.cart_item(
+	productID int primary key,
+    foreign key(productID) references shopping.products(productID),
+    userID int,
+	foreign key(userID) references shopping.users(userID),
+    quantity int,
+    timeAdded datetime
+);
+
+create table shopping.orders(
+	orderID int primary key auto_increment,
+    buyerID int,  foreign key(buyerID) references shopping.users(userID),
+    amount int,
+    timeCreated datetime
+);
+
+create table shopping.order_item(
+	orderID int, foreign key(orderID) references shopping.orders(orderID),
+    productID int, foreign key(productID) references shopping.products(productID)
+);

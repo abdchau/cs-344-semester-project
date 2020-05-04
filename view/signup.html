@@ -17,8 +17,8 @@
       $(document).ready(function(){
         $('#submit').click(function(e){
           e.preventDefault();
-          addUser($('#inputEmail').val(), $('#inputPassword').val()
-              $('firstName'));
+          addUser($('#inputEmail').val(), $('#inputPassword').val(),
+              $('firstName').val(), $('lastName').val(), $('address').val());
 
         });
       });

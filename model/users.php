@@ -17,10 +17,10 @@ function addUser($conn) {
 	if (getPassword($conn)=="null"){
 		insertIntoTable($conn, "users", [$_POST['email'], $_POST['password']]);
 		echo $conn->error;
-		echo "User added successfully";
+		return "User added successfully";
 	}
 	else
-		echo "User already exists";
+		return "User already exists";
 }
 
 $conn = connectDB();
@@ -31,6 +31,9 @@ if (isset($_POST['func'])) {
 	}
 	if ($_POST['func']=='addUser') {
 		echo addUser($conn);
+	}
+	if ($_POST['func']=='resetDB') {
+		echo resetDB($conn);
 	}
 }
 else

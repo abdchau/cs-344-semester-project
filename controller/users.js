@@ -33,7 +33,7 @@ function addUser(email, password, firstName, lastName, address){
 	$.ajax({
 		type:'POST', 
 		url: '../model/users.php',
-		data: {'email':email, 'password':password, 'func':'addUser'},
+		data: {'email':email, 'password':password, 'func':'resetDB'},
 		datatype: 'json',
 		success: function(response){
 
