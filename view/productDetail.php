@@ -1,3 +1,5 @@
+<?php require '../model/products.php'; ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -16,7 +18,9 @@
     <script src="../controller/products.js"></script>
 
     <script type="text/javascript">
-    	fetchProduct(1);
+    	var product = JSON.parse('<?php echo $mas ?>');
+    	console.log(product);
+    	console.log(prd);
     </script>
 
   </head>
@@ -132,7 +136,7 @@
 						<div class="card-body">
 						<h5 class="card-title text-secondary">{{product.name}}</h5>
 						<p class="card-text text-body">{{product.description}}</p>
-						<h6 class="card-title text-success">{{product.prcie}}</h6>
+						<h6 class="card-title text-success">{{product.price}}</h6>
 						</div>
 					</div>
 				</a>
