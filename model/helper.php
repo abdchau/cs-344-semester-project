@@ -28,7 +28,7 @@ function fillDummyData($conn){
 	$conn->query("insert into shopping.categories(categoryName) values('Mobiles'),('Tablets'),('Home Appliances')");
 	$conn->query("insert into shopping.products(categoryID, productName, productDscrptn, 
 		price, imageURL, stock, sellerID) values
-		(1, 'Samsung Ding A2', 'Terrible phone doesn\t work at all', 199, '', 2, 1),
+		(1, 'Samsung Ding A2', 'Terrible phone doesnt work at all', 199, '', 2, 1),
 		(1, 'Samsung Galaxy S5', 'Very nice phone touch', 399, '', 23, 1),
 		(2, 'Samsung Galaxy Tab', 'Sleek and smart masti', 499, '', 3, 2),
 		(3, 'Sony Microwave A10', 'Nice warm food', 1299, '', 4, 3),

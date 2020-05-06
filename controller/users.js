@@ -7,7 +7,7 @@ function verifyUser(email, password){
 	$.ajax({
 		type:'POST', 
 		url: '../model/users.php',
-		data: {'email':email, 'func':'getPassword'},
+		data: {user:{'email':email}, 'func':'getPassword'},
 		datatype: 'json',
 		success: function(response){
 
@@ -34,8 +34,8 @@ function addUser(email, password, firstName, lastName, address, city, zipcode){
 	$.ajax({
 		type:'POST', 
 		url: '../model/users.php',
-		data: {'email':email, 'password':password, 'firstName':firstName, 'lastName':lastName,
-			'address':address, 'city':city, 'zipcode':zipcode, 'func':'addUser'},
+		data: {user:{'firstName':firstName, 'email':email, 'password':password, 'lastName':lastName,
+			'address':address, 'city':city, 'zipcode':zipcode}, 'func':'addUser'},
 		datatype: 'json',
 		success: function(response){
 
