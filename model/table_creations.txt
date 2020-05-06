@@ -3,12 +3,12 @@ create database shopping;
 
 
 create table shopping.cities(
-		cityID int primary key,
+		cityID int primary key auto_increment,
 		cityName varchar(20)
 );
 
 create table shopping.addresses(
-		addressID int primary key,
+		addressID int primary key auto_increment,
 		address varchar(80),
 		postcode varchar(5),
 		cityID int, foreign key (cityID) references shopping.cities(cityID)
@@ -40,7 +40,7 @@ create table shopping.products(
 );
 
 create table shopping.cart_item(
-	productID int primary key,
+	productID int,
     foreign key(productID) references shopping.products(productID),
     userID int,
 	foreign key(userID) references shopping.users(userID),
@@ -57,5 +57,6 @@ create table shopping.orders(
 
 create table shopping.order_item(
 	orderID int, foreign key(orderID) references shopping.orders(orderID),
-    productID int, foreign key(productID) references shopping.products(productID)
+    productID int, foreign key(productID) references shopping.products(productID),
+    quantity int
 );

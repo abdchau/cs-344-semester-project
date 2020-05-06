@@ -2,7 +2,7 @@
 
 function connectDB($dbName='shopping') {
 	$servername = "localhost";
-	$username = "pma";
+	$username = "root";
 	$password = "";
 
 	$conn = new mysqli($servername, $username, $password);
