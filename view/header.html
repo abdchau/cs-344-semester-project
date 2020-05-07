@@ -7,11 +7,12 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <title>Header</title>
   </head>
   <body>
 
-	<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-faded shadow" style="background-color: #e3f2fd;">
+	<nav ng-app="Navbar" ng-controller="categories_controller" class="navbar sticky-top navbar-expand-lg navbar-light bg-faded shadow" style="background-color: #e3f2fd;">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -30,12 +31,8 @@
 				    Categories
 			    </a>
 			  <div class="dropdown-menu" id="categories_dropdown" aria-labelledby="navbarDropdownMenuLink">
-				<a class="dropdown-item" href="category.html">category 1</a>
-                <a class="dropdown-item" href="category.html">category 2</a>
-                <a class="dropdown-item" href="category.html">category 3</a>
-                <a class="dropdown-item" href="category.html">category 4</a>
-                <a class="dropdown-item" href="category.html">category 5</a>
-                <a class="dropdown-item" href="category.html">category 6</a>
+				        <a ng-repeat="category in categories" class="dropdown-item" href="category-{{category.id}}.html">{{category.name}}</a>
+
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="#">More</a>
 			  </div>
@@ -59,6 +56,21 @@
 		</div>
 	</nav>
 
+  <script>
+    var app = angular.module('Navbar', []);
+    app.controller('categories_controller', function($scope, $http) {
+      $http({
+       method: 'GET',
+      // Function name and file name
+       url: '../model/categories.php',
+      //  func parameter not recognized in categories.php
+       data: {'func':'getCategories'},
+      }).then(function(response) {
+        console.log(response.data)
+        $scope.categories = response.data;
+      });
+    });
+  </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
