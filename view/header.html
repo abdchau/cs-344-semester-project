@@ -31,7 +31,7 @@
 				    Categories
 			    </a>
 			  <div class="dropdown-menu" id="categories_dropdown" aria-labelledby="navbarDropdownMenuLink">
-				        <a ng-repeat="category in categories" class="dropdown-item" href="category.html?id={{category.id}}">{{category.name}}</a>
+				        <a ng-repeat="category in categories" class="dropdown-item" href="category.html?id={{category.categoryID}}">{{category.categoryName}}</a>
 				  <div class="dropdown-divider"></div>
 				  <a class="dropdown-item" href="#">More</a>
 			  </div>
@@ -59,14 +59,15 @@
     var app = angular.module('Navbar', []);
     app.controller('categories_controller', function($scope, $http) {
       $http({
-       method: 'GET',
+       method: 'POST',
       // Function name and file name
        url: '../model/categories.php',
       //  func parameter not recognized in categories.php
        data: {'func':'getCategories'},
       }).then(function(response) {
         console.log(response.data)
-        $scope.categories = response.data.records;
+        $scope.categories = response.data;
+        console.log(response);
       });
     });
   </script>
