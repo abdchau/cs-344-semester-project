@@ -1,13 +1,5 @@
-<?php
-
-if (isset($_GET['func'])){
-	if ($_POST['func']=='getCategories'){
-        $category->id = 1;
-        $category->name = "John";
-	    return json_encode($category);
-	}
-}
-else
-	echo "No function specified";
-?>
-
+{ "records":[{"id":1, "name":"Phones"},
+ {"id":2, "name":"Laptops"},
+ {"id":3, "name":"TVs"},
+ {"id":4, "name":"Home Appliances"}
+ ]}

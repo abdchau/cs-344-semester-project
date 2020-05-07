@@ -31,10 +31,9 @@
 				    Categories
 			    </a>
 			  <div class="dropdown-menu" id="categories_dropdown" aria-labelledby="navbarDropdownMenuLink">
-				        <a ng-repeat="category in categories" class="dropdown-item" href="category-{{category.id}}.html">{{category.name}}</a>
-
-				<div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="#">More</a>
+				        <a ng-repeat="category in categories" class="dropdown-item" href="category.html?id={{category.id}}">{{category.name}}</a>
+				  <div class="dropdown-divider"></div>
+				  <a class="dropdown-item" href="#">More</a>
 			  </div>
             <li class="nav-item mx-3" id="contact_us">
                 <a class="nav-link" href="#">Contact Us</a>
@@ -54,7 +53,7 @@
 			<button class="btn btn-outline-success my-2 my-sm-0" id="search_button" type="submit">Search</button>
 		  </form>
 		</div>
-	</nav>
+  </nav>
 
   <script>
     var app = angular.module('Navbar', []);
@@ -67,7 +66,7 @@
        data: {'func':'getCategories'},
       }).then(function(response) {
         console.log(response.data)
-        $scope.categories = response.data;
+        $scope.categories = response.data.records;
       });
     });
   </script>
