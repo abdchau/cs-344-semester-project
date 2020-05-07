@@ -65,7 +65,7 @@
       //  func parameter not recognized in categories.php
        data: {'func':'getCategories'},
       }).then(function(response) {
-        console.log(response.data)
+        console.log(response.data);
         $scope.categories = response.data;
         console.log(response);
       });
