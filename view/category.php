@@ -68,14 +68,14 @@
 			<h3 class="display-4 mb-5 mr-auto">Category Name</h3>
             <div class="row">
 
-                <div class="col-lg-3">
-                <a href="#" class="text-decoration-none">
+                <div class="col-lg-3" ng-repeat="product in products">
+                <a href="productDetail.php?prd={{product.productID}}" class="text-decoration-none">
                     <div class="card mb-4 shadow-sm product-info">
                         <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
                         <div class="card-body">
-                        <h5 class="card-title text-secondary">Product 1</h5>
-                        <p class="card-text text-body">Description </p>
-                        <h6 class="card-title text-success">$1.00</h6>
+                        <h5 class="card-title text-secondary">{{product.productName}}</h5>
+                        <p class="card-text text-body">{{product.productDscrptn}}</p>
+                        <h6 class="card-title text-success">Rs{{product.price}}</h6>
                         <!-- <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                             <button type="button" class="btn btn-sm btn-outline-secondary">Add to wishlist</button>
@@ -109,20 +109,19 @@
         </div>
 	</div>
 
-  <script src="../controller/angular-1.3.14.js"></script>
-        <script>
-          var nameApp = angular.module('categoryApp', []);
-        nameApp.controller('CategoryInfoControl', function ($scope){
-        $scope.category = JSON.parse('<?php echo $mas ?>');
-         console.log("fine");
-        console.log($scope.category);
-
-        });
-    </script>
 	<div  id="promotion" style="position:fixed;bottom:20px;left:90%;" >
         <a href="checkout.html"><img height=80% width=80% src="images/cart.png"></a>
     </div>
 	<!-- Optional JavaScript -->
+
+    <script src="../controller/angular-1.3.14.js"></script>
+        <script>
+          var nameApp = angular.module('categoryApp', []);
+      nameApp.controller('CategoryInfoControl', function ($scope){
+        $scope.products = JSON.parse('<?php echo $mas ?>');
+        console.log($scope.products);
+      });
+    </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

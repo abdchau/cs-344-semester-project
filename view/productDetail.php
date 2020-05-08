@@ -13,7 +13,33 @@
 
     <script src="../controller/jquery.js"></script>
     <script src="../controller/products.js"></script>
-
+    <style type="text/css">
+    	
+		    	.quantity {
+		  padding-top: 20px;
+		  margin-right: 60px;
+		}
+		.quantity input {
+		  border: none;
+		  text-align: center;
+		  width: 32px;
+		  font-size: 16px;
+		  color: #43484D;
+		  font-weight: 300;
+		}
+		 .stil {
+		 	background-color: white;
+		 	width: 30px;
+		  height: 30px;
+		  border-radius: 6px;
+		  border: none;
+		 }
+		 
+		button:focus,
+		input:focus {
+		  outline:0;
+		}
+		    </style>
   </head>
   <body ng-app="productApp">
 
@@ -94,13 +120,13 @@
 	  </div>
 		
 	</div>
-	<div class="col-md-5 order-md-2 mb-4"  style="padding-right: 2%; padding-top: 5%;">
+	<div class="col-md-5 order-md-2 mb-4"  style="padding: 5%;">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-muted">Price</span>
         <span class="badge badge-secondary badge-pill">Rs {{info.price}}</span>
       </h4>
       <div class="card text-white bg-info mb-3" style="width: 100%">
-  <div class="card-header">Seller description</div>
+  <div class="card-header">Owner of the Product</div>
   <div class="card-body">
     <h5 class="card-title">{{info.firstName}} {{info.lastName}}</h5>
   </div>
@@ -111,6 +137,19 @@
     <h5 class="card-title"></h5>
     <p class="card-text">{{info.productDscrptn}}</p>
   </div>
+</div>
+<div class="row" style="padding: 5%">
+      <h3>QUANTITY :   </h3>
+	<div class="quantity" style="padding-bottom: 2%; padding-top: 1%; padding-left: 6%">
+      <button class="minus-btn stil" type="button" name="button">
+        <img src="images/minus.png" style="max-height: 100%" alt="" />
+      </button>
+      <input type="text" name="name" value="1" id="qtty">
+      <button class="plus-btn stil" type="button" name="button">
+        <img src="images/plus.png" style="max-height: 90%"alt="" />
+      </button>
+    </div>
+	<button class="btn btn-lg btn-primary btn-block" type="submit" id="signin">Add to Cart</button>
 </div>
     </div>
 </div>
@@ -144,6 +183,20 @@
         <a href="checkout.html"><img height=80% width=80% src="images/cart.png"></a>
     </div>
     <!-- Optional JavaScript -->
+    <script type="text/javascript">
+    	$('.minus-btn').on('click', function(e) {
+    	if($('#qtty').val() != 1)
+            {   
+                $('#qtty').val(parseInt($('#qtty').val())-1);
+            }       
+        });
+
+        $('.plus-btn').on('click', function(e) {
+                $('#qtty').val(parseInt($('#qtty').val())+1);
+        });
+    
+
+    </script>
 
     <script src="../controller/angular-1.3.14.js"></script>
         <script>
