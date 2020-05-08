@@ -14,14 +14,8 @@
     <script src="../controller/jquery.js"></script>
     <script src="../controller/products.js"></script>
 
-    <script type="text/javascript">
-    	var product = JSON.parse('<?php echo $mas ?>');
-    	console.log(product);
-    	console.log(prd);
-    </script>
-
   </head>
-  <body>
+  <body ng-app="productApp">
 
 	<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-faded shadow" style="background-color: #e3f2fd;">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,7 +64,7 @@
 		  </form>
 		</div>
 	</nav>
-	<div class="row" style="width:100%">
+	<div class="row" style="width:100%" ng-controller="InfoControl">
 	<div class="col-md-7 order-md-1" style="padding: 5%; padding-right: 0%">
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="border: 5px solid;border-color: #e3f2fd; min-height: 500px; background-image: linear-gradient(to right, darkgray , lightgray, lightgray, lightgray,darkgray);box-shadow: 5px 10px 8px 10px #e3f2fd;">
 		<ol class="carousel-indicators">
@@ -103,24 +97,24 @@
 	<div class="col-md-5 order-md-2 mb-4"  style="padding-right: 2%; padding-top: 5%;">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-muted">Price</span>
-        <span class="badge badge-secondary badge-pill">{{product.price}}</span>
+        <span class="badge badge-secondary badge-pill">Rs {{info.price}}</span>
       </h4>
       <div class="card text-white bg-info mb-3" style="width: 100%">
   <div class="card-header">Seller description</div>
   <div class="card-body">
-    <h5 class="card-title">{{user.firstname}} {{user.lastname}}</h5>
+    <h5 class="card-title">{{info.firstName}} {{info.lastName}}</h5>
   </div>
 </div>
 <div class="card border-info mb-3" style="width: 100%">
-  <div class="card-header">Product Description</div>
+  <div class="card-header">{{info.productName}}</div>
   <div class="card-body text-info">
     <h5 class="card-title"></h5>
-    <p class="card-text">{{product.description}}blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah</p>
+    <p class="card-text">{{info.productDscrptn}}</p>
   </div>
 </div>
     </div>
 </div>
-<div class="container card shadow-lg" ng-app="relatedApp">
+<div class="container card shadow-lg">
 			<div class="form-inline">
 				<h3 class="display-4 mb-3 mr-auto">Related Producs</h3>
 				<button type="button-lg" class="btn btn-outline-primary">Show More</button>
@@ -128,12 +122,12 @@
 			<div class="row" ng-controller="CardControl">
 
 				<div class="col-lg-3" ng-repeat="product in products">
-				<a href="#" class="text-decoration-none">
+				<a href="productDetail.php?prd={{product.productID}}" class="text-decoration-none">
 					<div class="card mb-4 shadow-sm product-info">
 						<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 						<div class="card-body">
-						<h5 class="card-title text-secondary">{{product.name}}</h5>
-						<p class="card-text text-body">{{product.description}}</p>
+						<h5 class="card-title text-secondary">{{product.productName}}</h5>
+						<p class="card-text text-body">{{product.productDscrptn}}</p>
 						<h6 class="card-title text-success">{{product.price}}</h6>
 						</div>
 					</div>
@@ -153,11 +147,15 @@
 
     <script src="../controller/angular-1.3.14.js"></script>
         <script>
-        	var nameApp = angular.module('relatedApp', []);
+        	var nameApp = angular.module('productApp', []);
       nameApp.controller('CardControl', function ($scope){
-        $scope.products = [{"name":"laptop","description":"nice","price": 100},{"name":"mobile","description":"good","price": 10},{"name":"tab","description":"bad","price": 50}]
+        $scope.products = JSON.parse('<?php echo $rel ?>');
+        console.log($scope.products)
       });
-        </script>
+      nameApp.controller('InfoControl', function ($scope){
+        $scope.info = JSON.parse('<?php echo $mas ?>');
+        });
+    </script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

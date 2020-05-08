@@ -1,3 +1,5 @@
+<?php require '../model/category.php'; ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,7 +13,7 @@
 	<script src="..\controller\effects.js"></script>
 	<title>Category</title>
   </head>
-  <body>
+  <body ng-app="categoryApp">
 	<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-faded shadow" style="background-color: #e3f2fd;">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -61,7 +63,7 @@
   </nav>
 
 
-	<div class="album py-5 bg-light">
+	<div class="album py-5 bg-light" ng-contorller="CategoryInfoControl">
 		<div class="container card shadow-lg">
 			<h3 class="display-4 mb-5 mr-auto">Category Name</h3>
             <div class="row">
@@ -106,6 +108,17 @@
               </nav>
         </div>
 	</div>
+
+  <script src="../controller/angular-1.3.14.js"></script>
+        <script>
+          var nameApp = angular.module('categoryApp', []);
+        nameApp.controller('CategoryInfoControl', function ($scope){
+        $scope.category = JSON.parse('<?php echo $mas ?>');
+         console.log("fine");
+        console.log($scope.category);
+
+        });
+    </script>
 	<div  id="promotion" style="position:fixed;bottom:20px;left:90%;" >
         <a href="checkout.html"><img height=80% width=80% src="images/cart.png"></a>
     </div>
