@@ -1,3 +1,8 @@
+<?php 
+require '../model/categories.php';
+$categories = getCategories($conn);
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,6 +17,22 @@
 	<script src="..\controller\angular-1.3.14.js"></script>
 	<script src="..\controller\angular_controllers.js"></script>
 	<title>Homepage</title>
+
+    <script type="text/javascript">
+    	var categories = JSON.parse('<?php echo $categories ?>');
+    	console.log(categories);
+
+
+    	angular.module('Homepage', [])
+    	.controller('navbar_controller', ['$scope', '$http', function ($scope, $http) {
+    		$scope.categories = categories;
+        }])
+        .controller('main_body_controller', ['$scope', '$http', function ($scope, $http) {
+        	$scope.categories = categories;
+        }]);
+
+    </script>
+
   </head>
   <body ng-app="Homepage">
 
@@ -20,14 +41,14 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<a class="navbar-brand mx-auto" href="productDetail.php?prd=2">
+		<a class="navbar-brand mx-auto" href="index.php">
 			<img src="images\logo.jpg" width="30" height="30" alt=""> Shopoholic
 		</a>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		  <ul class="navbar-nav mr-auto">
 			<li class="nav-item mx-3">
-			  <a class="nav-link" id="home" href="index.html">Home <span class="sr-only">(current)</span></a>
+			  <a class="nav-link" id="home" href="index.php">Home <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item dropdown mx-3">
 			    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -36,7 +57,7 @@
 			  <div class="dropdown-menu" id="categories_dropdown" aria-labelledby="navbarDropdownMenuLink">
 				  <a ng-repeat="category in categories" class="dropdown-item" href="category.php?crd={{category.categoryID}}">{{category.categoryName}}</a>
 				  <div class="dropdown-divider"></div>
-				  <a class="dropdown-item" href="category.php?crd=1">More</a>
+				  <a class="dropdown-item" href="#">More</a>
 			  </div>
             <li class="nav-item mx-3" id="contact_us">
                 <a class="nav-link" href="#">Contact Us</a>
@@ -97,7 +118,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-3" ng-repeat="product in category.products">
-					<a href="" class="text-decoration-none">
+					<a href="#" class="text-decoration-none">
 						<div class="card mb-4 shadow-sm product-info">
 							<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 							<div class="card-body">

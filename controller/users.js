@@ -19,8 +19,10 @@ function verifyUser(email, password){
 				return;
 			}
 
-			if(password===response['password'])
+			if(password===response['password']){
 				console.log('Sign in successful');
+				$('#user_action_1').text('')
+			}
 			else
 				console.log('Password incorrect');
 		},
