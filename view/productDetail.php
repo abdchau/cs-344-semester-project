@@ -9,7 +9,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Homepage</title>
+    <title>Product</title>
 
     <script src="../controller/jquery.js"></script>
     <script src="../controller/products.js"></script>
@@ -139,14 +139,14 @@
   </div>
 </div>
 <div class="row" style="padding: 5%">
-      <h3>QUANTITY :   </h3>
-	<div class="quantity" style="padding-bottom: 2%; padding-top: 1%; padding-left: 6%">
+      <h3 style="width: 100%">QUANTITY :   </h3>
+	<div class="quantity" style="padding-bottom: 2%; padding-top: 1%; padding-left: 6%; width: 100%">
       <button class="minus-btn stil" type="button" name="button">
-        <img src="images/minus.png" style="max-height: 100%" alt="" />
+        <img src="images/minus.png" style="max-height: 90%; padding: 3%" alt="" />
       </button>
       <input type="text" name="name" value="1" id="qtty">
       <button class="plus-btn stil" type="button" name="button">
-        <img src="images/plus.png" style="max-height: 90%"alt="" />
+        <img src="images/plus.png" style="max-height: 90%; padding: 3%"alt="" />
       </button>
     </div>
 	<button class="btn btn-lg btn-primary btn-block" type="submit" id="signin">Add to Cart</button>
