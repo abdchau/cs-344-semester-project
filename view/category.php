@@ -63,9 +63,9 @@
   </nav>
 
 
-	<div class="album py-5 bg-light" ng-contorller="CategoryInfoControl">
+	<div class="album py-5 bg-light" ng-controller="CategoryInfoControl">
 		<div class="container card shadow-lg">
-			<h3 class="display-4 mb-5 mr-auto">Category Name</h3>
+			<h3 class="display-4 mb-5 mr-auto">{{products.categoryName}}</h3>
             <div class="row">
 
                 <div class="col-lg-3" ng-repeat="product in products">
@@ -115,10 +115,11 @@
 	<!-- Optional JavaScript -->
 
     <script src="../controller/angular-1.3.14.js"></script>
-        <script>
-          var nameApp = angular.module('categoryApp', []);
+    <script>
+      var nameApp = angular.module('categoryApp', []);
+
       nameApp.controller('CategoryInfoControl', function ($scope){
-        $scope.products = JSON.parse('<?php echo $mas ?>');
+      $scope.products = JSON.parse('<?php echo $mas ?>');
         console.log($scope.products);
       });
     </script>

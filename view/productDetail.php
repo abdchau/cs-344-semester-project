@@ -185,14 +185,14 @@
     <!-- Optional JavaScript -->
     <script type="text/javascript">
     	$('.minus-btn').on('click', function(e) {
-    	if($('#qtty').val() != 1)
+    		if($('#qtty').val() != 1)
             {   
                 $('#qtty').val(parseInt($('#qtty').val())-1);
             }       
         });
 
         $('.plus-btn').on('click', function(e) {
-                $('#qtty').val(parseInt($('#qtty').val())+1);
+            $('#qtty').val(parseInt($('#qtty').val())+1);
         });
     
 
@@ -201,13 +201,13 @@
     <script src="../controller/angular-1.3.14.js"></script>
         <script>
         	var nameApp = angular.module('productApp', []);
-      nameApp.controller('CardControl', function ($scope){
-        $scope.products = JSON.parse('<?php echo $rel ?>');
-        console.log($scope.products)
-      });
-      nameApp.controller('InfoControl', function ($scope){
-        $scope.info = JSON.parse('<?php echo $mas ?>');
-        });
+			nameApp.controller('CardControl', function ($scope){
+        		$scope.products = JSON.parse('<?php echo $rel ?>');
+        		console.log($scope.products)
+      		});
+	      	nameApp.controller('InfoControl', function ($scope){
+	        	$scope.info = JSON.parse('<?php echo $mas ?>');
+        	});
     </script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
