@@ -1,20 +1,11 @@
 <?php
 
-function createTable($conn, $tableName, $columns) {
-	$conn->query("drop table if exists shopping.".$tableName);
-	$conn->query("create table if not exists shopping.".$tableName.'('.implode(',', $columns).')');
-}
-
 function resetDB($conn){
 	$query = file_get_contents('table_creations.txt');
 
 	$conn->multi_query($query);
 	while(mysqli_next_result($conn));
 	return "Database initialized ".$conn->error;
-}
-
-function insertIntoTable($conn, $tableName, $columns, $values) {
-	$conn->query("insert into shopping.".$tableName.' values ("'.implode('","', $values).'")');
 }
 
 function fillDummyData($conn){

@@ -17,9 +17,16 @@ function closeConnection($conn) {
 	$conn->close();
 }
 
-$userID='Sign Up';
-if (isset($_COOKIE['userID'])){
-	$username = $_COOKIE['userID'];
+function checkCookie($conn){
+	$username = 'Sign Up';
+	if (isset($_COOKIE['userID'])){
+		$username = $conn->query('select firstName from shopping.users where userID='.$_COOKIE['userID'])
+								->fetch_assoc()['firstName'];
+	}
+
+	return $username;
 }
+
+$username = checkCookie(connectDB());
 
 ?>

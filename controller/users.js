@@ -58,7 +58,7 @@ function verifyUser(email, password){
 			if(password===response['password']){
 				console.log('Sign in successful');
 
-				setCookie('userID', response['userID'], 0.02);
+				setCookie('userID', response['userID'], 0.05);
 
 				$('#user_action_1').text('');
 			}

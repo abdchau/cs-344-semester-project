@@ -1,4 +1,7 @@
-<?php require '../model/products.php'; ?>
+<?php require '../model/products.php'; 
+	$relatedProds = getRelatedProducts($conn);
+	$info = getInfo($conn);
+?>
 
 <!doctype html>
 <html lang="en">
@@ -15,7 +18,7 @@
     <script src="../controller/products.js"></script>
     <style type="text/css">
     	
-		    	.quantity {
+    	.quantity {
 		  padding-top: 20px;
 		  margin-right: 60px;
 		}
@@ -155,7 +158,7 @@
 </div>
 <div class="container card shadow-lg">
 			<div class="form-inline">
-				<h3 class="display-4 mb-3 mr-auto">Related Producs</h3>
+				<h3 class="display-4 mb-3 mr-auto">Related Products</h3>
 				<button type="button-lg" class="btn btn-outline-primary">Show More</button>
 			</div>
 			<div class="row" ng-controller="CardControl">
@@ -202,11 +205,11 @@
         <script>
         	var nameApp = angular.module('productApp', []);
 			nameApp.controller('CardControl', function ($scope){
-        		$scope.products = JSON.parse('<?php echo $rel ?>');
+        		$scope.products = JSON.parse('<?php echo $relatedProds ?>');
         		console.log($scope.products)
       		});
 	      	nameApp.controller('InfoControl', function ($scope){
-	        	$scope.info = JSON.parse('<?php echo $mas ?>');
+	        	$scope.info = JSON.parse('<?php echo $info ?>');
         	});
     </script>
 

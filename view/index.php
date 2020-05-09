@@ -1,6 +1,5 @@
-<?php 
-require '../model/categories.php';
-$categories = getCategories($conn);
+<?php require '../model/category.php';
+	$categories = getCategoriesWithProds($conn);
 ?>
 
 <!doctype html>
@@ -30,6 +29,12 @@ $categories = getCategories($conn);
         .controller('main_body_controller', ['$scope', '$http', function ($scope, $http) {
         	$scope.categories = categories;
         }]);
+
+        var username = '<?php echo $username ?>';
+        console.log(username);
+        $(document).ready(function (){
+        	$('#user_action_1').text(username);
+        });
 
     </script>
 
