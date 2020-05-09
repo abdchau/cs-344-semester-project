@@ -72,10 +72,10 @@ $categories = getCategories($conn);
             </li>
           </ul>
 
-		  <form class="form-inline my-2 my-lg-0" id="search_form">
-			<input class="form-control mr-sm-2" id="search_bar" type="search" placeholder="Search">
-			<button class="btn btn-outline-success my-2 my-sm-0" id="search_button" type="submit">Search</button>
-		  </form>
+		  <div class="form-inline my-2 my-lg-0">
+			<input ng-model="query" class="form-control mr-sm-2" id="search_bar" type="search" placeholder="Search">
+			<a href="searchResult.php?query={{query}}"><button  class="btn btn-outline-success my-2 my-sm-0" id="search_button" type="submit">Search</button></a>
+		  </div>
 		</div>
   </nav>
 
@@ -114,7 +114,7 @@ $categories = getCategories($conn);
 			<div class="container card shadow-lg">
 				<div class="form-inline">
 					<h3 class="display-4 mb-3 mr-auto">{{category.categoryName}}</h3>
-					<button type="button-lg" class="btn btn-outline-primary">Show More</button>
+					<a href="category.php?crd={{category.categoryID}}"><button type="button-lg" class="btn btn-outline-primary">Show More</button>
 				</div>
 				<div class="row">
 					<div class="col-lg-3" ng-repeat="product in category.products">

@@ -55,7 +55,7 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		  <ul class="navbar-nav mr-auto">
 			<li class="nav-item mx-3">
-			  <a class="nav-link" id="home" href="index.html">Home <span class="sr-only">(current)</span></a>
+			  <a class="nav-link" id="home" href="index.php">Home <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item dropdown mx-3">
 			    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
