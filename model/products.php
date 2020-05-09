@@ -4,6 +4,7 @@ require "connect.php";
 
 $conn = connectDB();
 
+
 $mas=json_encode($conn->query("select productName,productDscrptn,price,firstName,lastName from shopping.products,shopping.users where products.sellerID = users.userID and productID = ".$_GET['prd'])->fetch_assoc());
 
 $rel= getRelatedProducts($conn);

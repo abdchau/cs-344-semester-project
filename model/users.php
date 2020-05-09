@@ -9,7 +9,7 @@ function queryTable($conn, $tableName, $column='*'){
 
 function getPassword($conn){
 
-	$result=$conn->query("select password from shopping.users where email='".$_POST['user']['email']."'");
+	$result=$conn->query("select userID, password from shopping.users where email='".$_POST['user']['email']."'");
 	return json_encode($result->fetch_assoc());
 }
 

@@ -17,6 +17,9 @@ function closeConnection($conn) {
 	$conn->close();
 }
 
-?>
+$userID='Sign Up';
+if (isset($_COOKIE['userID'])){
+	$username = $_COOKIE['userID'];
+}
 
-	
+?>
