@@ -32,6 +32,8 @@ function searchProducts($conn){
 	        $arr[] = $row;
 	    }
 	}
+	else
+		return json_encode(null);
 
 	return json_encode($arr).$conn->error;
 }
