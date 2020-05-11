@@ -81,7 +81,8 @@
 	<div class="container" style="margin: auto; text-align: center; margin-top: 10%">
 	
   <form class="container" style=" padding: 5%; border-radius: 50px; box-shadow: 5px 10px 8px 10px #e3f2fd;">
-  	<h1 class="h3 mb-3 font-weight-normal">SIGN UP</h1>
+  	<img class="mb-4" src="images/logo.jpg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">SIGN UP</h1>
 	<h3 class="h3 mb-3 font-weight-normal">Please fill the following form</h3>
   		<div class="form-group row">
   		
@@ -123,7 +124,15 @@
       <div class="form-group row">
         
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="city" placeholder="City">
+            <select class="custom-select d-block w-100" id="country" required="">
+              <option value="">Choose city...</option>
+              <option>Karachi</option>
+              <option>Islamabad</option>
+              <option>Quetta</option>
+              <option>Lahore</option>
+              <option>Faislabad</option>
+              <option>Peshawar</option>
+            </select>
           </div>
       </div>
       <div class="form-group row">

@@ -65,7 +65,7 @@
 				  <a class="dropdown-item" href="#">More</a>
 			  </div>
             <li class="nav-item mx-3" id="contact_us">
-                <a class="nav-link" href="#">Contact Us</a>
+                <a class="nav-link" href="contact.html">Contact Us</a>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto" id="user_actions">
