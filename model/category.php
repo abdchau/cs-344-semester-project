@@ -20,6 +20,18 @@ function getProdsByCategory($conn){
 	return json_encode($arr).$conn->error;
 }
 
+function getCategories($conn){
+	$result = $conn->query("select * from shopping.categories");
+	if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        $arr[] = $row;
+    }
+}
+
+	return json_encode($arr).$conn->error;
+}
+
 function getCategoriesWithProds($conn){
 	$cats = $conn->query("select * from shopping.categories");
 
@@ -27,7 +39,7 @@ function getCategoriesWithProds($conn){
 	    while($category = $cats->fetch_assoc()){
 	        $prods = $conn->query("select * from shopping.products where categoryID=".$category['categoryID']);
 	        $category['products'] = array();
-			
+
 			if ($prods->num_rows > 0){
 				while($product = $prods->fetch_assoc()){
 					$category['products'][] = $product;
