@@ -1,4 +1,4 @@
-<?php require '../model/products.php'; 
+<?php require '../model/interface.php'; 
 	$relatedProds = getRelatedProducts($conn);
 	$info = getInfo($conn);
 ?>

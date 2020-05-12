@@ -1,4 +1,4 @@
-<?php require '../model/category.php';
+<?php require '../model/interface.php';
 	$categories = getCategoriesWithProds($conn);
 ?>
 
@@ -41,7 +41,7 @@
   </head>
   <body ng-app="Homepage">
 
-	<?php include("header.php")?>
+	<?php include("header.php") ?>
 
 	<div class="container my-4">
 		<div class="carousel slide" data-ride="carousel" style="background-color: grey; min-height: 500px;">

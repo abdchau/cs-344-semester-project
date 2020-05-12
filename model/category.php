@@ -1,9 +1,5 @@
 <?php
 
-require "connect.php";
-
-$conn = connectDB();
-
 function getCategoryName($conn){
 	return json_encode($conn->query("select categoryName from shopping.categories where categoryID = ".$_GET['crd'])->fetch_assoc());
 }

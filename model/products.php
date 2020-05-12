@@ -1,9 +1,5 @@
 <?php
 
-require "connect.php";
-
-$conn = connectDB();
-
 function getInfo($conn)
 {
 	return json_encode($conn->query("select productName,productDscrptn,price,firstName,lastName from 

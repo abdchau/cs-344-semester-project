@@ -1,7 +1,7 @@
 <?php
 
 function connectDB($dbName='shopping') {
-	$servername = "localhost";
+	$servername = "localhost:3307";
 	$username = "root";
 	$password = "";
 
@@ -16,17 +16,5 @@ function connectDB($dbName='shopping') {
 function closeConnection($conn) {
 	$conn->close();
 }
-
-function checkCookie($conn){
-	$username = 'Sign Up';
-	if (isset($_COOKIE['userID'])){
-		$username = $conn->query('select firstName from shopping.users where userID='.$_COOKIE['userID'])
-								->fetch_assoc()['firstName'];
-	}
-
-	return $username;
-}
-
-$username = checkCookie(connectDB());
 
 ?>

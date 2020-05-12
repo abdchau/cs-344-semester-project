@@ -1,12 +1,5 @@
 <?php
 
-require "connect.php";
-require "helper.php";
-
-function queryTable($conn, $tableName, $column='*'){
-	return $conn->query("select ".$column." from shopping.".$tableName);
-}
-
 function getPassword($conn){
 
 	$result=$conn->query("select userID, password from shopping.users where email='".$_POST['user']['email']."'");
@@ -27,8 +20,6 @@ function addUser($conn){
 		return "User already exists";
 }
 
-$conn = connectDB();
-
 if (isset($_POST['func'])){
 	if ($_POST['func']=='getPassword'){
 		echo getPassword($conn);
@@ -43,10 +34,6 @@ if (isset($_POST['func'])){
 		echo fillDummyData($conn);
 	}
 }
-else
-	echo "No function specified";
-
-closeConnection($conn);
 
 ?>
 

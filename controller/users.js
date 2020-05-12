@@ -42,7 +42,7 @@ function checkCookie() {
 function verifyUser(email, password){
 	$.ajax({
 		type:'POST', 
-		url: '../model/users.php',
+		url: '../model/interface.php',
 		data: {user:{'email':email}, 'func':'getPassword'},
 		datatype: 'json',
 		success: function(response){
@@ -74,7 +74,7 @@ function addUser(email, password, firstName, lastName, address, city, zipcode){
 	console.log(email+ password+ firstName+ lastName+ address+ city+ zipcode);
 	$.ajax({
 		type:'POST', 
-		url: '../model/users.php',
+		url: '../model/interface.php',
 		data: {user:{'firstName':firstName, 'email':email, 'password':password, 'lastName':lastName,
 			'address':address, 'city':city, 'zipcode':zipcode}, 'func':'addUser'},
 		datatype: 'json',

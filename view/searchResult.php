@@ -1,4 +1,4 @@
-<?php require '../model/products.php'; 
+<?php require '../model/interface.php'; 
   $products = searchProducts($conn);
   $query = $_GET['query'];
 ?>
