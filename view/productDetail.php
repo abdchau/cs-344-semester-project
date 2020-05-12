@@ -6,7 +6,6 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
   	<?php echo loadHeader("ProductDetail"); ?>
     <style type="text/css">
 
@@ -34,8 +33,7 @@
 		input:focus {
 		  outline:0;
 		}
-		    </style>
-  </head>
+    </style>
   <body ng-app="PageApp">
 
 	<?php echo loadNavbar(getCategories($conn), $username); ?>
@@ -148,8 +146,6 @@
 
     </script>
 
-    <script src="../controller/angular-1.3.14.js"></script>
-    <script src="../controller/users.js"></script>
     <script>
 		App.controller('CardControl', function ($scope){
     		$scope.products = JSON.parse('<?php echo $relatedProds ?>');
@@ -158,7 +154,11 @@
       	App.controller('InfoControl', function ($scope){
         	$scope.info = JSON.parse('<?php echo $info ?>');
     	});
-
+    	$(document).ready(function(){
+    		$('#add_to_cart').click(function(){
+    			addToCart( '<?php echo $username["userID"] ?>', parseInt($('#qtty').val()));
+    		});
+    	});
     </script>
 
     

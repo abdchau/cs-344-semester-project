@@ -7,6 +7,15 @@
   <head>
     <?php echo loadHeader("User"); ?>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#resetDB').click(function(e){
+          resetDB();
+
+        });
+      });
+    </script>
+
   </head>
   <body ng-app="PageApp">
     <?php echo loadNavbar(getCategories($conn), $username); ?>
@@ -83,7 +92,7 @@
                 Fugiat id quis dolor culpa eiusmod anim velit excepteur proident dolor aute qui magna. Ad proident laboris ullamco esse anim Lorem Lorem veniam quis Lorem irure occaecat velit nostrud magna nulla. Velit et et proident Lorem do ea tempor officia dolor. Reprehenderit Lorem aliquip labore est magna commodo est ea veniam consectetur.
             </div>
             <div class="tab-pane fade" id="v-pills-other" role="tabpanel" aria-labelledby="v-pills-other-tab">
-                <button type="button" class="btn btn-danger btn-lg btn-block my-auto">Reset Databse</button>
+                <button type="button" class="btn btn-danger btn-lg btn-block my-auto" id="resetDB">Reset Database</button>
             </div>
           </div>
         </div>
