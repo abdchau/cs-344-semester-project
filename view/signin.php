@@ -23,11 +23,12 @@
 
 
     
-	<form class="form-signin" style="width: 300px; margin: auto; text-align: center; margin-top: 10%; border-radius: 25px;box-shadow: 5px 10px 8px 10px #e3f2fd;padding: 20px">
+	<form class="form-signin" style="">
 		<img class="mb-4" src="images/logo.jpg" alt="" width="72" height="72">
 		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 		<label for="inputEmail" class="sr-only">Email address</label>
 		<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+    <p style="color: white">.</p>
 		<label for="inputPassword" class="sr-only">Password</label>
 		<input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
 		<div class="checkbox mb-3" style="padding-top: 20px">
@@ -38,7 +39,8 @@
     <div style="padding-bottom: 20px">
 		<button class="btn btn-lg btn-primary btn-block" type="submit" id="signin">Sign in</button>
 		</div>
-    <a href=signup.html class="btn btn-lg btn-primary btn-block">signup</a>
+    <p>Dont have an account?</p>
+    <a href=signup.html class="btn btn-lg btn-primary btn-block">Create an account</a>
   		<p class="mt-5 mb-3 text-muted">© 2020</p>
 	</form>
 

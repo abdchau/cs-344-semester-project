@@ -8,33 +8,7 @@
 <html lang="en">
   <head>
   	<?php echo loadHeader("ProductDetail"); ?>
-    <style type="text/css">
-
-    	.quantity {
-		  padding-top: 20px;
-		  margin-right: 60px;
-		}
-		.quantity input {
-		  border: none;
-		  text-align: center;
-		  width: 32px;
-		  font-size: 16px;
-		  color: #43484D;
-		  font-weight: 300;
-		}
-		 .stil {
-		 	background-color: white;
-		 	width: 30px;
-		  height: 30px;
-		  border-radius: 6px;
-		  border: none;
-		 }
-
-		button:focus,
-		input:focus {
-		  outline:0;
-		}
-		    </style>
+  
   </head>
   <body ng-app="PageApp">
 
@@ -42,7 +16,7 @@
 
 	<div class="row" style="width:100%" ng-controller="InfoControl">
 	<div class="col-md-7 order-md-1" style="padding: 5%; padding-right: 0%">
-	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="border: 5px solid;border-color: #e3f2fd; min-height: 500px; background-image: linear-gradient(to right, darkgray , lightgray, lightgray, lightgray,darkgray);box-shadow: 5px 10px 8px 10px #e3f2fd;">
+	<div id="carouselExampleIndicator" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators">
 		  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 		  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -90,7 +64,7 @@
 </div>
 <div class="row" style="padding: 5%">
       <h3 style="width: 100%">QUANTITY :   </h3>
-	<div class="quantity" style="padding-bottom: 2%; padding-top: 1%; padding-left: 6%; width: 100%">
+	<div class="quantity">
       <button class="minus-btn stil" type="button" name="button">
         <img src="images/minus.png" style="max-height: 90%; padding: 3%" alt="" />
       </button>

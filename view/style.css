@@ -1,0 +1,63 @@
+ 		#contact .card:hover i,#contact .card:hover h4{
+            color: #87d37c;
+          }
+
+        .quantity {
+		  padding-top: 20px;
+		  margin-right: 60px;
+		  padding-bottom: 2%;
+		  padding-top: 1%;
+		  padding-left: 6%; 
+		  width: 100%
+		}
+		.quantity input {
+		  border: none;
+		  text-align: center;
+		  width: 32px;
+		  font-size: 16px;
+		  color: #43484D;
+		  font-weight: 300;
+		}
+		 .stil {
+		 	background-color: white;
+		 	width: 30px;
+		  height: 30px;
+		  border-radius: 6px;
+		  border: none;
+		 }
+
+		button:focus,
+		input:focus {
+		  outline:0;
+		}
+
+		#carouselExampleIndicator {
+			border: 5px solid;
+			border-color: #e3f2fd;
+			min-height: 500px;
+			background-image: linear-gradient(to right, darkgray , lightgray, lightgray, lightgray,darkgray);
+			box-shadow: 5px 10px 8px 10px #e3f2fd;
+		}
+		.form-signin{
+			width: 300px; 
+			margin: auto; 
+			text-align: center; 
+			margin-top: 10%; 
+			border-radius: 25px;
+			box-shadow: 5px 10px 8px 10px #e3f2fd;
+			padding: 20px;
+		}
+		.signupformouter{
+			margin: auto; 
+			text-align: center; 
+			margin-top: 10%;
+		}
+		.signupform{
+			padding: 5%; 
+			border-radius: 50px; 
+			box-shadow: 5px 10px 8px 10px #e3f2fd;
+		}
+		.carouselIndex{
+			background-color: grey; 
+			min-height: 500px;
+		}

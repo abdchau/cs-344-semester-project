@@ -12,7 +12,7 @@
 	<?php echo loadNavbar(getCategories($conn), $username); ?>
 
 	<div class="container my-4">
-		<div class="carousel slide" data-ride="carousel" style="background-color: grey; min-height: 500px;">
+		<div class="carousel slide carouselIndex " data-ride="carousel">
 			<ol class="carousel-indicators">
 			  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 			  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -56,7 +56,7 @@
 							<div class="card-body">
 							<h5 class="card-title text-secondary">{{product.productName}}</h5>
 							<p class="card-text text-body">{{product.productDscrptn}}</p>
-							<h6 class="card-title text-success">{{product.price}}</h6>
+							<h6 class="card-title text-success">Rs {{product.price}}</h6>
 							</div>
 						</div>
 					</a>
