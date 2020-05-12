@@ -1,4 +1,4 @@
-<?php require '../model/interface.php'; 
+<?php require '../model/interface.php';
 	$relatedProds = getRelatedProducts($conn);
 	$info = getInfo($conn);
 ?>
@@ -17,7 +17,7 @@
     <script src="../controller/jquery.js"></script>
     <script src="../controller/products.js"></script>
     <style type="text/css">
-    	
+
     	.quantity {
 		  padding-top: 20px;
 		  margin-right: 60px;
@@ -37,7 +37,7 @@
 		  border-radius: 6px;
 		  border: none;
 		 }
-		 
+
 		button:focus,
 		input:focus {
 		  outline:0;
@@ -121,7 +121,7 @@
 		  <span class="sr-only">Next</span>
 		</a>
 	  </div>
-		
+
 	</div>
 	<div class="col-md-5 order-md-2 mb-4"  style="padding: 5%;">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -180,7 +180,7 @@
 		</div>
 
 
-	
+
 
 	<div  id="promotion" style="position:fixed;bottom:20px;left:90%;" >
         <a href="checkout.html"><img height=80% width=80% src="images/cart.png"></a>
@@ -189,15 +189,15 @@
     <script type="text/javascript">
     	$('.minus-btn').on('click', function(e) {
     		if($('#qtty').val() != 1)
-            {   
+            {
                 $('#qtty').val(parseInt($('#qtty').val())-1);
-            }       
+            }
         });
 
         $('.plus-btn').on('click', function(e) {
             $('#qtty').val(parseInt($('#qtty').val())+1);
         });
-    
+
 
     </script>
 
@@ -211,7 +211,7 @@
       	nameApp.controller('InfoControl', function ($scope){
         	$scope.info = JSON.parse('<?php echo $info ?>');
     	});
-    
+
     	$(document).ready(function(){
     		$('#add_to_cart').click(function(){
     			addToCart( '<?php echo $username["userID"] ?>', parseInt($('#qtty').val()));
