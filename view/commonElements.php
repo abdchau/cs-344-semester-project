@@ -13,6 +13,7 @@ function loadHeader($title){
 		<script src="..\controller\jquery.js"></script>
 		<script src="..\controller\effects.js"></script>
 		<script src="..\controller\angular-1.3.14.js"></script>
+		<script src="..\controller\users.js"></script>
 		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -47,15 +48,15 @@ function loadNavbar($categories_list, $username){
 		<a class="dropdown-item" href="#">More</a>
 		</div>
 			<li class="nav-item mx-3" id="contact_us">
-				<a class="nav-link" href="contact.html">Contact Us</a>
+				<a class="nav-link" href="contact.php">Contact Us</a>
 			</li>
 		</ul>
 		<ul class="navbar-nav ml-auto" id="user_actions">
 			<li class="nav-item mx-3">
-				<a class="nav-link" id="user_action_1" href="signup.html">Sign Up</a>
+				<a class="nav-link" id="user_action_1" href="signup.php">Sign Up</a>
 			</li>
 			<li class="nav-item mx-3">
-				<a class="nav-link" id="user_action_2" href="signin.html">Sign In</a>
+				<a class="nav-link" id="user_action_2" href="signin.php">Sign In</a>
 			</li>
 		</ul>
 
@@ -65,6 +66,10 @@ function loadNavbar($categories_list, $username){
 	</div>
 	</div>
 </nav>
+
+<div  id="promotion" style="position:fixed;bottom:20px;left:90%;" >
+        <a href=checkout.php><img height=80% width=80% src="images/cart.png"></a>
+</div>
 
 <script type="text/javascript">
 	// Search on pressing enter

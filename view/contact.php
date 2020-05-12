@@ -1,3 +1,7 @@
+<?php require '../model/interface.php';
+  require 'commonElements.php';
+?>
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -5,17 +9,11 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <?php echo loadHeader("Contact us"); ?>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     
-
-    <link href="signin.css" rel="stylesheet">
     <style type="text/css">
       #contact .card:hover i,#contact .card:hover h4{
             color: #87d37c;
@@ -23,10 +21,7 @@
     </style>
     <title>Contact Us</title>
 
-
-    <script src="../controller/jquery.js"></script>
-
-    <script src="../controller/users.js"></script>
+    
 
     <script type="text/javascript">
       $(document).ready(function(){
@@ -40,9 +35,11 @@
 
 
   </head>
-  <body>
+  <body ng-app="PageApp">
 	<!-- Just an image -->
 	
+  <?php echo loadNavbar(getCategories($conn), $username); ?>
+
   <section class="jumbotron text-center" style="background-color: white">
         <div class="container">
           <p>Got a Question?</p>
@@ -118,9 +115,11 @@ However, if you still require more information or assistance, we’re here to he
              <div class="col-sm-12 col-md-6 col-lg-3 my-5">
                <div class="card border-0">
                   <div class="card-body text-center">
-                    <i class="fa fa-map-marker fa-5x mb-3" aria-hidden="true"></i>
+                     <a href="https://www.google.com/maps/place/NUST/@33.6428817,72.9904797,17z/data=!3m1!4b1!4m5!3m4!1s0x38df9675aaaaaaab:0xc5180922c44eb86b!8m2!3d33.6428817!4d72.9926684" style="color: black">
+                      <i class="fa fa-map-marker fa-5x mb-3" aria-hidden="true"></i>
                     <h4 class="text-uppercase mb-5">office loaction</h4>
                    <address>NUST H-12, Islamabad</address>
+                 </a>
                   </div>
                 </div>
              </div>
@@ -151,11 +150,6 @@ However, if you still require more information or assistance, we’re here to he
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
   </body>
 </html>

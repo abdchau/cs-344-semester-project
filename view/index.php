@@ -68,10 +68,6 @@
 
 	</div>
 
-	<div  id="promotion" style="position:fixed;bottom:20px;left:90%;" >
-        <a href=checkout.html><img height=80% width=80% src="images/cart.png"></a>
-	</div>
-
 	<script type="text/javascript">
     	var categories = JSON.parse('<?php echo $categories ?>');
         App.controller('main_body_controller', ['$scope', '$http', function ($scope, $http) {

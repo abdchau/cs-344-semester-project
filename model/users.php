@@ -24,6 +24,11 @@ function addToCart($conn){
 	$conn->query("insert into shopping.cart_item values(".$_POST['productID'].", ".$_POST['userID'].", ".$_POST['quantity'].", '".date("Y-m-d H:i:s")."');");
 	return "Cart item added".$conn->error;
 }
+function displayCart($conn){
+	$cart = $conn->query(" select * from cart_item join products using (productID) where userID =".$_POST['userID'])->fetch_assoc();
+	return json_encode($cart);
+}
+
 
 if (isset($_POST['func'])){
 	if ($_POST['func']=='getPassword'){
@@ -40,6 +45,9 @@ if (isset($_POST['func'])){
 	}
 	if ($_POST['func']=='addToCart'){
 		echo addToCart($conn);
+	}
+	if ($_POST['func']=='displayCart'){
+		echo displayCart($conn);
 	}
 }
 
