@@ -60,7 +60,7 @@ echo
 		$scope.categories = categories;
 		}]);
 
-		var username = "'.$username.'";
+		var username = "'.$username['firstName'].'";
 		$(document).ready(function (){
 			$("#user_action_1").text(username);
 		});

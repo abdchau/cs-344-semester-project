@@ -152,7 +152,7 @@
         <img src="images/plus.png" style="max-height: 90%; padding: 3%"alt="" />
       </button>
     </div>
-	<button class="btn btn-lg btn-primary btn-block" type="submit" id="signin">Add to Cart</button>
+	<button class="btn btn-lg btn-primary btn-block" type="submit" id="add_to_cart">Add to Cart</button>
 </div>
     </div>
 </div>
@@ -202,16 +202,24 @@
     </script>
 
     <script src="../controller/angular-1.3.14.js"></script>
-        <script>
-        	var nameApp = angular.module('productApp', []);
-			nameApp.controller('CardControl', function ($scope){
-        		$scope.products = JSON.parse('<?php echo $relatedProds ?>');
-        		console.log($scope.products)
-      		});
-	      	nameApp.controller('InfoControl', function ($scope){
-	        	$scope.info = JSON.parse('<?php echo $info ?>');
-        	});
+    <script>
+    	var nameApp = angular.module('productApp', []);
+		nameApp.controller('CardControl', function ($scope){
+    		$scope.products = JSON.parse('<?php echo $relatedProds ?>');
+    		console.log($scope.products)
+  		});
+      	nameApp.controller('InfoControl', function ($scope){
+        	$scope.info = JSON.parse('<?php echo $info ?>');
+    	});
+    
+    	$(document).ready(function(){
+    		$('#add_to_cart').click(function(){
+    			addToCart( '<?php echo $username["userID"] ?>', parseInt($('#qtty').val()));
+    		});
+    	});
     </script>
+
+    <script src="../controller/users.js"></script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>

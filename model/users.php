@@ -20,6 +20,11 @@ function addUser($conn){
 		return "User already exists";
 }
 
+function addToCart($conn){
+	$conn->query("insert into shopping.cart_item values(".$_POST['productID'].", ".$_POST['userID'].", ".$_POST['quantity'].", '".date("Y-m-d H:i:s")."');");
+	return "Cart item added".$conn->error;
+}
+
 if (isset($_POST['func'])){
 	if ($_POST['func']=='getPassword'){
 		echo getPassword($conn);
@@ -32,6 +37,9 @@ if (isset($_POST['func'])){
 	if ($_POST['func']=='resetDB'){
 		echo resetDB($conn);
 		echo fillDummyData($conn);
+	}
+	if ($_POST['func']=='addToCart'){
+		echo addToCart($conn);
 	}
 }
 

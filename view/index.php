@@ -30,18 +30,12 @@
         	$scope.categories = categories;
         }]);
 
-        var username = '<?php echo $username ?>';
-        console.log(username);
-        $(document).ready(function (){
-        	$('#user_action_1').text(username);
-        });
-
     </script>
 
   </head>
   <body ng-app="Homepage">
 
-	<?php include("header.php") ?>
+	<?php include("header.php");echo $username['firstName']; ?>
 
 	<div class="container my-4">
 		<div class="carousel slide" data-ride="carousel" style="background-color: grey; min-height: 500px;">

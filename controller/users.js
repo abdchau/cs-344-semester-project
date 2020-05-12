@@ -58,9 +58,8 @@ function verifyUser(email, password){
 			if(password===response['password']){
 				console.log('Sign in successful');
 
-				setCookie('userID', response['userID'], 0.05);
-
-				$('#user_action_1').text('');
+				setCookie('userID', response['userID'], 0.5);
+				window.location.href = 'index.php';
 			}
 			else
 				console.log('Password incorrect');
@@ -77,6 +76,39 @@ function addUser(email, password, firstName, lastName, address, city, zipcode){
 		url: '../model/interface.php',
 		data: {user:{'firstName':firstName, 'email':email, 'password':password, 'lastName':lastName,
 			'address':address, 'city':city, 'zipcode':zipcode}, 'func':'addUser'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			console.log(response);
+
+		},
+		error: function(){console.log('post error');}
+	})
+}
+
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};
+
+function addToCart(userID, quantity){
+	console.log(userID+" "+quantity);
+	$.ajax({
+		type:'POST', 
+		url: '../model/interface.php',
+		data: {'userID':userID, 'quantity':quantity, 'productID':getUrlParameter('prd'),
+			'func':'addToCart'},
 		datatype: 'json',
 		success: function(response){
 

@@ -1,7 +1,6 @@
 <?php require '../model/interface.php';
   $categoryName = getCategoryName($conn);
   $products = getProdsByCategory($conn);
-  closeConnection($conn);
 ?>
 
 <!doctype html>
