@@ -20,6 +20,7 @@ create table shopping.users(
 	lastName varchar(20),
 	email varchar(20) unique not null,
 	password varchar(20),
+	isAdmin boolean default false,
 	addressID int, foreign key(addressID) references shopping.addresses(addressID)
 );
 

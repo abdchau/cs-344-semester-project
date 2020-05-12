@@ -119,3 +119,19 @@ function addToCart(userID, quantity){
 		error: function(){console.log('post error');}
 	})
 }
+
+function resetDB(){
+	$.ajax({
+		type:'POST', 
+		url: '../model/interface.php',
+		data: {'func':'resetDB'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			alert(response);
+
+		},
+		error: function(){console.log('post error');}
+	})
+}

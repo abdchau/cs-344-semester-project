@@ -52,9 +52,9 @@
         </div>
 	</div>
 
-	<div  id="promotion" style="position:fixed;bottom:20px;left:90%;" >
-        <a href="checkout.html"><img height=80% width=80% src="images/cart.png"></a>
-    </div>
+	<div  id="cartIcon" style="position:fixed;bottom:20px;left:90%;" >
+        <a href=checkout.php><img height=80% width=80% src="images/cart.png"></a>
+</div>
 	<!-- Optional JavaScript -->
 
     <script>

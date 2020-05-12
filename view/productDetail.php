@@ -6,10 +6,39 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
   	<?php echo loadHeader("ProductDetail"); ?>
+<<<<<<< HEAD
   
   </head>
+=======
+    <style type="text/css">
+
+    	.quantity {
+		  padding-top: 20px;
+		  margin-right: 60px;
+		}
+		.quantity input {
+		  border: none;
+		  text-align: center;
+		  width: 32px;
+		  font-size: 16px;
+		  color: #43484D;
+		  font-weight: 300;
+		}
+		 .stil {
+		 	background-color: white;
+		 	width: 30px;
+		  height: 30px;
+		  border-radius: 6px;
+		  border: none;
+		 }
+
+		button:focus,
+		input:focus {
+		  outline:0;
+		}
+    </style>
+>>>>>>> d11782a75e41427fe82abfc835b96ea96ccde37f
   <body ng-app="PageApp">
 
 	<?php echo loadNavbar(getCategories($conn), $username); ?>
@@ -99,13 +128,9 @@
 
 			</div>
 		</div>
-
-
-
-
-	<div  id="promotion" style="position:fixed;bottom:20px;left:90%;" >
-        <a href="checkout.html"><img height=80% width=80% src="images/cart.png"></a>
-    </div>
+	<div  id="cartIcon" style="position:fixed;bottom:20px;left:90%;" >
+        <a href=checkout.php><img height=80% width=80% src="images/cart.png"></a>
+	</div>
     <!-- Optional JavaScript -->
     <script type="text/javascript">
     	$('.minus-btn').on('click', function(e) {
@@ -122,8 +147,6 @@
 
     </script>
 
-    <script src="../controller/angular-1.3.14.js"></script>
-    <script src="../controller/users.js"></script>
     <script>
 		App.controller('CardControl', function ($scope){
     		$scope.products = JSON.parse('<?php echo $relatedProds ?>');
@@ -132,7 +155,13 @@
       	App.controller('InfoControl', function ($scope){
         	$scope.info = JSON.parse('<?php echo $info ?>');
     	});
-
+    </script>
+    <script>
+    	$(document).ready(function(){
+    		$('#add_to_cart').click(function(){
+    			addToCart( '<?php echo $username["userID"] ?>', parseInt($('#qtty').val()));
+    		});
+    	});
     </script>
 
     

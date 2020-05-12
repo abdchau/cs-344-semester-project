@@ -67,6 +67,9 @@
 		</div>
 
 	</div>
+	<div  id="cartIcon" style="position:fixed;bottom:20px;left:90%;" >
+        <a href=checkout.php><img height=80% width=80% src="images/cart.png"></a>
+</div>
 
 	<script type="text/javascript">
     	var categories = JSON.parse('<?php echo $categories ?>');
