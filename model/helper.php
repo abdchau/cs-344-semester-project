@@ -34,7 +34,7 @@ function fillDummyData($conn){
 }
 
 function checkCookie($conn){
-	$username = 'Sign Up';
+	$username = null;
 	if (isset($_COOKIE['userID'])){
 		$username = $conn->query('select * from (select * from shopping.users where userID='.$_COOKIE['userID'].')A natural join shopping.addresses natural join shopping.cities;')
 								->fetch_assoc();
@@ -44,17 +44,23 @@ function checkCookie($conn){
 }
 
 function getUserJSON($conn){
-	if (checkCookie($conn)=='Sign Up')
+	if (checkCookie($conn)==null)
 		return json_encode(null);
 	else{
 		return json_encode(checkCookie($conn));
 	}
 }
 
-function signOut(){
-	if (isset($_COOKIE['userID']))
-		setcookie("userID", "", time() - 3600);
-	return "Signed out successfully";
+function getUsers($conn){
+	$result = $conn->query("select * from shopping.users");
+	if ($result->num_rows > 0) {
+	    while($row = $result->fetch_assoc()) {
+	        $arr[] = $row;
+	    }
+	    return json_encode($arr);
+	}
+	else
+		return json_encode(null);
 }
 
 ?>

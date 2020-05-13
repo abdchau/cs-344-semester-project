@@ -130,7 +130,44 @@ function resetDB(){
 
 			console.log('post success');
 			alert(response);
+			location.reload();
+		},
+		error: function(){console.log('post error');}
+	})
+}
 
+function signOut(){
+	setCookie("userID", "", -3600*24);
+	window.location.href = 'signin.php';
+}
+
+function deleteUser(userID) {
+	$.ajax({
+		type:'POST', 
+		url: '../model/interface.php',
+		data: {'userID':userID, 'func':'deleteUser'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			alert(response);
+			location.reload();
+		},
+		error: function(){console.log('post error');}
+	})
+}
+
+function deleteProduct(productID) {
+	$.ajax({
+		type:'POST', 
+		url: '../model/interface.php',
+		data: {'productID':productID, 'func':'deleteProduct'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			alert(response);
+			location.reload();
 		},
 		error: function(){console.log('post error');}
 	})

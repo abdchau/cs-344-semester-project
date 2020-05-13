@@ -16,7 +16,7 @@ function loadHeader($title){
 		<script src="..\controller\effects.js"></script>
 		<script src="..\controller\angular-1.3.14.js"></script>
 		<script src="..\controller\users.js"></script>
-		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
     	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 		<title>'.$title.'</title>
@@ -56,7 +56,7 @@ function loadNavbar($categories_list, $user){
 				<a class="nav-link" id="user_action_1" href="profile.php">Hello, {{user.firstName}}</a>
 			</li>
 			<li class="nav-item mx-3">
-				<a class="nav-link" id="user_action_2" href="signin.php">Sign Out</a>
+				<a class="nav-link" id="user_action_2" href="#">Sign Out</a>
 			</li>
 		</ul>
 		<ul class="navbar-nav ml-auto" id="user_actions" ng-if="user == null">
@@ -64,7 +64,7 @@ function loadNavbar($categories_list, $user){
 				<a class="nav-link" id="user_action_1" href="signup.php">Sign Up</a>
 			</li>
 			<li class="nav-item mx-3">
-				<a class="nav-link" id="user_action_2" href="signin.php">Sign In</a>
+				<a class="nav-link" href="signin.php">Sign In</a>
 			</li>
 		</ul>
 
@@ -86,6 +86,12 @@ function loadNavbar($categories_list, $user){
 		}
 	});
 	var categories = JSON.parse(\''.$categories_list.'\');
+
+	$(document).ready(function(){
+		$("#user_action_2").click(function(){
+			signOut();
+		})
+	})
 
 	var App = angular.module(\'PageApp\', []);
 

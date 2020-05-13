@@ -14,6 +14,8 @@ function getFeaturedProducts($conn){
 	        $arr[] = $row;
 	    }
 	}
+	else
+		return json_encode(null);
 
 	return json_encode($arr).$conn->error;
 }
@@ -46,7 +48,7 @@ function searchProducts($conn){
 }
 
 function getCart($conn, $username){
-	if ($username=='Sign up')
+	if ($username==null)
 		header('Location: signin.php');
 	else{
 		$result=$conn->query("select * from ((select * from shopping.cart_item where userID=".$username['userID'].")A natural join shopping.products);");
@@ -59,6 +61,18 @@ function getCart($conn, $username){
 			$arr=null;
 		return json_encode($arr).$conn->error;
 	}
+}
+
+function getProducts($conn){
+	$result=$conn->query("select * from shopping.products as B join (select userID, firstName, lastName from shopping.users)A on A.userID=B.sellerID natural join shopping.categories");
+	if ($result->num_rows > 0) {
+		    while($row = $result->fetch_assoc()) {
+		        $arr[] = $row;
+		    }
+		}
+		else
+			$arr=null;
+		return json_encode($arr).$conn->error;
 }
 
 ?>

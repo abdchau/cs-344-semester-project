@@ -1,6 +1,8 @@
 <?php require '../model/interface.php';
   require 'commonElements.php';
   $cart = getCart($conn, $username);
+  if ($username==null)
+    header("Location: index.php");
 ?>
 
 <!doctype html>
@@ -100,8 +102,8 @@
                             <th scope="col">Handle</th>
                           </tr>
                         </thead>
-                        <tbody ng-repeat="product in cart">
-                          <tr>
+                        <tbody>
+                          <tr ng-repeat="product in cart">
                             <th scope="row">1</th>
                             <td>{{product.productName}}</td>
                             <td>{{product.price}}</td>
@@ -333,6 +335,10 @@
       $scope.cart = JSON.parse('<?php echo $cart; ?>');
       console.log($scope.cart+'ding');
     });
+    $('#delete_account').click(function(){
+      deleteUser(JSON.parse('<?php echo getUserJSON($conn); ?>')['userID']);
+      window.location.href = 'index.php';
+});
   </script>
   </body>
 </html>

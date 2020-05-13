@@ -1,20 +1,15 @@
 <?php require '../model/interface.php';
   require 'commonElements.php';
-  ?>
+  if ($username==null)
+    header("Location: index.php");
+  $users = getUsers($conn);
+?>
 
 <!doctype html>
 <html lang="en">
   <head>
     <?php echo loadHeader("User"); ?>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $('#resetDB').click(function(e){
-          resetDB();
 
-        });
-      });
-    </script>
 
   </head>
   <body ng-app="PageApp">
@@ -36,61 +31,85 @@
         </div>
         <div class="col-sm-9 px-0">
           <div class="tab-content" id="v-pills-tabContent">
-            <div class="tab-pane fade show active" id="v-pills-user" role="tabpanel" aria-labelledby="v-pills-user-tab">
-                <div class="table-responsive">
+            <div ng-controller="users-ctrl" class="tab-pane fade show active" id="v-pills-user" role="tabpanel" aria-labelledby="v-pills-user-tab">
+                  <div class="table-responsive">
                     <table class="table">
                         <caption>List of users</caption>
                         <thead>
                           <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                            <th scope="col">Handle</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">User ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Options</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                          <tr ng-repeat="user in users">
+                            <td>{{user.userID}}</td>
+                            <td>{{user.firstName}} {{user.lastName}}</td>
+                            <td>{{user.email}}</td>
+                            <td><button data-id="{{user.userID}}" type="button" class="btn btn-outline-danger my-auto rem-user">Remove</button></td>
                           </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
+
                         </tbody>
                       </table>
                   </div>
             </div>
-            <div class="tab-pane fade" id="v-pills-products" role="tabpanel" aria-labelledby="v-pills-products-tab">
-                Culpa dolor voluptate do laboris laboris irure reprehenderit id incididunt duis pariatur mollit aute magna pariatur consectetur. Eu veniam duis non ut dolor deserunt commodo et minim in quis laboris ipsum velit id veniam. Quis ut consectetur adipisicing officia excepteur non sit. Ut et elit aliquip labore Lorem enim eu. Ullamco mollit occaecat dolore ipsum id officia mollit qui esse anim eiusmod do sint minim consectetur qui.
+            <div ng-controller="product-ctrl" class="tab-pane fade" id="v-pills-products" role="tabpanel" aria-labelledby="v-pills-products-tab">
+                  <div class="table-responsive">
+                    <table class="table">
+                        <caption>List of products</caption>
+                        <thead>
+                          <tr>
+                            <th scope="col">Product ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Seller</th>
+                            <th scope="col">Options</th>
+                         </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="product in products">
+                            <td>{{product.productID}}</td>
+                            <td>{{product.productName}}</td>
+                            <td>{{product.categoryName}}</td>
+                            <td>{{product.price}}</td>
+                            <td>{{product.firstName}} {{product.lastName}}</td>
+                            <td><button data-id="{{product.productID}}" type="button" class="btn btn-outline-danger my-auto rem-prod">Remove</button></td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+                  </div>
             </div>
-            <div class="tab-pane fade" id="v-pills-categories" role="tabpanel" aria-labelledby="v-pills-categories-tab">
-                Fugiat id quis dolor culpa eiusmod anim velit excepteur proident dolor aute qui magna. Ad proident laboris ullamco esse anim Lorem Lorem veniam quis Lorem irure occaecat velit nostrud magna nulla. Velit et et proident Lorem do ea tempor officia dolor. Reprehenderit Lorem aliquip labore est magna commodo est ea veniam consectetur.
+
+
+            <div ng-controller="category-ctrl" class="tab-pane fade" id="v-pills-categories" role="tabpanel" aria-labelledby="v-pills-categories-tab">
+                <div class="table-responsive">
+                    <table class="table">
+                        <caption>List of products</caption>
+                        <thead>
+                          <tr>
+                            <th scope="col">Category ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Options</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="category in categories">
+                            <td>{{category.categoryID}}</td>
+                            <td>{{category.categoryName}}</td>
+
+                          </tr>
+
+                        </tbody>
+                      </table>
+                  </div>            
             </div>
+
+
+
             <div class="tab-pane fade" id="v-pills-other" role="tabpanel" aria-labelledby="v-pills-other-tab">
               <div class="col-sm-6 mx-auto">
                 <button type="button" class="btn btn-danger btn-lg btn-block my-auto" id="resetDB">Reset Database</button>
@@ -99,5 +118,30 @@
           </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+      App.controller('users-ctrl', function ($scope){
+        $scope.users = JSON.parse('<?php echo $users; ?>');
+      })
+      .controller('product-ctrl', function ($scope){
+        $scope.products = JSON.parse('<?php echo getProducts($conn); ?>');
+      })
+      .controller('category-ctrl', function ($scope){
+        $scope.categories = JSON.parse('<?php echo getCategories($conn); ?>');
+      });
+
+      $(document).ready(function(){
+        $('#resetDB').click(function(e){
+          resetDB();
+        });
+        $('.rem-user').click(function(){
+          deleteUser($(this).attr('data-id'));
+        });
+        $('.rem-prod').click(function(){
+          deleteProduct($(this).attr('data-id'));
+        });
+      });
+    </script>
+
   </body>
 </html>

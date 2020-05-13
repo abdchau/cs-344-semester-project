@@ -29,6 +29,15 @@ function displayCart($conn){
 	return json_encode($cart);
 }
 
+function deleteUser($conn){
+	$conn->query("delete from shopping.users where userID=".$_POST['userID']);
+	return "User deleted".$conn->error;
+}
+
+function deleteProduct($conn){
+	$conn->query("delete from shopping.products where productID=".$_POST['productID']);
+	return "Product deleted".$conn->error;
+}
 
 if (isset($_POST['func'])){
 	if ($_POST['func']=='getPassword'){
@@ -48,6 +57,12 @@ if (isset($_POST['func'])){
 	}
 	if ($_POST['func']=='displayCart'){
 		echo displayCart($conn);
+	}
+	if ($_POST['func']=='deleteUser'){
+		echo deleteUser($conn);
+	}
+	if ($_POST['func']=='deleteProduct'){
+		echo deleteProduct($conn);
 	}
 }
 

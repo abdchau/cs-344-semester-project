@@ -1,7 +1,7 @@
 <?php
 
 function connectDB($dbName='shopping') {
-	$servername = "localhost:3306";
+	$servername = "localhost:3307";
 	$username = "root";
 	$password = "";
 
