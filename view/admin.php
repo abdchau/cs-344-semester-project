@@ -104,17 +104,35 @@
                             <td>{{category.categoryID}}</td>
                             <td>{{category.categoryName}}</td>
                             <td>
-                              <button data-id="{{category.categoryID}}" type="button" class="btn btn-block-xs btn-outline-success my-auto edit-cat">Edit</button>
+                              <button data-id="{{category.categoryID}}" data-categoryName="{{category.categoryName}}" type="button" class="btn btn-block-xs btn-outline-success my-auto openModal" data-toggle="modal" data-target="#editModal">Edit</button>
                               <button data-id="{{category.categoryID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto rem-cat">Remove</button>
                             </td>
                           </tr>
 
                         </tbody>
                       </table>
-                  </div>            
+                  </div>
             </div>
 
-
+            <div class="modal fade" id="editModal" data-backdrop="static" tabindex="-1" role="dialog">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Edit Category</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <input name="categoryName" type="text" class="form-control" id="inputEditCategoryName" placeholder="E.g Smartphone">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-id="" id="cat-edit">Save Changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <div class="tab-pane fade" id="v-pills-other" role="tabpanel" aria-labelledby="v-pills-other-tab">
               <div class="col-sm-6 mx-auto">
@@ -152,8 +170,15 @@
         $('.rem-cat').click(function(){
           removeCategory($(this).attr('data-id'));
         });
-        $('.edit-cat').click(function(){
-          removeCategory($(this).attr('data-id'));
+
+        $('#cat-edit').click(function(){
+          console.log($(this).attr('data-id'));
+          // removeCategory($(this).attr('data-id'));
+        });
+        $('.openModal').click(function(){
+          console.log($(this).attr('data-categoryName'));
+          $('#inputEditCategoryName').val($(this).attr('data-categoryName'));
+          $('#cat-edit').data('data-id', $(this).attr('data-id'));
         });
       });
     </script>

@@ -19,7 +19,6 @@
       });
     </script>
 
-
   </head>
   <body ng-app="PageApp">
 	<?php echo loadNavbar(getCategories($conn), getUserJSON($conn)); ?>
@@ -30,11 +29,10 @@
 		<img class="mb-4" src="images/logo.jpg" alt="" width="72" height="72">
 		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 		<label for="inputEmail" class="sr-only">Email address</label>
-		<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-    <p style="color: white">.</p>
+		<input type="email" id="inputEmail" class="form-control my-3" placeholder="Email address" required="" autofocus="">
 		<label for="inputPassword" class="sr-only">Password</label>
-		<input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-		<div class="checkbox mb-3" style="padding-top: 20px">
+		<input type="password" id="inputPassword" class="form-control my-2" placeholder="Password" required="">
+		<div class="checkbox mb-3">
 		  <label>
 		    <input type="checkbox" value="remember-me"> Remember me
 		  </label>
