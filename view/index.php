@@ -49,7 +49,7 @@
 					<a href="category.php?crd={{category.categoryID}}"><button type="button-lg" class="btn btn-outline-primary">Show More</button></a>
 				</div>
 				<div class="row">
-					<div class="col-lg-3" ng-repeat="product in category.products">
+					<div class="col-md-6 col-lg-3" ng-repeat="product in category.products">
 					<a href="productDetail.php?prd={{product.productID}}" class="text-decoration-none">
 						<div class="card mb-4 product-info prcard">
 							<div class="card-img-top" style="background: url('{{product.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:250px">
@@ -67,9 +67,9 @@
 		</div>
 
 	</div>
-	<div  id="cartIcon" style="position:fixed;bottom:20px;left:90%;" >
+	<div  id="cartIcon">
         <a href=checkout.php><img height=80% width=80% src="images/cart.png"></a>
-</div>
+	</div>
 
 	<script type="text/javascript">
     	var categories = JSON.parse('<?php echo $categories ?>');

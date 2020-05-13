@@ -61,11 +61,23 @@
 			background-color: grey;
 			min-height: 500px;
 		}
+
 		#cartIcon{
 			position:fixed;
 			bottom:20px;
 			left:90%;
+
 		}
+		@media (max-width: 600px){
+			#cartIcon{
+				left:65%;
+			}
+		}
+
+		.prcard{
+			transition: box-shadow 0.3s;
+		}
+
 		.prcard:hover{
-			box-shadow: 5px 0px 10px 1px rgba(0,0,0,0.15)!important;
+			box-shadow: 8px 5px 0px 0px rgba(0,0,0,0.15)!important;
 		}
