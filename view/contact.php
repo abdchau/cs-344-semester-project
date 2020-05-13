@@ -33,7 +33,7 @@
   <body ng-app="PageApp">
 	<!-- Just an image -->
 	
-  <?php echo loadNavbar(getCategories($conn), $username); ?>
+  <?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
   <section class="jumbotron text-center" style="background-color: white">
         <div class="container">

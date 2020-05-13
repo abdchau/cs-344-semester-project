@@ -22,7 +22,7 @@
   </head>
   <body ng-app="PageApp">
 	<!-- Just an image -->
-	<?php echo loadNavbar(getCategories($conn), $username); ?>
+	<?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
 	<div class="container signupformouter">
 

@@ -9,7 +9,7 @@
 
   <body ng-app="PageApp">
 
-	<?php echo loadNavbar(getCategories($conn), $username); ?>
+	<?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
 	<div class="container my-4">
 		<div class="carousel slide carouselIndex " data-ride="carousel">

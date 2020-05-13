@@ -13,7 +13,7 @@
 
   </head>
   <body ng-app="PageApp">
-	<?php echo loadNavbar(getCategories($conn), $username); ?>
+	<?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
 	<div class="album py-5 bg-light" ng-controller="SearchInfoControl">
 		<div class="container card shadow-lg">
