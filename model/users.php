@@ -39,6 +39,21 @@ function deleteProduct($conn){
 	return "Product deleted".$conn->error;
 }
 
+function makeAdmin($conn){
+	$conn->query("update shopping.users set isAdmin=true where userID=".$_POST['userID']);
+	return "Admin privileges granted".$conn->error;
+}
+
+function removeAdmin($conn){
+	$conn->query("update shopping.users set isAdmin=false where userID=".$_POST['userID']);
+	return "Admin privileges granted".$conn->error;
+}
+
+function removeCategory($conn){
+	$conn->query("delete from shopping.categories where categoryID=".$_POST['categoryID']);
+	return "Category deleted".$conn->error;
+}
+
 if (isset($_POST['func'])){
 	if ($_POST['func']=='getPassword'){
 		echo getPassword($conn);
@@ -63,6 +78,15 @@ if (isset($_POST['func'])){
 	}
 	if ($_POST['func']=='deleteProduct'){
 		echo deleteProduct($conn);
+	}
+	if ($_POST['func']=='makeAdmin'){
+		echo makeAdmin($conn);
+	}
+	if ($_POST['func']=='removeAdmin'){
+		echo removeAdmin($conn);
+	}
+	if ($_POST['func']=='removeCategory'){
+		echo removeCategory($conn);
 	}
 }
 

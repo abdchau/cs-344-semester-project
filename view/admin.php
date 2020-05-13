@@ -48,7 +48,10 @@
                             <td>{{user.userID}}</td>
                             <td>{{user.firstName}} {{user.lastName}}</td>
                             <td>{{user.email}}</td>
-                            <td><button data-id="{{user.userID}}" type="button" class="btn btn-outline-danger my-auto rem-user">Remove</button></td>
+                            <td>
+                              <button data-id="{{user.userID}}" data-placement="top" title="Grant admin privileges" data-toggle="tooltip" type="button" class="btn btn-block-xs btn-outline-success my-auto make-admin">Admin</button>
+                              <button data-id="{{user.userID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto rem-user">Remove</button>
+                            </td>
                           </tr>
 
                         </tbody>
@@ -100,7 +103,10 @@
                           <tr ng-repeat="category in categories">
                             <td>{{category.categoryID}}</td>
                             <td>{{category.categoryName}}</td>
-
+                            <td>
+                              <button data-id="{{category.categoryID}}" type="button" class="btn btn-block-xs btn-outline-success my-auto edit-cat">Edit</button>
+                              <button data-id="{{category.categoryID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto rem-cat">Remove</button>
+                            </td>
                           </tr>
 
                         </tbody>
@@ -139,6 +145,15 @@
         });
         $('.rem-prod').click(function(){
           deleteProduct($(this).attr('data-id'));
+        });
+        $('.make-admin').click(function(){
+          makeAdmin($(this).attr('data-id'));
+        });
+        $('.rem-cat').click(function(){
+          removeCategory($(this).attr('data-id'));
+        });
+        $('.edit-cat').click(function(){
+          removeCategory($(this).attr('data-id'));
         });
       });
     </script>

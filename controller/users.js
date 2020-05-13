@@ -172,3 +172,51 @@ function deleteProduct(productID) {
 		error: function(){console.log('post error');}
 	})
 }
+
+function makeAdmin(userID) {
+	$.ajax({
+		type:'POST', 
+		url: '../model/interface.php',
+		data: {'userID':userID, 'func':'makeAdmin'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			alert(response);
+			location.reload();
+		},
+		error: function(){console.log('post error');}
+	})
+}
+
+function removeAdmin(userID) {
+	$.ajax({
+		type:'POST', 
+		url: '../model/interface.php',
+		data: {'userID':userID, 'func':'removeAdmin'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			alert(response);
+			location.reload();
+		},
+		error: function(){console.log('post error');}
+	})
+}
+
+function removeCategory(categoryID) {
+	$.ajax({
+		type:'POST', 
+		url: '../model/interface.php',
+		data: {'categoryID':categoryID, 'func':'removeCategory'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			alert(response);
+			location.reload();
+		},
+		error: function(){console.log('post error');}
+	})
+}
