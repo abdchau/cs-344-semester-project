@@ -24,7 +24,7 @@ function loadHeader($title){
 }
 
 
-function loadNavbar($categories_list, $username){
+function loadNavbar($categories_list, $userDetails){
 	return
 	'<nav ng-controller="navbar_ctrl" class="navbar sticky-top navbar-expand-lg navbar-light bg-faded shadow" style="background-color: #e3f2fd;">
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,19 +80,15 @@ function loadNavbar($categories_list, $username){
 		}
 	});
 	var categories = JSON.parse(\''.$categories_list.'\');
-	console.log(categories);
 
 	var App = angular.module(\'PageApp\', []);
 
 	App.controller(\'navbar_ctrl\', function ($scope){
-		console.log("In navbar controller");
 		$scope.categories = categories;
-		console.log("navbar controller completed");
 	});
 
-	var username = "Sign Up";
 	$(document).ready(function (){
-		$("#user_action_1").text(username);
+		$("#user_action_1").text(\''.$userDetails.'\');
 	});
 </script>';
 }

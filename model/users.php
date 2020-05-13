@@ -8,10 +8,10 @@ function getPassword($conn){
 
 function addUser($conn){
 	if (getPassword($conn)=="null"){
-		$conn->multi_query("insert into shopping.addresses(address, postcode, cityID) 
+		$conn->multi_query("insert into shopping.addresses(address, postcode, cityID)
 			values('".$_POST['user']['address']."', '".$_POST['user']['zipcode']."', ".$_POST['user']['city'].");");
 
-		$conn->query("insert into shopping.users(firstName, lastName, email, password, addressID) values 
+		$conn->query("insert into shopping.users(firstName, lastName, email, password, addressID) values
 		('".$_POST['user']['firstName']."', '".$_POST['user']['lastName']."', '".$_POST['user']['email']."', '".$_POST['user']['password']."', $conn->insert_id)");
 		//echo $conn->error. ''. json_encode($addressID);
 		return "User added successfully";
@@ -53,4 +53,3 @@ if (isset($_POST['func'])){
 
 ?>
 
-	

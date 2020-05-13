@@ -1,4 +1,4 @@
-<?php require '../model/interface.php'; 
+<?php require '../model/interface.php';
   require 'commonElements.php';
   ?>
 
@@ -92,7 +92,9 @@
                 Fugiat id quis dolor culpa eiusmod anim velit excepteur proident dolor aute qui magna. Ad proident laboris ullamco esse anim Lorem Lorem veniam quis Lorem irure occaecat velit nostrud magna nulla. Velit et et proident Lorem do ea tempor officia dolor. Reprehenderit Lorem aliquip labore est magna commodo est ea veniam consectetur.
             </div>
             <div class="tab-pane fade" id="v-pills-other" role="tabpanel" aria-labelledby="v-pills-other-tab">
+              <div class="col-sm-6 mx-auto">
                 <button type="button" class="btn btn-danger btn-lg btn-block my-auto" id="resetDB">Reset Database</button>
+              </div>
             </div>
           </div>
         </div>

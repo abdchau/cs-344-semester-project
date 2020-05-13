@@ -6,7 +6,6 @@
 
 <!doctype html>
 <html lang="en">
-
 <?php echo loadHeader("Category"); ?>
 
   <body ng-app="PageApp">
@@ -21,7 +20,8 @@
                 <div class="col-lg-3" ng-repeat="product in products">
                 <a href="productDetail.php?prd={{product.productID}}" class="text-decoration-none">
                     <div class="card mb-4 shadow-sm product-info prcard">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                    <div class="card-img-top" style="background: url('{{product.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:250px">
+							      </div>
                         <div class="card-body">
                         <h5 class="card-title text-secondary">{{product.productName}}</h5>
                         <p class="card-text text-body">{{product.productDscrptn}}</p>

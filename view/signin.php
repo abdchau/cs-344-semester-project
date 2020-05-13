@@ -1,4 +1,4 @@
-<?php require '../model/interface.php'; 
+<?php require '../model/interface.php';
   require 'commonElements.php';
   // if (!getUserJSON($conn)==null) {
   //   header("Location: index.php");
@@ -7,7 +7,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <?php echo loadHeader("Search Results"); ?>
+    <?php echo loadHeader("Sign In"); ?>
 
     <script type="text/javascript">
       $(document).ready(function(){
@@ -25,7 +25,7 @@
 	<?php echo loadNavbar(getCategories($conn), $username); ?>
 
 
-    
+
 	<form class="form-signin" style="">
 		<img class="mb-4" src="images/logo.jpg" alt="" width="72" height="72">
 		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
@@ -43,7 +43,7 @@
 		<button class="btn btn-lg btn-primary btn-block" type="submit" id="signin">Sign in</button>
 		</div>
     <p>Dont have an account?</p>
-    <a href=signup.html class="btn btn-lg btn-primary btn-block">Create an account</a>
+    <a href=signup.php class="btn btn-lg btn-primary btn-block">Create an account</a>
   		<p class="mt-5 mb-3 text-muted">© 2020</p>
 	</form>
 

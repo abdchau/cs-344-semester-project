@@ -1,4 +1,4 @@
-<?php require '../model/interface.php'; 
+<?php require '../model/interface.php';
   require 'commonElements.php';
   $cart = getCart($conn, $username);
 ?>
@@ -125,9 +125,13 @@
                         <h5 class="h5 mb-3 font-weight-normal">Enter product details</h5>
                     </div>
                     <div class="form-row">
-                        <div class="col-7">
+                        <div class="col-4">
                             <label for="#inputProductName">Name:</label>
                             <input name="productName" type="text" class="form-control" id="inputProductName" placeholder="E.g. Smartphone">
+                        </div>
+                        <div class="col-3">
+                            <label for="#inputPrice">Price:</label>
+                            <input name="stock" type="text" class="form-control" id="inputPrice" placeholder="E.g. 500">
                         </div>
                         <div class="col-3">
                             <label for="#inputQuantity">Quantity:</label>
