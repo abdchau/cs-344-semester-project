@@ -131,7 +131,7 @@
                         </div>
                         <div class="col-3">
                             <label for="#inputPrice">Price:</label>
-                            <input name="stock" type="text" class="form-control" id="inputPrice" placeholder="E.g. 500">
+                            <input name="price" type="text" class="form-control" id="inputPrice" placeholder="E.g. 500">
                         </div>
                         <div class="col-3">
                             <label for="#inputQuantity">Quantity:</label>

@@ -26,8 +26,7 @@
            <div class="card mb-3 prcard" style="max-width: 540px;">
 				    <div class="row no-gutters">
 				      <div class="col-md-4">
-              <div class="card-img-top" style="background: url('{{product.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:250px">
-							</div>
+				        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 				      </div>
 				      <div class="col-md-8">
 				        <div class="card-body">
@@ -62,9 +61,6 @@
   <div  id="cartIcon" style="position:fixed;bottom:20px;left:90%;" >
         <a href=checkout.php><img height=80% width=80% src="images/cart.png"></a>
 </div>
-	<!-- Optional JavaScript -->
-
-    <script src="../controller/angular-1.3.14.js"></script>
     <script>
 
       App.controller('SearchInfoControl', function ($scope){
@@ -75,6 +71,5 @@
 
           });
   </script>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   </body>
 </html>

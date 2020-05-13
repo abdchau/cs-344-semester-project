@@ -1,6 +1,7 @@
 <?php require '../model/interface.php';
 	require 'commonElements.php';
 	$categories = getCategoriesWithProds($conn);
+	$featured = getFeaturedProducts($conn);
 ?>
 
 <!doctype html>
@@ -11,7 +12,7 @@
 
 	<?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
-	<div class="container my-4">
+	<div ng-controller="carousel-ctrl" class="container my-4">
 		<div class="carousel slide carouselIndex " data-ride="carousel">
 			<ol class="carousel-indicators">
 			  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -19,14 +20,8 @@
 			  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 			</ol>
 			<div class="carousel-inner">
-			  <div class="carousel-item active">
-				<img src="" class="d-block w-100" alt="...">
-			  </div>
-			  <div class="carousel-item">
-				<img src="" class="d-block w-100" alt="...">
-			  </div>
-			  <div class="carousel-item">
-				<img src="" class="d-block w-100" alt="...">
+			  <div class="carousel-item active" ng-repeat="ft in featured">
+				<img src="{{ft.imageURL}}" class="d-block w-100" alt="...">
 			  </div>
 			</div>
 			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -72,10 +67,11 @@
 	</div>
 
 	<script type="text/javascript">
-    	var categories = JSON.parse('<?php echo $categories ?>');
         App.controller('main_body_controller', ['$scope', '$http', function ($scope, $http) {
-			console.log(categories)
-        	$scope.categories = categories;
+        	$scope.categories = JSON.parse('<?php echo $categories ?>');
+        }]);
+		App.controller('carousel-ctrl', ['$scope', '$http', function ($scope, $http) {
+        	$scope.featured = JSON.parse('<?php echo $featured ?>');
         }]);
     </script>
   </body>

@@ -46,8 +46,6 @@ function loadNavbar($categories_list, $user){
 		</a>
 		<div class="dropdown-menu" id="categories_dropdown" aria-labelledby="navbarDropdownMenuLink">
 		<a ng-repeat="category in categories" class="dropdown-item" href="category.php?crd={{category.categoryID}}">{{category.categoryName}}</a>
-		<div class="dropdown-divider"></div>
-		<a class="dropdown-item" href="#">More</a>
 		</div>
 			<li class="nav-item mx-3" id="contact_us">
 				<a class="nav-link" href="contact.php">Contact Us</a>
@@ -71,7 +69,7 @@ function loadNavbar($categories_list, $user){
 		</ul>
 
 	<div class="form-inline my-2 my-lg-0">
-	<input ng-model="query" class="form-control mr-sm-2" id="search_bar" type="search" placeholder="Search">
+		<input ng-model="query" class="form-control mr-sm-2" id="search_bar" type="search" placeholder="Search">
 	<a href="searchResult.php?query={{query}}"><button  class="btn btn-outline-success my-2 my-sm-0" id="search_button" type="submit">Search</button></a>
 	</div>
 	</div>
@@ -88,16 +86,12 @@ function loadNavbar($categories_list, $user){
 		}
 	});
 	var categories = JSON.parse(\''.$categories_list.'\');
-	console.log(categories);
 
 	var App = angular.module(\'PageApp\', []);
 
 	App.controller(\'navbar_ctrl\', function ($scope){
-		console.log("In navbar controller");
 		$scope.categories = categories;
-		console.log("navbar controller completed");
 		$scope.user = JSON.parse(\''.$user.'\');
-        console.log($scope.user.firstName);
 	});
 </script>';
 }

@@ -24,7 +24,6 @@
 							      </div>
                         <div class="card-body">
                         <h5 class="card-title text-secondary">{{product.productName}}</h5>
-                        <p class="card-text text-body">{{product.productDscrptn}}</p>
                         <h6 class="card-title text-success">Rs{{product.price}}</h6>
                         </div>
                     </div>

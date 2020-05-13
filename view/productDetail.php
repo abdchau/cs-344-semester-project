@@ -1,4 +1,4 @@
-<?php require '../model/interface.php'; 
+<?php require '../model/interface.php';
 	require 'commonElements.php';
 	$relatedProds = getRelatedProducts($conn);
 	$info = getInfo($conn);
@@ -13,34 +13,8 @@
 	<?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
 	<div class="row" style="width:100%" ng-controller="InfoControl">
-	<div class="col-md-7 order-md-1" style="padding: 5%; padding-right: 0%">
-	<div id="carouselExampleIndicator" class="carousel slide" data-ride="carousel">
-		<ol class="carousel-indicators">
-		  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-		  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-		  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-		</ol>
-		<div class="carousel-inner">
-		  <div class="carousel-item active">
-			<img src="" class="d-block w-100 h-100">
-		  </div>
-		  <div class="carousel-item">
-			<img src="#" class="d-block w-100" alt="...">
-		  </div>
-		  <div class="carousel-item">
-			<img src="#" class="d-block w-100" alt="...">
-		  </div>
-		</div>
-		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-		  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		  <span class="sr-only" style="">Previous</span>
-		</a>
-		<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-		  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-		  <span class="sr-only">Next</span>
-		</a>
-	  </div>
-
+	<div class="col-md-7 order-md-1"style="padding: 5%;">
+		<img class="image-fluid" src="{{info.imageURL}}" style="max-width:100%">
 	</div>
 	<div class="col-md-5 order-md-2 mb-4"  style="padding: 5%;">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -85,10 +59,10 @@
 				<div class="col-lg-3" ng-repeat="product in products">
 				<a href="productDetail.php?prd={{product.productID}}" class="text-decoration-none">
 					<div class="card mb-4 prcard product-info">
-						<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+					<div class="card-img-top" style="background: url('{{product.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:250px">
+					</div>
 						<div class="card-body">
 						<h5 class="card-title text-secondary">{{product.productName}}</h5>
-						<p class="card-text text-body">{{product.productDscrptn}}</p>
 						<h6 class="card-title text-success">{{product.price}}</h6>
 						</div>
 					</div>
@@ -112,8 +86,6 @@
         $('.plus-btn').on('click', function(e) {
             $('#qtty').val(parseInt($('#qtty').val())+1);
         });
-
-
     </script>
 
     <script>
@@ -126,15 +98,15 @@
       	App.controller('InfoControl', function ($scope){
         	$scope.info = JSON.parse('<?php echo $info ?>');
     	});
-
+    </script>
+	<script>
 		$(document).ready(function(){
 			$('#add_to_cart').click(function(){
 				addToCart( '<?php echo $username["userID"] ?>', parseInt($('#qtty').val()));
 			});
 		});
-    </script>
+	</script>
 
-    
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
      </body>

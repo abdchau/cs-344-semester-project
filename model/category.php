@@ -5,7 +5,7 @@ function getCategoryName($conn){
 }
 
 function getProdsByCategory($conn){
-	$result = $conn->query("select productID,productName,productDscrptn,price from shopping.products where categoryID = ".$_GET['crd']);
+	$result = $conn->query("select * from shopping.products where categoryID = ".$_GET['crd']);
 	if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
