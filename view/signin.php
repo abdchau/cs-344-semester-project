@@ -22,7 +22,7 @@
 
   </head>
   <body ng-app="PageApp">
-	<?php echo loadNavbar(getCategories($conn), $username); ?>
+	<?php echo loadNavbar(getCategories($conn), getUserJSON($conn)); ?>
 
 
 

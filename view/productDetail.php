@@ -10,7 +10,7 @@
 
   <body ng-app="PageApp">
 
-	<?php echo loadNavbar(getCategories($conn), $username); ?>
+	<?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
 	<div class="row" style="width:100%" ng-controller="InfoControl">
 	<div class="col-md-7 order-md-1" style="padding: 5%; padding-right: 0%">

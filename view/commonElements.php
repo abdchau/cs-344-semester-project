@@ -24,7 +24,7 @@ function loadHeader($title){
 }
 
 
-function loadNavbar($categories_list, $userDetails){
+function loadNavbar($categories_list, $user){
 	return
 	'<nav ng-controller="navbar_ctrl" class="navbar sticky-top navbar-expand-lg navbar-light bg-faded shadow" style="background-color: #e3f2fd;">
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +53,15 @@ function loadNavbar($categories_list, $userDetails){
 				<a class="nav-link" href="contact.php">Contact Us</a>
 			</li>
 		</ul>
-		<ul class="navbar-nav ml-auto" id="user_actions">
+		<ul class="navbar-nav ml-auto" id="user_actions" ng-if="user != null">
+			<li class="nav-item mx-3">
+				<a class="nav-link" id="user_action_1" href="profile.php">Hello, {{user.firstName}}</a>
+			</li>
+			<li class="nav-item mx-3">
+				<a class="nav-link" id="user_action_2" href="signin.php">Sign Out</a>
+			</li>
+		</ul>
+		<ul class="navbar-nav ml-auto" id="user_actions" ng-if="user == null">
 			<li class="nav-item mx-3">
 				<a class="nav-link" id="user_action_1" href="signup.php">Sign Up</a>
 			</li>
@@ -80,15 +88,16 @@ function loadNavbar($categories_list, $userDetails){
 		}
 	});
 	var categories = JSON.parse(\''.$categories_list.'\');
+	console.log(categories);
 
 	var App = angular.module(\'PageApp\', []);
 
 	App.controller(\'navbar_ctrl\', function ($scope){
+		console.log("In navbar controller");
 		$scope.categories = categories;
-	});
-
-	$(document).ready(function (){
-		$("#user_action_1").text(\''.$userDetails.'\');
+		console.log("navbar controller completed");
+		$scope.user = JSON.parse(\''.$user.'\');
+        console.log($scope.user.firstName);
 	});
 </script>';
 }

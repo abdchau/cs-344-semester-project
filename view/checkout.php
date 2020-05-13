@@ -13,7 +13,7 @@
 
 <body class="bg-light" ng-app="PageApp">
 
-  <?php echo loadNavbar(getCategories($conn), $username); ?>
+  <?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
     <div class="container">
   <div class="py-5 text-center">
@@ -32,7 +32,7 @@
         <li class="list-group-item d-flex justify-content-between lh-condensed" ng-repeat="product in products">
           <div>
             <h6 class="my-0" >{{product.productName}}</h6>
-            <small class="text-muted">{{product.productDscrptn}}</small>
+            <small class="text-muted">Quantity: {{product.quantity}}</small>
           </div>
           <span class="text-muted">Rs{{product.price}}</span>
         </li>
@@ -132,12 +132,13 @@
         <script>
         	
       App.controller('ListControl', function ($scope){
+        $scope.total = 0;
         $scope.products = JSON.parse('<?php echo $products ?>');
 
-        // $scope.user = {"firstName":"sharique","lastName":"pervaiz","Email":"pervaizsharique09@gmail.com","Address":"B-88, Block 13-D-1, gulshan-e-iqbal"}
-        // $scope.user = {"firstName":"sharique","lastName":"pervaiz","email":"pervaizsharique09@gmail.com"}
+        angular.forEach($scope.products, function (value, index) {
+             $scope.total+= $scope.products[index].quantity*$scope.products[index].price
+        });
         $scope.user = JSON.parse('<?php echo getUserJSON($conn); ?>');
-        // console.log($scope.user);
       });
         </script>
 </body>

@@ -9,7 +9,7 @@
     <?php echo loadHeader("User"); ?>
   </head>
   <body ng-app="PageApp">
-    <?php echo loadNavbar(getCategories($conn), $username); ?>
+    <?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tabs" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
