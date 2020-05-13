@@ -33,6 +33,30 @@ function fillDummyData($conn){
 	return "Dummy data filled ".$conn->error;
 }
 
+function checkCookie($conn){
+	$username = 'Sign Up';
+	if (isset($_COOKIE['userID'])){
+		$username = $conn->query('select * from (select * from shopping.users where userID='.$_COOKIE['userID'].')A natural join shopping.addresses natural join shopping.cities;')
+								->fetch_assoc();
+	}
+
+	return $username;
+}
+
+function getUserJSON($conn){
+	if (checkCookie($conn)=='Sign Up')
+		return json_encode(null);
+	else{
+		return json_encode(checkCookie($conn));
+	}
+}
+
+function signOut(){
+	if (isset($_COOKIE['userID']))
+		setcookie("userID", "", time() - 3600);
+	return "Signed out successfully";
+}
+
 ?>
 
 	

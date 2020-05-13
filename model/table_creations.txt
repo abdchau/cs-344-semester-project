@@ -11,7 +11,7 @@ create table shopping.addresses(
 		addressID int primary key auto_increment,
 		address varchar(80),
 		postcode varchar(5),
-		cityID int, foreign key (cityID) references shopping.cities(cityID)
+		cityID int, foreign key (cityID) references shopping.cities(cityID) on delete cascade
 );
 
 create table shopping.users(
@@ -21,7 +21,7 @@ create table shopping.users(
 	email varchar(20) unique not null,
 	password varchar(20),
 	isAdmin boolean default false,
-	addressID int, foreign key(addressID) references shopping.addresses(addressID)
+	addressID int, foreign key(addressID) references shopping.addresses(addressID) on delete cascade
 );
 
 create table shopping.categories(
@@ -31,33 +31,33 @@ create table shopping.categories(
 
 create table shopping.products(
 	productID int primary key auto_increment,
-    categoryID int, foreign key(categoryID) references shopping.categories(categoryID),
+    categoryID int, foreign key(categoryID) references shopping.categories(categoryID) on delete cascade,
     productName varchar(80),
     productDscrptn varchar(200),
     price int,
     imageURL varchar(100),
     stock int,
-    sellerID int, foreign key(sellerID) references shopping.users(userID)
+    sellerID int, foreign key(sellerID) references shopping.users(userID) on delete cascade
 );
 
 create table shopping.cart_item(
 	productID int,
-    foreign key(productID) references shopping.products(productID),
+    foreign key(productID) references shopping.products(productID) on delete cascade,
     userID int,
-	foreign key(userID) references shopping.users(userID),
+	foreign key(userID) references shopping.users(userID) on delete cascade,
     quantity int,
     timeAdded datetime
 );
 
 create table shopping.orders(
 	orderID int primary key auto_increment,
-    buyerID int,  foreign key(buyerID) references shopping.users(userID),
+    buyerID int,  foreign key(buyerID) references shopping.users(userID) on delete cascade,
     amount int,
     timeCreated datetime
 );
 
 create table shopping.order_item(
-	orderID int, foreign key(orderID) references shopping.orders(orderID),
-    productID int, foreign key(productID) references shopping.products(productID),
+	orderID int, foreign key(orderID) references shopping.orders(orderID) on delete cascade,
+    productID int, foreign key(productID) references shopping.products(productID) on delete cascade,
     quantity int
 );

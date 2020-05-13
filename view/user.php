@@ -112,8 +112,14 @@
                       </table>
                   </div>
             </div>
+
+
+
+
+
+
             <div class="tab-pane fade" id="v-pills-upload-item" role="tabpanel" aria-labelledby="v-pills-upload-item-tab">
-                <form class="container">
+                <form action="../model/upload.php" enctype="multipart/form-data" method="post" class="container">
                     <div class="form-group">
                         <h1 class="h3 mb-3 font-weight-normal">New Product</h1>
                         <h5 class="h5 mb-3 font-weight-normal">Enter product details</h5>
@@ -121,18 +127,18 @@
                     <div class="form-row">
                         <div class="col-7">
                             <label for="#inputProductName">Name:</label>
-                            <input type="text" class="form-control" id="inputProductName" placeholder="E.g. Smartphone">
+                            <input name="productName" type="text" class="form-control" id="inputProductName" placeholder="E.g. Smartphone">
                         </div>
                         <div class="col-3">
                             <label for="#inputQuantity">Quantity:</label>
-                            <input type="text" class="form-control" id="inputQuantity" placeholder="E.g. 5">
+                            <input name="stock" type="text" class="form-control" id="inputQuantity" placeholder="E.g. 5">
                         </div>
                       </div>
 
                     <div class="form-group row">
                         <div class="col-sm-10">
                             <label for="inputCategory">Category:</label>
-                            <select multiple class="form-control" id="inputCategory">
+                            <select name="categoryID" class="form-control" id="inputCategory">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -145,22 +151,28 @@
                     <div class="form-group row">
                         <div class="col-sm-10">
                             <label for="inputDescription">Description:</label>
-                            <textarea class="form-control" id="inputDescription" rows="5"></textarea>
+                            <textarea name="description" class="form-control" id="inputDescription" rows="5"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-10">
                             <label for="inputProductImage">Product Image:</label>
-                            <input type="file" class="form-control-file" id="inputProductImage">
+                            <input name="image" type="file" class="form-control-file" id="inputProductImage">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-10">
-                            <button class="btn btn-lg btn-primary btn-block" type="submit" id="upload">Upload</button>
+                            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Upload"></input>
                         </div>
                     </div>
                 </form>
             </div>
+
+
+
+
+
+
             <div class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
                 <div class="table-responsive">
                     <table class="table">
