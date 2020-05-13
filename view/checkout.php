@@ -1,5 +1,6 @@
 <?php require '../model/interface.php';
   require 'commonElements.php';
+  $products = getCart($conn, $username);
 ?>
 
 <!DOCTYPE html>
@@ -30,8 +31,8 @@
       <ul class="list-group mb-3" >
         <li class="list-group-item d-flex justify-content-between lh-condensed" ng-repeat="product in products">
           <div>
-            <h6 class="my-0" >{{product.name}}</h6>
-            <small class="text-muted">{{product.description}}</small>
+            <h6 class="my-0" >{{product.productName}}</h6>
+            <small class="text-muted">{{product.productDscrptn}}</small>
           </div>
           <span class="text-muted">Rs{{product.price}}</span>
         </li>
@@ -47,14 +48,14 @@
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="firstName">First name</label>
-            <input type="text" class="form-control" id="firstName" placeholder="{{user.firstName}}" value="" required="">
+            <input type="text" class="form-control" id="firstName" value="{{user.firstName}}" value="" required="">
             <div class="invalid-feedback">
               Valid first name is required.
             </div>
           </div>
           <div class="col-md-6 mb-3">
             <label for="lastName">Last name</label>
-            <input type="text" class="form-control" id="lastName" placeholder="{{user.lastName}}" value="" required="">
+            <input type="text" class="form-control" id="lastName" value="{{user.lastName}}" value="" required="">
             <div class="invalid-feedback">
               Valid last name is required.
             </div>
@@ -63,7 +64,7 @@
 
         <div class="mb-3">
           <label for="email">Email <span class="text-muted">(Optional)</span></label>
-          <input type="email" class="form-control" id="email" placeholder="{{user.Email}}">
+          <input type="email" class="form-control" id="email" value="{{user.email}}">
           <div class="invalid-feedback">
             Please enter a valid email address for shipping updates.
           </div>
@@ -71,7 +72,7 @@
 
         <div class="mb-3">
           <label for="address">Address</label>
-          <input type="text" class="form-control" id="address" placeholder="{{user.Address}}" required="">
+          <input type="text" class="form-control" id="address" value="{{user.address}}" required="">
           <div class="invalid-feedback">
             Please enter your shipping address.
           </div>
@@ -85,8 +86,8 @@
         <div class="row">
           <div class="col-md-5 mb-3">
             <label for="country">City</label>
-            <select class="custom-select d-block w-100" id="country" required="">
-              <option value="">Choose...</option>
+            <select class="custom-select d-block w-100" id="city" required="">
+              <option value="">{{user.cityName}}</option>
               <option>Karachi</option>
               <option>Islamabad</option>
               <option>Quetta</option>
@@ -100,14 +101,14 @@
           </div>
           <div class="col-md-3 mb-3">
             <label for="zip">Zip</label>
-            <input type="text" class="form-control" id="zip" placeholder="" required="">
+            <input type="text" class="form-control" id="zip" value="{{user.postcode}}" required="">
             <div class="invalid-feedback">
               Zip code required.
             </div>
           </div>
         </div>
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">BUY</button>
       </form>
     </div>
   </div>
@@ -131,9 +132,12 @@
         <script>
         	
       App.controller('ListControl', function ($scope){
-        $scope.products = [{"name":"laptop","description":"nice","price": 100},{"name":"mobile","description":"good","price": 10},{"name":"tab","description":"bad","price": 50}]
+        $scope.products = JSON.parse('<?php echo $products ?>');
 
-        $scope.user = {"firstName":"sharique","lastName":"pervaiz","Email":"pervaizsharique09@gmail.com","Address":"B-88, Block 13-D-1, gulshan-e-iqbal"}
+        // $scope.user = {"firstName":"sharique","lastName":"pervaiz","Email":"pervaizsharique09@gmail.com","Address":"B-88, Block 13-D-1, gulshan-e-iqbal"}
+        // $scope.user = {"firstName":"sharique","lastName":"pervaiz","email":"pervaizsharique09@gmail.com"}
+        $scope.user = JSON.parse('<?php echo getUserJSON($conn); ?>');
+        // console.log($scope.user);
       });
         </script>
 </body>

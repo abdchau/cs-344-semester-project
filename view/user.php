@@ -1,6 +1,7 @@
 <?php require '../model/interface.php'; 
   require 'commonElements.php';
-  ?>
+  $cart = getCart($conn, $username);
+?>
 
 <!doctype html>
 <html lang="en">
@@ -30,106 +31,83 @@
         </div>
         <div class="col-sm-9 px-0">
           <div class="tab-content" id="v-pills-tabContent">
-            <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <div ng-controller="ProfileData" class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                 <form class="container">
                     <h1 class="h3 mb-3 font-weight-normal">Profile</h1>
                     <h5 class="h5 mb-3 font-weight-normal">Edit your details</h5>
                         <div class="form-group row">
 
                             <div class="col-sm-10">
-                                 <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                                 <input type="text" class="form-control" id="firstName" value="{{user.firstName}}">
                             </div>
                       </div>
                       <div class="form-group row">
 
                             <div class="col-sm-10">
-                                 <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                                 <input type="text" class="form-control" id="lastName" value="{{user.lastName}}">
                             </div>
                       </div>
                       <div class="form-group row">
 
                             <div class="col-sm-10">
-                                 <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                 <input type="email" class="form-control" id="inputEmail" value="{{user.email}}">
                             </div>
                       </div>
 
                       <div class="form-group row">
 
                             <div class="col-sm-10">
-                                 <input type="text" class="form-control" id="address" placeholder="Address">
+                                 <input type="text" class="form-control" id="address" value="{{user.address}}">
                             </div>
                       </div>
                     <div class="form-group row">
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="city" placeholder="City">
+                          <input type="text" class="form-control" id="city" value="{{user.cityName}}">
                         </div>
                     </div>
                     <div class="form-group row">
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="phone" placeholder="Phone no">
+                          <input type="text" class="form-control" id="phone" value="Phone no">
                         </div>
                     </div>
                     <div class="form-group row">
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="zipcode" placeholder="ZIP">
+                          <input type="text" class="form-control" id="zipcode" value="{{user.postcode}}">
                         </div>
                     </div>
                     <div class="form-group row">
 
                         <div class="col-sm-10">
-                            <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">Save Changes</button>
+                            <button class="btn btn-lg btn-primary btn-block" type="submit" id="save_changes">Save Changes</button>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="tab-pane fade" id="v-pills-cart" role="tabpanel" aria-labelledby="v-pills-cart-tab">
+            <div ng-controller="Cart" class="tab-pane fade" id="v-pills-cart" role="tabpanel" aria-labelledby="v-pills-cart-tab">
                 <div class="table-responsive">
                     <table class="table">
                         <caption>List of users</caption>
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
                             <th scope="col">Handle</th>
                             <th scope="col">Handle</th>
                           </tr>
                         </thead>
-                        <tbody>
+                        <tbody ng-repeat="product in cart">
                           <tr>
                             <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <td>{{product.productName}}</td>
+                            <td>{{product.price}}</td>
+                            <td>{{product.quantity}}</td>
                           </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
+
                         </tbody>
                       </table>
                   </div>
@@ -178,7 +156,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-10">
-                            <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">Upload</button>
+                            <button class="btn btn-lg btn-primary btn-block" type="submit" id="upload">Upload</button>
                         </div>
                     </div>
                 </form>
@@ -303,7 +281,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-10">
-                            <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">Change Password</button>
+                            <button class="btn btn-lg btn-primary btn-block" type="submit" id="change_password">Change Password</button>
                         </div>
                     </div>
                 </form>
@@ -314,7 +292,7 @@
                         <div class="col-sm-10">
                             <h1 class="h3 mb-3 font-weight-normal">Delete Account</h1>
                             <h5 class="h5 mb-3 font-weight-normal">Are you sure you want to delete your account? All of you data will be permanently deleted and cannot be recovered later.</h5>
-                            <button class="btn btn-lg btn-danger btn-block" type="submit" id="submit">Yes,Delete my Account</button>
+                            <button class="btn btn-lg btn-danger btn-block" type="submit" id="delete_account">Yes, Delete my Account</button>
                         </div>
                     </div>
                 </form>
@@ -325,5 +303,20 @@
     <div  id="cartIcon" style="position:fixed;bottom:20px;left:90%;" >
         <a href=checkout.php><img height=80% width=80% src="images/cart.png"></a>
 </div>
+
+
+  <script type="text/javascript">
+    console.log("hellooo");
+    App.controller('ProfileData', function ($scope){
+      // $scope.user = {"firstName":"sharique","lastName":"pervaiz","Email":"pervaizsharique09@gmail.com","Address":"B-88, Block 13-D-1, gulshan-e-iqbal"}
+      // $scope.user = {"firstName":"sharique","lastName":"pervaiz","email":"pervaizsharique09@gmail.com"}
+      $scope.user = JSON.parse('<?php echo getUserJSON($conn); ?>');
+      console.log($scope.user+'ding');
+    })
+    .controller('Cart', function ($scope){
+      $scope.cart = JSON.parse('<?php echo $cart; ?>');
+      console.log($scope.cart+'ding');
+    });
+  </script>
   </body>
 </html>

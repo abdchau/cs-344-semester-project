@@ -7,38 +7,7 @@
 <!doctype html>
 <html lang="en">
   	<?php echo loadHeader("ProductDetail"); ?>
-<<<<<<< HEAD
-  
-  </head>
-=======
-    <style type="text/css">
 
-    	.quantity {
-		  padding-top: 20px;
-		  margin-right: 60px;
-		}
-		.quantity input {
-		  border: none;
-		  text-align: center;
-		  width: 32px;
-		  font-size: 16px;
-		  color: #43484D;
-		  font-weight: 300;
-		}
-		 .stil {
-		 	background-color: white;
-		 	width: 30px;
-		  height: 30px;
-		  border-radius: 6px;
-		  border: none;
-		 }
-
-		button:focus,
-		input:focus {
-		  outline:0;
-		}
-    </style>
->>>>>>> d11782a75e41427fe82abfc835b96ea96ccde37f
   <body ng-app="PageApp">
 
 	<?php echo loadNavbar(getCategories($conn), $username); ?>
@@ -56,10 +25,10 @@
 			<img src="" class="d-block w-100 h-100">
 		  </div>
 		  <div class="carousel-item">
-			<img src="..." class="d-block w-100" alt="...">
+			<img src="#" class="d-block w-100" alt="...">
 		  </div>
 		  <div class="carousel-item">
-			<img src="..." class="d-block w-100" alt="...">
+			<img src="#" class="d-block w-100" alt="...">
 		  </div>
 		</div>
 		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -157,13 +126,12 @@
       	App.controller('InfoControl', function ($scope){
         	$scope.info = JSON.parse('<?php echo $info ?>');
     	});
-    </script>
-    <script>
-    	$(document).ready(function(){
-    		$('#add_to_cart').click(function(){
-    			addToCart( '<?php echo $username["userID"] ?>', parseInt($('#qtty').val()));
-    		});
-    	});
+
+		$(document).ready(function(){
+			$('#add_to_cart').click(function(){
+				addToCart( '<?php echo $username["userID"] ?>', parseInt($('#qtty').val()));
+			});
+		});
     </script>
 
     

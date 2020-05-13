@@ -6,7 +6,6 @@ function getInfo($conn)
 		shopping.products,shopping.users where products.sellerID = users.userID and productID = ".$_GET['prd'])->fetch_assoc());
 }
 
-
 function getRelatedProducts($conn){
 	$result = $conn->query("select productID,productName,productDscrptn,categoryID,price from shopping.products where categoryID = (select categoryID from shopping.products where productID = ".$_GET['prd'] .") and productID <> ".$_GET['prd']);
 	if ($result->num_rows > 0) {
@@ -34,6 +33,20 @@ function searchProducts($conn){
 	return json_encode($arr).$conn->error;
 }
 
-?>
+function getCart($conn, $username){
+	if ($username=='Sign up')
+		header('Location: signin.php');
+	else{
+		$result=$conn->query("select * from ((select * from shopping.cart_item where userID=".$username['userID'].")A natural join shopping.products);");
+		if ($result->num_rows > 0) {
+		    while($row = $result->fetch_assoc()) {
+		        $arr[] = $row;
+		    }
+		}
+		else
+			$arr=null;
+		return json_encode($arr).$conn->error;
+	}
+}
 
-	
+?>
