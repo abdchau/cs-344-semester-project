@@ -89,6 +89,7 @@
 
 
             <div ng-controller="category-ctrl" class="tab-pane fade" id="v-pills-categories" role="tabpanel" aria-labelledby="v-pills-categories-tab">
+              <button type="button" class="btn btn-outline-success btn-lg my-auto add-cat" data-toggle="modal" data-target="#addModal">Add New Category</button>
                 <div class="table-responsive">
                     <table class="table">
                         <caption>List of products</caption>
@@ -104,14 +105,34 @@
                             <td>{{category.categoryID}}</td>
                             <td>{{category.categoryName}}</td>
                             <td>
-                              <button data-id="{{category.categoryID}}" data-categoryName="{{category.categoryName}}" type="button" class="btn btn-block-xs btn-outline-success my-auto openModal" data-toggle="modal" data-target="#editModal">Edit</button>
-                              <button data-id="{{category.categoryID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto rem-cat">Remove</button>
+                              <button data-categoryID="{{category.categoryID}}" data-categoryName="{{category.categoryName}}" type="button" class="btn btn-block-xs btn-outline-success my-auto openModal" data-toggle="modal" data-target="#editModal">Edit</button>
+                              <button data-id ="{{category.categoryID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto rem-cat">Remove</button>
                             </td>
                           </tr>
 
                         </tbody>
                       </table>
                   </div>
+            </div>
+
+            <div class="modal fade" id="addModal" data-backdrop="static" tabindex="-1" role="dialog">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Add Category</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <input name="categoryName" type="text" class="form-control" id="inputAddCategoryName" placeholder="E.g Smartphone">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"  id="cat-add">Add Category</button>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="modal fade" id="editModal" data-backdrop="static" tabindex="-1" role="dialog">
@@ -128,7 +149,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-id="" id="cat-edit">Save Changes</button>
+                    <button type="button" class="btn btn-primary"  id="cat-edit">Save Changes</button>
                   </div>
                 </div>
               </div>
@@ -152,6 +173,7 @@
       })
       .controller('category-ctrl', function ($scope){
         $scope.categories = JSON.parse('<?php echo getCategories($conn); ?>');
+        console.log($scope.categories);
       });
 
       $(document).ready(function(){
@@ -172,13 +194,23 @@
         });
 
         $('#cat-edit').click(function(){
-          console.log($(this).attr('data-id'));
-          // removeCategory($(this).attr('data-id'));
+          console.log($('#inputEditCategoryName').val())
+          editCategory($(this).attr('data-categoryID'),$('#inputEditCategoryName').val());
         });
+        $('#cat-add').click(function(){
+          console.log($('#inputAddCategoryName').val());
+          addCategory($('#inputAddCategoryName').val());
+        });
+        
         $('.openModal').click(function(){
-          console.log($(this).attr('data-categoryName'));
           $('#inputEditCategoryName').val($(this).attr('data-categoryName'));
-          $('#cat-edit').data('data-id', $(this).attr('data-id'));
+          $('#cat-edit').attr('data-categoryID', $(this).attr('data-categoryID'));
+                    
+        });
+        $('.add-cat').click(function(){
+          $('#inputAddCategoryName').attr('placeholder','New category name');
+          console.log($('#inputAddCategoryName').attr('placeholder'));
+          
         });
       });
     </script>

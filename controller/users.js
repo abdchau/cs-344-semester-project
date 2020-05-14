@@ -220,3 +220,33 @@ function removeCategory(categoryID) {
 		error: function(){console.log('post error');}
 	})
 }
+function editCategory(categoryID,newName) {
+	$.ajax({
+		type:'POST', 
+		url: '../model/interface.php',
+		data: {'categoryID':categoryID, 'Name':newName, 'func':'editCategory'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			alert(response);
+			location.reload();
+		},
+		error: function(){console.log('post error');}
+	})
+}
+function addCategory(categoryName) {
+	$.ajax({
+		type:'POST', 
+		url: '../model/interface.php',
+		data: {'categoryName':categoryName,'func':'addCategory'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			alert(response);
+			location.reload();
+		},
+		error: function(){console.log('post error');}
+	})
+}

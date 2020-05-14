@@ -53,6 +53,14 @@ function removeCategory($conn){
 	$conn->query("delete from shopping.categories where categoryID=".$_POST['categoryID']);
 	return "Category deleted".$conn->error;
 }
+function editCategory($conn){
+	$conn->query("update shopping.categories set categoryName= '".$_POST['Name']."' where categoryID =".$_POST['categoryID']);
+	return "Category edited".$conn->error;
+}
+function addCategory($conn){
+	$conn->query("insert into shopping.categories (categoryName) values ('".$_POST['categoryName']."')");
+	return "Category added".$conn->error;
+}
 
 if (isset($_POST['func'])){
 	if ($_POST['func']=='getPassword'){
@@ -87,6 +95,12 @@ if (isset($_POST['func'])){
 	}
 	if ($_POST['func']=='removeCategory'){
 		echo removeCategory($conn);
+	}
+	if ($_POST['func']=='editCategory'){
+		echo editCategory($conn);
+	}
+	if ($_POST['func']=='addCategory'){
+		echo addCategory($conn);
 	}
 }
 
