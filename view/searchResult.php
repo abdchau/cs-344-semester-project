@@ -21,12 +21,13 @@
       <div ng-if="products == null">
         Oops! Sorry but we couldnt find any results in our inventory. Try searching something else.
       </div>
-        <div class="row" style="padding-left: 5%" ng-repeat="product in products">
+        <div class="row" style="padding: 5%" ng-repeat="product in products">
+           <div class="card mb-3 prcard" style="width: 100%;">
           <a href="productDetail.php?prd={{product.productID}}">
-           <div class="card mb-3 prcard" style="max-width: 540px;">
 				    <div class="row no-gutters">
 				      <div class="col-md-4">
-				        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+				        <div class="card-img-top" style="background: url('{{product.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:250px">
+              </div>
 				      </div>
 				      <div class="col-md-8">
 				        <div class="card-body">
@@ -36,8 +37,8 @@
 				        </div>
 				      </div>
 				    </div>
-			 	   </div>
           </a>
+			 	   </div>
         </div>
             <nav class="mx-auto">
                 <ul class="pagination">

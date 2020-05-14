@@ -17,7 +17,7 @@
 			<h3 class="display-4 mb-5 mr-auto">{{category.categoryName}}</h3>
             <div class="row">
 
-                <div class="col-lg-3" ng-repeat="product in products">
+                <div class="col-md-6 col-lg-3" ng-repeat="product in products">
                 <a href="productDetail.php?prd={{product.productID}}" class="text-decoration-none">
                     <div class="card mb-4 shadow-sm product-info prcard">
                     <div class="card-img-top" style="background: url('{{product.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:250px">
