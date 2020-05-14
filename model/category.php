@@ -19,11 +19,11 @@ function getProdsByCategory($conn){
 function getCategories($conn){
 	$result = $conn->query("select * from shopping.categories");
 	if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        $arr[] = $row;
-    }
-}
+	    // output data of each row
+	    while($row = $result->fetch_assoc()) {
+	        $arr[] = $row;
+	    }
+	}
 
 	return json_encode($arr).$conn->error;
 }

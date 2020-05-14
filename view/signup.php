@@ -3,7 +3,6 @@
   if (getUserJSON($conn)!="null") {
     header("Location: index.php");
   }
-
 ?>
 
 <!doctype html>
@@ -12,17 +11,6 @@
    <?php echo loadHeader("Sign Up"); ?>
 
 
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $('#submit').click(function(e){
-          e.preventDefault();
-          console.log("button clicked")
-          addUser($('#inputEmail').val(), $('#inputPassword').val(),
-              $('#firstName').val(), $('#lastName').val(), $('#address').val(),
-              $('#city option:selected').attr('data-id'), $('#zipcode').val());
-        });
-      });
-    </script>
   </head>
   <body ng-app="PageApp">
 	<!-- Just an image -->
@@ -30,7 +18,7 @@
 
 	<div class="container signupformouter">
 
-  <form class="container signupform" ng-controller="signup-ctrl" >
+  <form ng-controller="profile-ctrl"class="container signupform" >
   	<img class="mb-4" src="images/logo.jpg" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">SIGN UP</h1>
 	<h3 class="h3 mb-3 font-weight-normal">Please fill the following form</h3>
@@ -74,9 +62,8 @@
       <div class="form-group row">
 
           <div class="col-sm-12">
-            <select class="custom-select d-block w-100" id="city" required="">
-              <option value="">Choose city...</option>
-              <option ng-repeat="city in cities" data-id="{{city.cityID}}">{{city.cityName}}</option>
+            <select class="custom-select d-block w-100" id="country" required="">
+              <option ng-repeat="city in cities" value="{{city.cityID}}">{{city.cityName}}</option>
             </select>
           </div>
       </div>
@@ -98,7 +85,7 @@
         <div class="form-check" style="text-align: left;">
           <label class="form-check-label">
             <input class="form-check-input" type="radio">
-            I agree to the <a href="#">terms and user</a> condition
+            I agree to the <a href="#">terms and user</a> conditions
           </label>
         </div>
     <div class="form-group row">
@@ -109,11 +96,24 @@
   </form>
 </div>
 
-  <script>
-    App.controller('signup-ctrl',function($scope){
-      $scope.cities = JSON.parse('<?php echo getCities($conn); ?>');
-    });
-  </script>
+    <script type="text/javascript">
+      console.log("hellooo");
+      App.controller('profile-ctrl', function ($scope){
+        $scope.cities = JSON.parse('<?php echo getCities($conn); ?>');
+      });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#submit').click(function(e){
+          //e.preventDefault();
+          console.log($('option:selected').val());
+          addUser($('#inputEmail').val(), $('#inputPassword').val(),
+              $('#firstName').val(), $('#lastName').val(), $('#address').val(),
+              $('option:selected').val(), $('#zipcode').val());
+
+        });
+      });
+    </script>
 
   </body>
 </html>

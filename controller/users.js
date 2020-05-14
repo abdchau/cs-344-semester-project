@@ -51,7 +51,7 @@ function verifyUser(email, password){
 			console.log(response);
 			response = JSON.parse(response);
 			if (response===null) {
-				console.log("email incorrect");
+				alert("This email does not exist");
 				return;
 			}
 
@@ -62,7 +62,7 @@ function verifyUser(email, password){
 				window.location.href = 'index.php';
 			}
 			else
-				console.log('Password incorrect');
+				alert('Password incorrect');
 		},
 		error: function(){console.log('post error');}
 	})
@@ -81,7 +81,8 @@ function addUser(email, password, firstName, lastName, address, city, zipcode){
 
 			console.log('post success');
 			console.log(response);
-
+			alert("Congratulations! You are now registered at Shopoholic");
+			window.location.href = 'signin.php';
 		},
 		error: function(){console.log('post error');}
 	})
@@ -173,27 +174,11 @@ function deleteProduct(productID) {
 	})
 }
 
-function makeAdmin(userID) {
+function toggleAdmin(userID) {
 	$.ajax({
 		type:'POST', 
 		url: '../model/interface.php',
-		data: {'userID':userID, 'func':'makeAdmin'},
-		datatype: 'json',
-		success: function(response){
-
-			console.log('post success');
-			alert(response);
-			location.reload();
-		},
-		error: function(){console.log('post error');}
-	})
-}
-
-function removeAdmin(userID) {
-	$.ajax({
-		type:'POST', 
-		url: '../model/interface.php',
-		data: {'userID':userID, 'func':'removeAdmin'},
+		data: {'userID':userID, 'func':'toggleAdmin'},
 		datatype: 'json',
 		success: function(response){
 
@@ -274,6 +259,22 @@ function placeOrder(buyerID, amount, billingName, billingAddress, order_items){
 		url: '../model/interface.php',
 		data: {order:{'buyerID':buyerID, 'amount':amount, 'billingName':billingName,
 				'billingAddress':billingAddress, 'order_items':order_items},'func':'placeOrder'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			alert(response);
+			location.reload();
+		},
+		error: function(){console.log('post error');}
+	})
+}
+
+function removeFromCart(userID, productID) {
+	$.ajax({
+		type:'POST', 
+		url: '../model/interface.php',
+		data: {'userID':userID, 'productID':productID, 'func':'removeFromCart'},
 		datatype: 'json',
 		success: function(response){
 

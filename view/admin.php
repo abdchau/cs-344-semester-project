@@ -48,8 +48,9 @@
                             <td>{{user.userID}}</td>
                             <td>{{user.firstName}} {{user.lastName}}</td>
                             <td>{{user.email}}</td>
-                            <td>
-                              <button data-id="{{user.userID}}" data-placement="top" title="Grant admin privileges" data-toggle="tooltip" type="button" class="btn btn-block-xs btn-outline-success my-auto make-admin">Admin</button>
+                            <td ng-if="user.userID!==adminID">
+                              <button ng-if="user.isAdmin==false" data-id="{{user.userID}}" data-placement="top" title="Grant admin privileges" data-toggle="tooltip" type="button" class="btn btn-block-xs btn-outline-success my-auto toggle-admin">Admin</button>
+                              <button ng-if="user.isAdmin==true" data-id="{{user.userID}}" data-placement="top" title="Revoke admin privileges" data-toggle="tooltip" type="button" class="btn btn-block-xs btn-success my-auto toggle-admin">Admin</button>
                               <button data-id="{{user.userID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto rem-user">Remove</button>
                             </td>
                           </tr>
@@ -80,7 +81,8 @@
                             <td>{{product.price}}</td>
                             <td>{{product.firstName}} {{product.lastName}}</td>
                             <td>
-                              <button data-id="{{product.productID}}" data-placement="top" title="Make featured product" data-toggle="tooltip" type="button" class="btn btn-block-xs btn-outline-success my-auto feat-prod">Feature</button>
+                              <button ng-if="product.featured==false" data-id="{{product.productID}}" data-placement="top" title="Make featured product" data-toggle="tooltip" type="button" class="btn btn-block-xs btn-outline-success my-auto feat-prod">Feature</button>
+                              <button ng-if="product.featured==true" data-id="{{product.productID}}" data-placement="top" title="Unfeature product" data-toggle="tooltip" type="button" class="btn btn-block-xs btn-success my-auto feat-prod">Feature</button>
                               <button data-id="{{product.productID}}" type="button" class="btn btn-outline-danger my-auto rem-prod">Remove</button>
                             </td>
                           </tr>
@@ -170,6 +172,8 @@
     <script type="text/javascript">
       App.controller('users-ctrl', function ($scope){
         $scope.users = JSON.parse('<?php echo $users; ?>');
+        $scope.adminID = JSON.parse('<?php echo getUserJSON($conn); ?>')['userID'];
+        console.log($scope.adminID);
       })
       .controller('product-ctrl', function ($scope){
         $scope.products = JSON.parse('<?php echo getProducts($conn); ?>');
@@ -189,8 +193,8 @@
         $('.rem-prod').click(function(){
           deleteProduct($(this).attr('data-id'));
         });
-        $('.make-admin').click(function(){
-          makeAdmin($(this).attr('data-id'));
+        $('.toggle-admin').click(function(){
+          toggleAdmin($(this).attr('data-id'));
         });
         $('.rem-cat').click(function(){
           removeCategory($(this).attr('data-id'));

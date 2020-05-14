@@ -88,7 +88,9 @@
           <div class="col-md-5 mb-3">
             <label for="country">City</label>
             <select class="custom-select d-block w-100" id="city" required="">
-              <option ng-repeat="city in cities">{{city.cityName}}</option>
+              <option ng-repeat="city in cities" value="{{city.cityID}}" ng-selected="{{city.cityID}}=={{user.cityID}}">
+                {{city.cityName}}
+              </option>
             </select>
             <div class="invalid-feedback">
               Please select a valid City
@@ -136,6 +138,7 @@
                  $scope.total+= $scope.products[index].quantity*$scope.products[index].price
             });
             $scope.user = user;
+            $scope.cities = JSON.parse('<?php echo getCities($conn); ?>');
           });
         </script>
         <script>
