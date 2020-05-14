@@ -285,3 +285,37 @@ function removeFromCart(userID, productID) {
 		error: function(){console.log('post error');}
 	})
 }
+
+function changePassword(newPassword, userID) {
+	$.ajax({
+		type:'POST',
+		url: '../model/interface.php',
+		data: {'userID':userID, 'password':newPassword, 'func':'changePassword'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			alert(response+". You will have to log in again with your new password");
+			signOut();
+			// location.reload();
+		},
+		error: function(){console.log('post error');}
+	})
+}
+
+function changeUser(userID, email, firstName, lastName, address, city, zipcode) {
+	$.ajax({
+		type:'POST',
+		url: '../model/interface.php',
+		data: {user:{'userID':userID, 'firstName':firstName, 'email':email, 'lastName':lastName,
+			'address':address, 'city':city, 'zipcode':zipcode}, 'func':'changeUser'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			alert(response);
+			location.reload();
+		},
+		error: function(){console.log('post error');}
+	})
+}

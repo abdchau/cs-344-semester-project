@@ -1,7 +1,7 @@
 <?php
 
 function resetDB($conn){
-	$query = file_get_contents('table_creations.txt');
+	$query = file_get_contents('../model/table_creations.txt');
 
 	$conn->multi_query($query);
 	while(mysqli_next_result($conn));
@@ -23,12 +23,15 @@ function fillDummyData($conn){
 		(1, 'Samsung Galaxy S5', 'Very nice phone touch', 399, '../view/images/products/samsung_galaxy_s5-1.jpg', 23, 1),
 		(2, 'Samsung Galaxy Tab', 'Sleek and smart masti', 499, '../view/images/products/samsung_galaxy_tab.jpg', 3, 2),
 		(3, 'Sony Microwave A10', 'Nice warm food', 1299, '../view/images/products/sony_microwave.jpeg', 4, 3),
-		(2, 'Apple iPad 3', 'Big screen looks nice 10.5-inch', 399, '../view/images/products/Apple-iPad-mini-3.jpg', 5, 3),
 		(3, 'Samsung SmartTV', '40-inch screen parental controls and other features', 1199, '../view/images/products/samsung_smart_tv.jpg', 6, 2),
 		(1, 'Samsung Galaxy S8', 'Has edge round metal finish', 599, '../view/images/products/samsung_galaxy_s8.jpeg', 3, 1),
 		(2, 'Xaomi Mi Pad 4', 'Has MIUI status symbol', 559, '../view/images/products/xaomi_mi_tab_4.jpg', 7, 3),
 		(3, 'Orient Fridge', 'Keeps your food nice and acool', 549, '../view/images/products/orient_fridge.jpg', 12, 2)");
 	while(mysqli_next_result($conn));
+
+	$conn->query("insert into shopping.products(categoryID, productName, productDscrptn, 
+		price, imageURL, stock, sellerID, featured)  values(2, 'Apple iPad 3', 'Big screen looks nice 10.5-inch', 399, '../view/images/products/Apple-iPad-mini-3.jpg', 5, 3, true)");
+
 
 	return "Dummy data filled ".$conn->error;
 }
@@ -73,4 +76,13 @@ function getCities($conn){
 	}
 	return json_encode($arr).$conn->error;
 }
+
+function checkDB($conn){
+	$result = $conn->query("select schema_name from information_schema.schemata where schema_name = 'shopping'");
+	if ($result->num_rows > 0)
+		return true;
+	else
+		return false;
+}
+
 ?>

@@ -25,8 +25,8 @@
 
 
 
-	<form class="col-md-6 mx-3 mx-auto my-5 form-signin">
-      <div class="container-md col-lg-10">
+	<form class="col-md-4 mx-3 mx-auto my-5 form-signin">
+      <div class="container-md col-lg-10 mb-4">
         <img class="mb-4" src="images/logo.jpg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label for="inputEmail" class="sr-only">Email address</label>

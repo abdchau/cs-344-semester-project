@@ -12,7 +12,7 @@
 
 	<?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
-	<div class="row" style="width:100%" ng-controller="InfoControl">
+	<div class="row mt-4" style="width:100%" ng-controller="InfoControl">
 	<div class="col-md-7 order-md-1"style="padding: 5%;">
 		<img class="image-fluid" src="{{info.imageURL}}" style="max-width:100%">
 	</div>
@@ -49,7 +49,7 @@
 </div>
     </div>
 </div>
-<div class="container card shadow-lg " ng-controller="CardControl">
+<div class="container card shadow-lg mb-5" ng-controller="CardControl">
 			<div class="form-inline">
 				<h3 class="display-4 mb-3 mr-auto">Related Products</h3>
 				<a href="category.php?crd={{info.categoryID}}"><button type="button-lg" class="btn btn-outline-primary">Show More</button></a>

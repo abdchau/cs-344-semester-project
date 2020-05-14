@@ -21,12 +21,13 @@
 			</ol>
 			<div class="carousel-inner">
 			  <div class="carousel-item active" ng-repeat="ft in featured" ng-if="ft == featured[0]">
-			  	<div class="card-img-top" style="background: url('{{ft.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:250px">
+			  	<div class="card-img-top" style="background: url('{{ft.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:500px">
 				  <div class="badge badge-pill badge-primary float-right m-3">Featured</div>
+				  {{ft.productName}}
 				</div>
 			  </div>
 			  <div class="carousel-item" ng-repeat="ft in featured" ng-if="ft != featured[0]">
-			  	<div class="card-img-top" style="background: url('{{ft.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:250px">
+			  	<div class="card-img-top" style="background: url('{{ft.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:500px">
 				  <div class="badge badge-pill badge-primary float-right m-3">Featured</div>
 				</div>
 			  </div>

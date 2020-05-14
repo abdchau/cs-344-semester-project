@@ -34,52 +34,52 @@
           </div>
             <a ng-if="isAdmin==true" class="nav-link" style="color: red" href="admin.php" >Open Admin Panel</a>
         </div>
+
+
+
+
+
         <div class="col-sm-9 px-0">
           <div class="tab-content" id="v-pills-tabContent">
-            <div ng-controller="ProfileData" class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <div ng-controller="profile-data-ctrl" class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                 <form class="container">
                     <h1 class="h3 mb-3 font-weight-normal">Profile</h1>
                     <h5 class="h5 mb-3 font-weight-normal">Edit your details</h5>
                         <div class="form-group row">
-
+                          <div class="col-sm-5">
+                              <label for="firstName">First Name</label>
+                              <input type="text" class="form-control" id="firstName" value="{{user.firstName}}">
+                          </div>
+                          <div class="col-sm-5">
+                              <label for="lastName">Last Name</label>
+                              <input type="text" class="form-control" id="lastName" value="{{user.lastName}}">
+                          </div>
+                      </div>
+                      <div class="form-group row">
                             <div class="col-sm-10">
-                                 <input type="text" class="form-control" id="firstName" value="{{user.firstName}}">
+                              <label for="inputEmail">Email</label>
+                              <input type="email" class="form-control" id="inputEmail" value="{{user.email}}">
                             </div>
                       </div>
+
                       <div class="form-group row">
 
                             <div class="col-sm-10">
-                                 <input type="text" class="form-control" id="lastName" value="{{user.lastName}}">
-                            </div>
-                      </div>
-                      <div class="form-group row">
-
-                            <div class="col-sm-10">
-                                 <input type="email" class="form-control" id="inputEmail" value="{{user.email}}">
-                            </div>
-                      </div>
-
-                      <div class="form-group row">
-
-                            <div class="col-sm-10">
-                                 <input type="text" class="form-control" id="address" value="{{user.address}}">
+                              <label for="address">Address</label>
+                              <input type="text" class="form-control" id="address" value="{{user.address}}">
                             </div>
                       </div>
                     <div class="form-group row">
-
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="city" value="{{user.cityName}}">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="phone" value="Phone no">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-
-                        <div class="col-sm-10">
+                      <div class="col-md-5 mb-3">
+                        <label for="city">City</label>
+                        <select class="custom-select d-block w-100" id="city" required="">
+                          <option ng-repeat="city in cities" value="{{city.cityID}}" ng-selected="{{city.cityID}}=={{user.cityID}}">
+                            {{city.cityName}}
+                          </option>
+                        </select>
+                      </div>
+                        <div class="col-sm-5">
+                            <label for="zipcode">Zip</label>
                           <input type="text" class="form-control" id="zipcode" value="{{user.postcode}}">
                         </div>
                     </div>
@@ -91,6 +91,12 @@
                     </div>
                 </form>
             </div>
+
+
+
+
+
+
             <div ng-controller="cart-ctrl" class="tab-pane fade" id="v-pills-cart" role="tabpanel" aria-labelledby="v-pills-cart-tab">
                 <div class="table-responsive">
                     <table class="table">
@@ -269,8 +275,9 @@
 
   <script type="text/javascript">
     console.log("hellooo");
-    App.controller('ProfileData', function ($scope){
+    App.controller('profile-data-ctrl', function ($scope){
       $scope.user = JSON.parse('<?php echo getUserJSON($conn); ?>');
+      $scope.cities = JSON.parse('<?php echo getCities($conn); ?>');
     })
     .controller('cart-ctrl', function ($scope){
       $scope.cart = JSON.parse('<?php echo $cart; ?>');
@@ -302,6 +309,23 @@
     $('#delete_account').click(function(){
       deleteUser(JSON.parse('<?php echo getUserJSON($conn); ?>')['userID']);
       window.location.href = 'index.php';
+    });
+    $('#save_changes').click(function(){
+      var userID=JSON.parse('<?php echo getUserJSON($conn); ?>')['userID'];
+      changeUser(userID, $('#inputEmail').val(), $('#firstName').val(),
+        $('#lastName').val(), $('#address').val(),
+        $('option:selected').val(), $('#zipcode').val());
+
+    });
+    $('#change_password').click(function(e){
+      e.preventDefault();
+      var user = JSON.parse('<?php echo getUserJSON($conn); ?>');
+      if ($('#inputOldPassword').val() !== user['password'])
+        alert('Old password does not match');
+      else if ($('#inputNewPassword').val() === $('#confirmNewPassword').val())
+        changePassword($('#inputNewPassword').val(), user['userID']);
+      else
+        alert('Confirm password does not match');
     });
 
   </script>

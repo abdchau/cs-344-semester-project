@@ -86,7 +86,7 @@
 
         <div class="row">
           <div class="col-md-5 mb-3">
-            <label for="country">City</label>
+            <label for="city">City</label>
             <select class="custom-select d-block w-100" id="city" required="">
               <option ng-repeat="city in cities" value="{{city.cityID}}" ng-selected="{{city.cityID}}=={{user.cityID}}">
                 {{city.cityName}}
