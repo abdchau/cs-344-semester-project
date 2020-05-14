@@ -58,9 +58,7 @@
               </nav>
         </div>
 	</div>
-  <div  id="cartIcon" style="position:fixed;bottom:20px;left:90%;" >
-        <a href=checkout.php><img height=80% width=80% src="images/cart.png"></a>
-</div>
+ <?php echo loadCartIcon(); ?>
     <script>
 
       App.controller('SearchInfoControl', function ($scope){

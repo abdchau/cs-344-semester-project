@@ -62,9 +62,8 @@
 		</div>
 
 	</div>
-	<div  id="cartIcon">
-        <a href=checkout.php><img height=80% width=80% src="images/cart.png"></a>
-	</div>
+	<?php echo loadCartIcon(); ?>
+
 
 	<script type="text/javascript">
         App.controller('main_body_controller', ['$scope', '$http', function ($scope, $http) {

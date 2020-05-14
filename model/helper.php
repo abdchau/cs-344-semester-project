@@ -9,7 +9,7 @@ function resetDB($conn){
 }
 
 function fillDummyData($conn){
-	$conn->query("insert into shopping.cities(cityName) values ('Islamabad'), ('Lahore'), ('Faisalabad')");
+	$conn->query("insert into shopping.cities(cityName) values ('Islamabad'), ('Lahore'), ('Faisalabad'), ('Karachi')");
 	$conn->query("insert into shopping.addresses(address, postcode, cityID) values
 		('St 96, H69', '44000', 1), ('Model Town', '23432', 2), ('Siall', '63453', 3)");
 	$conn->query("insert into shopping.users(firstName, lastName, email, password, addressID, isAdmin) values 

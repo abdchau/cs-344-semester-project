@@ -19,6 +19,17 @@ function addUser($conn){
 	else
 		return "User already exists";
 }
+function getCities($conn){
+	$result=$conn->query("select * from shopping.cities");
+	if ($result->num_rows > 0) {
+		    while($row = $result->fetch_assoc()) {
+		        $arr[] = $row;
+		    }
+		}
+		else
+			$arr=null;
+		return json_encode($arr).$conn->error;
+}
 
 function addToCart($conn){
 	$result = $conn->query("select * from shopping.cart_item where userID=".$_POST['userID'].
@@ -105,6 +116,9 @@ if (isset($_POST['func'])){
 	if ($_POST['func']=='resetDB'){
 		echo resetDB($conn);
 		echo fillDummyData($conn);
+	}
+	if ($_POST['func']=='addUser'){
+		echo addUser($conn);
 	}
 	if ($_POST['func']=='addToCart'){
 		echo addToCart($conn);

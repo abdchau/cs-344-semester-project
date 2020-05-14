@@ -3,6 +3,7 @@
   if (getUserJSON($conn)!="null") {
     header("Location: index.php");
   }
+
 ?>
 
 <!doctype html>
@@ -14,11 +15,11 @@
     <script type="text/javascript">
       $(document).ready(function(){
         $('#submit').click(function(e){
-          //e.preventDefault();
+          e.preventDefault();
+          console.log("button clicked")
           addUser($('#inputEmail').val(), $('#inputPassword').val(),
               $('#firstName').val(), $('#lastName').val(), $('#address').val(),
-              $('#city').val(), $('#zipcode').val());
-
+              $('#city option:selected').attr('data-id'), $('#zipcode').val());
         });
       });
     </script>
@@ -29,7 +30,7 @@
 
 	<div class="container signupformouter">
 
-  <form class="container signupform" >
+  <form class="container signupform" ng-controller="signup-ctrl" >
   	<img class="mb-4" src="images/logo.jpg" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">SIGN UP</h1>
 	<h3 class="h3 mb-3 font-weight-normal">Please fill the following form</h3>
@@ -73,14 +74,9 @@
       <div class="form-group row">
 
           <div class="col-sm-12">
-            <select class="custom-select d-block w-100" id="country" required="">
+            <select class="custom-select d-block w-100" id="city" required="">
               <option value="">Choose city...</option>
-              <option>Karachi</option>
-              <option>Islamabad</option>
-              <option>Quetta</option>
-              <option>Lahore</option>
-              <option>Faisalabad</option>
-              <option>Peshawar</option>
+              <option ng-repeat="city in cities" data-id="{{city.cityID}}">{{city.cityName}}</option>
             </select>
           </div>
       </div>
@@ -106,13 +102,18 @@
           </label>
         </div>
     <div class="form-group row">
-      <div class="offset-sm-2 col-sm-10" style="padding-top: 20px ">
+      <div class="offset-sm-2 col-sm-10" style="padding-top: 10%">
         <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">Create my account</button>
       </div>
     </div>
   </form>
 </div>
 
+  <script>
+    App.controller('signup-ctrl',function($scope){
+      $scope.cities = JSON.parse('<?php echo getCities($conn); ?>');
+    });
+  </script>
 
   </body>
 </html>

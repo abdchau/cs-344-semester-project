@@ -116,7 +116,7 @@
                       </table>
                   </div>
             </div>
-            <div class="tab-pane fade" id="v-pills-upload-item" role="tabpanel" aria-labelledby="v-pills-upload-item-tab">
+            <div ng-controller="upload-ctrl" class="tab-pane fade" id="v-pills-upload-item" role="tabpanel" aria-labelledby="v-pills-upload-item-tab">
                 <form action="../model/upload.php" enctype="multipart/form-data" method="post" class="container">
                     <div class="form-group">
                         <h1 class="h3 mb-3 font-weight-normal">New Product</h1>
@@ -141,11 +141,7 @@
                         <div class="col-sm-10">
                             <label for="inputCategory">Category:</label>
                             <select name="categoryID" class="form-control" id="inputCategory">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                <option ng-repeat="Category in Categories" data-id="{{Category.categoryID}}">{{Category.categoryName}}</option>
                             </select>
                         </div>
 
@@ -276,9 +272,7 @@
           </div>
         </div>
     </div>
-    <div  id="cartIcon" style="position:fixed;bottom:20px;left:90%;" >
-        <a href=checkout.php><img height=80% width=80% src="images/cart.png"></a>
-</div>
+    <?php echo loadCartIcon(); ?>
 
 
   <script type="text/javascript">
@@ -292,6 +286,9 @@
     .controller('placed-order-ctrl', function ($scope){
       $scope.placedOrders = JSON.parse('<?php echo $placedOrders; ?>');
       console.log($scope.placedOrders);
+    })
+    .controller('upload-ctrl',function($scope){
+      $scope.Categories = JSON.parse('<?php echo getCategories($conn); ?>');
     })
     .controller('received-order-ctrl', function ($scope){
       $scope.receivedOrders = JSON.parse('<?php echo $receivedOrders; ?>');

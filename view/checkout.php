@@ -88,13 +88,7 @@
           <div class="col-md-5 mb-3">
             <label for="country">City</label>
             <select class="custom-select d-block w-100" id="city" required="">
-              <option value="">{{user.cityName}}</option>
-              <option>Karachi</option>
-              <option>Islamabad</option>
-              <option>Quetta</option>
-              <option>Lahore</option>
-              <option>Faislabad</option>
-              <option>Peshawar</option>
+              <option ng-repeat="city in cities">{{city.cityName}}</option>
             </select>
             <div class="invalid-feedback">
               Please select a valid City
@@ -133,10 +127,11 @@
         <script>
           products = JSON.parse('<?php echo $products ?>');
           user = JSON.parse('<?php echo getUserJSON($conn); ?>');
+          cities = JSON.parse('<?php echo getCities($conn); ?>');
           App.controller('ListControl', function ($scope){
             $scope.total = 0;
             $scope.products = products;
-
+            $scope.cities = cities;
             angular.forEach($scope.products, function (value, index) {
                  $scope.total+= $scope.products[index].quantity*$scope.products[index].price
             });
