@@ -21,7 +21,7 @@
         </button>
     </nav>
 
-    <div class="row my-sm-5 mx-0">
+    <div ng-controller="nav-ctrl" class="row my-sm-5 mx-0">
         <div class="col-sm-3" id="tabs">
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">Profile</a>
@@ -32,6 +32,7 @@
             <a class="nav-link" id="v-pills-password-change-tab" data-toggle="pill" href="#v-pills-password-change" role="tab" aria-controls="v-pills-password-change" aria-selected="false">Change Password</a>
             <a class="nav-link" id="v-pills-delete-account-tab" data-toggle="pill" href="#v-pills-delete-account" role="tab" aria-controls="v-pills-delete-account" aria-selected="false">Delete Account</a>
           </div>
+            <a ng-if="isAdmin==true" class="nav-link" style="color: red" href="admin.php" >Open Admin Panel</a>
         </div>
         <div class="col-sm-9 px-0">
           <div class="tab-content" id="v-pills-tabContent">
@@ -90,7 +91,7 @@
                     </div>
                 </form>
             </div>
-            <div ng-controller="Cart" class="tab-pane fade" id="v-pills-cart" role="tabpanel" aria-labelledby="v-pills-cart-tab">
+            <div ng-controller="cart-ctrl" class="tab-pane fade" id="v-pills-cart" role="tabpanel" aria-labelledby="v-pills-cart-tab">
                 <div class="table-responsive">
                     <table class="table">
                         <caption>List of users</caption>
@@ -105,18 +106,18 @@
                         </thead>
                         <tbody>
                           <tr ng-repeat="product in cart">
-                            <th scope="row">1</th>
+                            <th>{{product.productID}}</th>
                             <td>{{product.productName}}</td>
                             <td>{{product.price}}</td>
                             <td>{{product.quantity}}</td>
-                            <td><button data-id="{{user.userID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto rem-user">Remove</button></td>
+                            <td><button data-id="{{product.productID}}" type="button" class="btn btn-outline-danger my-auto rem-cart">Remove</button></td>
                           </tr>
 
                         </tbody>
                       </table>
                   </div>
             </div>
-            <div class="tab-pane fade" id="v-pills-upload-item" role="tabpanel" aria-labelledby="v-pills-upload-item-tab">
+            <div ng-controller="upload-prod-ctrl" class="tab-pane fade" id="v-pills-upload-item" role="tabpanel" aria-labelledby="v-pills-upload-item-tab">
                 <form action="../model/upload.php" enctype="multipart/form-data" method="post" class="container">
                     <div class="form-group">
                         <h1 class="h3 mb-3 font-weight-normal">New Product</h1>
@@ -141,11 +142,9 @@
                         <div class="col-sm-10">
                             <label for="inputCategory">Category:</label>
                             <select name="categoryID" class="form-control" id="inputCategory">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                <option ng-repeat="category in categories" value="{{category.categoryID}}">
+                                  {{category.categoryName}}
+                                </option>
                             </select>
                         </div>
 
@@ -164,17 +163,11 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-10">
-                            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Upload"></input>
+                            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Upload">
                         </div>
                     </div>
                 </form>
             </div>
-
-
-
-
-
-
             <div ng-controller="placed-order-ctrl" class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
                 <div class="table-responsive">
                     <table class="table">
@@ -202,10 +195,6 @@
                       </table>
                   </div>
             </div>
-
-
-
-
             <div ng-controller="received-order-ctrl" class="tab-pane fade" id="v-pills-orders-received" role="tabpanel" aria-labelledby="v-pills-orders-received-tab">
                 <div class="table-responsive">
                     <table class="table">
@@ -267,7 +256,7 @@
                     <div class="form-group row">
                         <div class="col-sm-10">
                             <h1 class="h3 mb-3 font-weight-normal">Delete Account</h1>
-                            <h5 class="h5 mb-3 font-weight-normal">Are you sure you want to delete your account? All of you data will be permanently deleted and cannot be recovered later.</h5>
+                            <h5 class="h5 mb-3 font-weight-normal">Are you sure you want to delete your account? All of your data will be permanently deleted and cannot be recovered later.</h5>
                             <button class="btn btn-lg btn-danger btn-block" type="submit" id="delete_account">Yes, Delete my Account</button>
                         </div>
                     </div>
@@ -286,7 +275,7 @@
     App.controller('ProfileData', function ($scope){
       $scope.user = JSON.parse('<?php echo getUserJSON($conn); ?>');
     })
-    .controller('Cart', function ($scope){
+    .controller('cart-ctrl', function ($scope){
       $scope.cart = JSON.parse('<?php echo $cart; ?>');
     })
     .controller('placed-order-ctrl', function ($scope){
@@ -296,11 +285,25 @@
     .controller('received-order-ctrl', function ($scope){
       $scope.receivedOrders = JSON.parse('<?php echo $receivedOrders; ?>');
       console.log($scope.receivedOrders);
+    })
+    .controller('upload-prod-ctrl', function ($scope){
+      $scope.categories = JSON.parse('<?php echo getCategories($conn); ?>');
+      console.log($scope.categories);
+    })
+    .controller('nav-ctrl', function ($scope){
+      $scope.isAdmin = JSON.parse('<?php echo getUserJSON($conn); ?>')['isAdmin'];
+      console.log($scope.categories);
+    });
+    $('.rem-cart').click(function(){
+      // console.log($(this).attr('data-id'));
+      removeFromCart(JSON.parse('<?php echo getUserJSON($conn); ?>')['userID'], $(this).attr('data-id'));
+      console.log("hiiii");
     });
     $('#delete_account').click(function(){
       deleteUser(JSON.parse('<?php echo getUserJSON($conn); ?>')['userID']);
       window.location.href = 'index.php';
-});
+    });
+
   </script>
   </body>
 </html>

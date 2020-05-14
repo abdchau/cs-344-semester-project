@@ -18,7 +18,7 @@ require 'interface.php';
 		price, imageURL, stock, sellerID) values
 		(".$_POST['categoryID'].", '".$_POST['productName']."', '".$_POST['description']."', ".$_POST['price'].", '".$target_file."', ".$_POST['stock'].", ".$username['userID'].")");
 		echo $_POST['price'].$conn->error;
-		// header("Location: ../view/profile.php");
+		header("Location: ../view/profile.php");
 	}
 	else
 		echo "File is not an image.";

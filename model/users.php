@@ -57,14 +57,10 @@ function toggleFeatured($conn){
 	return "Featured toggled".$conn->error;
 }
 
-function makeAdmin($conn){
-	$conn->query("update shopping.users set isAdmin=true where userID=".$_POST['userID']);
-	return "Admin privileges granted".$conn->error;
-}
-
-function removeAdmin($conn){
-	$conn->query("update shopping.users set isAdmin=false where userID=".$_POST['userID']);
-	return "Admin privileges granted".$conn->error;
+function toggleAdmin($conn){
+	$conn->query("update shopping.users set isAdmin=not (select isAdmin from shopping.users where userID=".
+		$_POST['userID'].") where userID=".$_POST['userID']);
+	return "Admin privileges toggled".$conn->error;
 }
 
 function removeCategory($conn){
@@ -91,6 +87,11 @@ function placeOrder($conn){
 	}
 	$conn->query("delete from shopping.cart_item where userID=".$_POST['order']['buyerID']);
 	return "Order placed".$conn->error;
+}
+
+function removeFromCart($conn){
+	$conn->query("delete from shopping.cart_item where userID=".$_POST['userID']." and productID=".$_POST['productID']);
+	return "Removed from cart".$conn->error;
 }
 
 if (isset($_POST['func'])){
@@ -121,8 +122,8 @@ if (isset($_POST['func'])){
 	if ($_POST['func']=='toggleFeatured'){
 		echo toggleFeatured($conn);
 	}
-	if ($_POST['func']=='makeAdmin'){
-		echo makeAdmin($conn);
+	if ($_POST['func']=='toggleAdmin'){
+		echo toggleAdmin($conn);
 	}
 	if ($_POST['func']=='removeAdmin'){
 		echo removeAdmin($conn);
