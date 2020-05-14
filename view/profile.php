@@ -27,6 +27,7 @@
             <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">Profile</a>
             <a class="nav-link" id="v-pills-cart-tab" data-toggle="pill" href="#v-pills-cart" role="tab" aria-controls="v-pills-cart" aria-selected="false">Cart</a>
             <a class="nav-link" id="v-upload-item-tab" data-toggle="pill" href="#v-pills-upload-item" role="tab" aria-controls="v-pills-upload-item" aria-selected="false">Upload Product</a>
+            <a class="nav-link" id="v-active-item-tab" data-toggle="pill" href="#v-pills-active-item" role="tab" aria-controls="v-pills-upload-item" aria-selected="false">Active Products</a>
             <a class="nav-link" id="v-pills-orders-tab" data-toggle="pill" href="#v-pills-orders" role="tab" aria-controls="v-pills-orders" aria-selected="false">Active Orders</a>
             <a class="nav-link" id="v-pills-orders-received-tab" data-toggle="pill" href="#v-pills-orders-received" role="tab" aria-controls="v-pills-orders-received" aria-selected="false">Received Orders</a>
             <a class="nav-link" id="v-pills-password-change-tab" data-toggle="pill" href="#v-pills-password-change" role="tab" aria-controls="v-pills-password-change" aria-selected="false">Change Password</a>
@@ -173,6 +174,32 @@
                     </div>
                 </form>
             </div>
+            <div ng-controller="active-product-ctrl" class="tab-pane fade" id="v-pills-active-item" role="tabpanel" aria-labelledby="v-pills-active-item-tab">
+                <div class="table-responsive">
+                    <table class="table">
+                        <caption>List of your products</caption>
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Options</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="product in active">
+                            <th>{{product.productID}}</th>
+                            <td>{{product.productName}}</td>
+                            <td>{{product.price}}</td>
+                            <td>{{product.stock}}</td>
+                            <td><button data-id="{{product.productID}}" type="button" class="btn btn-outline-danger my-auto rem-active-prod">Remove</button></td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+                  </div>
+            </div>
             <div ng-controller="placed-order-ctrl" class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
                 <div class="table-responsive">
                     <table class="table">
@@ -286,6 +313,10 @@
       $scope.placedOrders = JSON.parse('<?php echo $placedOrders; ?>');
       console.log($scope.placedOrders);
     })
+    .controller('active-product-ctrl', function ($scope){
+      $scope.active = JSON.parse('<?php echo getProductsByID($conn,$username); ?>');
+      console.log($scope.actve);
+    })
     .controller('upload-ctrl',function($scope){
       $scope.categories = JSON.parse('<?php echo getCategories($conn); ?>');
     })
@@ -301,11 +332,20 @@
       $scope.isAdmin = JSON.parse('<?php echo getUserJSON($conn); ?>')['isAdmin'];
       console.log($scope.categories);
     });
-    $('.rem-cart').click(function(){
+    
+    $('document').ready(function(){
+      $('.rem-cart').click(function(){
       // console.log($(this).attr('data-id'));
       removeFromCart(JSON.parse('<?php echo getUserJSON($conn); ?>')['userID'], $(this).attr('data-id'));
       console.log("hiiii");
     });
+    $('.rem-active-prod').click(function(){
+
+          deleteProduct($(this).attr('data-id'));
+        });
+    
+    });
+   
     $('#delete_account').click(function(){
       deleteUser(JSON.parse('<?php echo getUserJSON($conn); ?>')['userID']);
       window.location.href = 'index.php';
