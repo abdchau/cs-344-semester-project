@@ -46,6 +46,7 @@ create table shopping.cart_item(
     foreign key(productID) references shopping.products(productID) on delete cascade,
     userID int,
 	foreign key(userID) references shopping.users(userID) on delete cascade,
+	primary key (productID, userID),
     quantity int,
     timeAdded datetime
 );
@@ -54,11 +55,14 @@ create table shopping.orders(
 	orderID int primary key auto_increment,
     buyerID int,  foreign key(buyerID) references shopping.users(userID) on delete cascade,
     amount int,
+    billingName varchar(80),
+    billingAddress varchar(150),
     timeCreated datetime
 );
 
 create table shopping.order_item(
 	orderID int, foreign key(orderID) references shopping.orders(orderID) on delete cascade,
     productID int, foreign key(productID) references shopping.products(productID) on delete cascade,
+    primary key (orderID, productID),
     quantity int
 );

@@ -12,7 +12,7 @@
     <script type="text/javascript">
       $(document).ready(function(){
         $('#signin').click(function(e){
-          e.preventDefault();
+          // e.preventDefault();
           verifyUser($('#inputEmail').val(), $('#inputPassword').val());
 
         });

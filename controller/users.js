@@ -113,7 +113,7 @@ function addToCart(userID, quantity){
 		success: function(response){
 
 			console.log('post success');
-			console.log(response);
+			alert(response);
 
 		},
 		error: function(){console.log('post error');}
@@ -235,11 +235,45 @@ function editCategory(categoryID,newName) {
 		error: function(){console.log('post error');}
 	})
 }
+
 function addCategory(categoryName) {
 	$.ajax({
 		type:'POST', 
 		url: '../model/interface.php',
 		data: {'categoryName':categoryName,'func':'addCategory'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			alert(response);
+			location.reload();
+		},
+		error: function(){console.log('post error');}
+	})
+}
+
+function toggleFeatured(productID) {
+	$.ajax({
+		type:'POST', 
+		url: '../model/interface.php',
+		data: {'productID':productID,'func':'toggleFeatured'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			alert(response);
+			location.reload();
+		},
+		error: function(){console.log('post error');}
+	})
+}
+
+function placeOrder(buyerID, amount, billingName, billingAddress, order_items){
+	$.ajax({
+		type:'POST', 
+		url: '../model/interface.php',
+		data: {order:{'buyerID':buyerID, 'amount':amount, 'billingName':billingName,
+				'billingAddress':billingAddress, 'order_items':order_items},'func':'placeOrder'},
 		datatype: 'json',
 		success: function(response){
 

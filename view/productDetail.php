@@ -89,7 +89,7 @@
     </script>
 
     <script>
-		App.controller('CardControl', function ($scope){
+		  App.controller('CardControl', function ($scope){
     		$scope.products = JSON.parse('<?php echo $relatedProds ?>');
     		console.log($scope.products)
     		$scope.info = JSON.parse('<?php echo $info ?>');

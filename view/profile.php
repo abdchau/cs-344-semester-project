@@ -1,6 +1,7 @@
 <?php require '../model/interface.php';
   require 'commonElements.php';
   $cart = getCart($conn, $username);
+  $placedOrders = getPlacedOrders($conn, $username['userID']);
   if ($username==null)
     header("Location: index.php");
 ?>
@@ -98,8 +99,7 @@
                             <th scope="col">Product Name</th>
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>
-                            <th scope="col">Handle</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Options</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -108,18 +108,13 @@
                             <td>{{product.productName}}</td>
                             <td>{{product.price}}</td>
                             <td>{{product.quantity}}</td>
+                            <td><button data-id="{{user.userID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto rem-user">Remove</button></td>
                           </tr>
 
                         </tbody>
                       </table>
                   </div>
             </div>
-
-
-
-
-
-
             <div class="tab-pane fade" id="v-pills-upload-item" role="tabpanel" aria-labelledby="v-pills-upload-item-tab">
                 <form action="../model/upload.php" enctype="multipart/form-data" method="post" class="container">
                     <div class="form-group">
@@ -179,55 +174,37 @@
 
 
 
-            <div class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
+            <div ng-controller="placed-order-ctrl" class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
                 <div class="table-responsive">
                     <table class="table">
-                        <caption>List of users</caption>
+                        <caption>Orders placed</caption>
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                            <th scope="col">Handle</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Billing Name</th>
+                            <th scope="col">Billing Address</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
+                          <tr ng-repeat="item in placedOrders">
                             <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
+                            <td>{{item.productName}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.price}}</td>
+                            <td>{{item.billingName}}</td>
+                            <td>{{item.billingAddress}}</td>
                           </tr>
                         </tbody>
                       </table>
                   </div>
             </div>
+
+
+
+
             <div class="tab-pane fade" id="v-pills-history" role="tabpanel" aria-labelledby="v-pills-history-tab">
                 <div class="table-responsive">
                     <table class="table">
@@ -326,14 +303,14 @@
   <script type="text/javascript">
     console.log("hellooo");
     App.controller('ProfileData', function ($scope){
-      // $scope.user = {"firstName":"sharique","lastName":"pervaiz","Email":"pervaizsharique09@gmail.com","Address":"B-88, Block 13-D-1, gulshan-e-iqbal"}
-      // $scope.user = {"firstName":"sharique","lastName":"pervaiz","email":"pervaizsharique09@gmail.com"}
       $scope.user = JSON.parse('<?php echo getUserJSON($conn); ?>');
-      console.log($scope.user+'ding');
     })
     .controller('Cart', function ($scope){
       $scope.cart = JSON.parse('<?php echo $cart; ?>');
-      console.log($scope.cart+'ding');
+    })
+    .controller('placed-order-ctrl', function ($scope){
+      $scope.placedOrders = JSON.parse('<?php echo $placedOrders; ?>');
+      console.log($scope.placedOrders);
     });
     $('#delete_account').click(function(){
       deleteUser(JSON.parse('<?php echo getUserJSON($conn); ?>')['userID']);

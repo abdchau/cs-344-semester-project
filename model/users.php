@@ -21,8 +21,21 @@ function addUser($conn){
 }
 
 function addToCart($conn){
-	$conn->query("insert into shopping.cart_item values(".$_POST['productID'].", ".$_POST['userID'].", ".$_POST['quantity'].", '".date("Y-m-d H:i:s")."');");
-	return "Cart item added".$conn->error;
+	$result = $conn->query("select * from shopping.cart_item where userID=".$_POST['userID'].
+		" and productID=".$_POST['productID']);
+	if ($result->num_rows > 0){
+		// return "greater than 0";
+		$quantity  = $result->fetch_assoc()['quantity'] + $_POST['quantity'];
+		$conn->query("update shopping.cart_item set quantity=".$quantity." 
+			where userID=".$_POST['userID']." and productID=".$_POST['productID']);
+		return "Cart item updated".$conn->error;
+	}
+	else{
+		// return "not greater than 0";
+		$conn->query("insert into shopping.cart_item values(".$_POST['productID'].", ".
+			$_POST['userID'].", ".$_POST['quantity'].", '".date("Y-m-d H:i:s")."');");
+		return "Cart item added".$conn->error;
+	}
 }
 function displayCart($conn){
 	$cart = $conn->query(" select * from cart_item join products using (productID) where userID =".$_POST['userID'])->fetch_assoc();
@@ -37,6 +50,11 @@ function deleteUser($conn){
 function deleteProduct($conn){
 	$conn->query("delete from shopping.products where productID=".$_POST['productID']);
 	return "Product deleted".$conn->error;
+}
+
+function toggleFeatured($conn){
+	$conn->query("update shopping.products set featured=not (select featured from shopping.products where productID=".$_POST['productID'].") where productID=".$_POST['productID']);
+	return "Featured toggled".$conn->error;
 }
 
 function makeAdmin($conn){
@@ -60,6 +78,19 @@ function editCategory($conn){
 function addCategory($conn){
 	$conn->query("insert into shopping.categories (categoryName) values ('".$_POST['categoryName']."')");
 	return "Category added".$conn->error;
+}
+
+function placeOrder($conn){
+	$conn->query("insert into shopping.orders(buyerID, amount, billingName, billingAddress, timeCreated)
+		values ('".$_POST['order']['buyerID']."', '".$_POST['order']['amount']."', '".$_POST['order']['billingName']."', '".$_POST['order']['billingAddress']."', '".date("Y-m-d H:i:s")."')");
+	$orderID = $conn->insert_id;
+	
+	foreach ($_POST['order']['order_items'] as $key => $product) {
+		$conn->query("insert into shopping.order_item values ($orderID, ".$product['productID'].", ".
+			$product['quantity'].")");
+	}
+	$conn->query("delete from shopping.cart_item where userID=".$_POST['order']['buyerID']);
+	return "Order placed".$conn->error;
 }
 
 if (isset($_POST['func'])){
@@ -87,6 +118,9 @@ if (isset($_POST['func'])){
 	if ($_POST['func']=='deleteProduct'){
 		echo deleteProduct($conn);
 	}
+	if ($_POST['func']=='toggleFeatured'){
+		echo toggleFeatured($conn);
+	}
 	if ($_POST['func']=='makeAdmin'){
 		echo makeAdmin($conn);
 	}
@@ -101,6 +135,9 @@ if (isset($_POST['func'])){
 	}
 	if ($_POST['func']=='addCategory'){
 		echo addCategory($conn);
+	}
+	if ($_POST['func']=='placeOrder'){
+		echo placeOrder($conn);
 	}
 }
 

@@ -1,6 +1,6 @@
 <?php require '../model/interface.php';
   require 'commonElements.php';
-  if ($username==null)
+  if ($username==null || $username['isAdmin']==false)
     header("Location: index.php");
   $users = getUsers($conn);
 ?>
@@ -79,7 +79,10 @@
                             <td>{{product.categoryName}}</td>
                             <td>{{product.price}}</td>
                             <td>{{product.firstName}} {{product.lastName}}</td>
-                            <td><button data-id="{{product.productID}}" type="button" class="btn btn-outline-danger my-auto rem-prod">Remove</button></td>
+                            <td>
+                              <button data-id="{{product.productID}}" data-placement="top" title="Make featured product" data-toggle="tooltip" type="button" class="btn btn-block-xs btn-outline-success my-auto feat-prod">Feature</button>
+                              <button data-id="{{product.productID}}" type="button" class="btn btn-outline-danger my-auto rem-prod">Remove</button>
+                            </td>
                           </tr>
 
                         </tbody>
@@ -211,6 +214,9 @@
           $('#inputAddCategoryName').attr('placeholder','New category name');
           console.log($('#inputAddCategoryName').attr('placeholder'));
           
+        });
+        $('.feat-prod').click(function(){
+          toggleFeatured($(this).attr('data-id'));
         });
       });
     </script>

@@ -32,13 +32,14 @@
         <li class="list-group-item d-flex justify-content-between lh-condensed" ng-repeat="product in products">
           <div>
             <h6 class="my-0" >{{product.productName}}</h6>
-            <small class="text-muted">Quantity: {{product.quantity}}</small>
+            <small class="text-muted">Quantity: {{product.quantity}}</small><br>
+            <small class="text-muted">Added on: {{product.timeAdded}}</small>
           </div>
           <span class="text-muted">Rs{{product.price}}</span>
         </li>
         <li class="list-group-item d-flex justify-content-between">
           <span>Total (RS)</span>
-          <strong>{{total}}</strong>
+          <strong id="total">{{total}}</strong>
         </li>
       </ul>
     </div>
@@ -48,14 +49,14 @@
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="firstName">First name</label>
-            <input type="text" class="form-control" id="firstName" value="{{user.firstName}}" value="" required="">
+            <input type="text" class="form-control" id="firstName" value="{{user.firstName}}" required="">
             <div class="invalid-feedback">
               Valid first name is required.
             </div>
           </div>
           <div class="col-md-6 mb-3">
             <label for="lastName">Last name</label>
-            <input type="text" class="form-control" id="lastName" value="{{user.lastName}}" value="" required="">
+            <input type="text" class="form-control" id="lastName" value="{{user.lastName}}" required="">
             <div class="invalid-feedback">
               Valid last name is required.
             </div>
@@ -108,7 +109,7 @@
           </div>
         </div>
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">BUY</button>
+        <button id="buy" class="btn btn-primary btn-lg btn-block" type="submit">BUY</button>
       </form>
     </div>
   </div>
@@ -130,16 +131,29 @@
       <script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
         <script src="form-validation.js"></script>
         <script>
-        	
-      App.controller('ListControl', function ($scope){
-        $scope.total = 0;
-        $scope.products = JSON.parse('<?php echo $products ?>');
+          products = JSON.parse('<?php echo $products ?>');
+          user = JSON.parse('<?php echo getUserJSON($conn); ?>');
+          App.controller('ListControl', function ($scope){
+            $scope.total = 0;
+            $scope.products = products;
 
-        angular.forEach($scope.products, function (value, index) {
-             $scope.total+= $scope.products[index].quantity*$scope.products[index].price
-        });
-        $scope.user = JSON.parse('<?php echo getUserJSON($conn); ?>');
-      });
+            angular.forEach($scope.products, function (value, index) {
+                 $scope.total+= $scope.products[index].quantity*$scope.products[index].price
+            });
+            $scope.user = user;
+          });
+        </script>
+        <script>
+          $(document).ready(function(){
+            $('#buy').click(function(){
+              var billingName = $('#firstName').val()+' '+$('#lastName').val();
+              var billingAddress = $('#address').val()+' '+$('#address2').val()+' '+$('#city').val()+' '+$('#zip').val();
+              var amount = parseInt($('#total').html());
+              console.log(amount);
+              var buyerID = user['userID'];
+              placeOrder(buyerID, amount, billingName, billingAddress, products);
+            });
+          });
         </script>
 </body>
 </html>

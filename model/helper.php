@@ -12,10 +12,10 @@ function fillDummyData($conn){
 	$conn->query("insert into shopping.cities(cityName) values ('Islamabad'), ('Lahore'), ('Faisalabad')");
 	$conn->query("insert into shopping.addresses(address, postcode, cityID) values
 		('St 96, H69', '44000', 1), ('Model Town', '23432', 2), ('Siall', '63453', 3)");
-	$conn->query("insert into shopping.users(firstName, lastName, email, password, addressID) values 
-		('Abdullah', 'Chaudhry', 'abc@edu.pk', '123', 1), 
-		('Ahmad', 'Jarrar', 'ajk@edu.pk', 'jarrar', 3), 
-		('Shariq', 'Pervaiz', 'spv@edu.pk', 'shariq', 2)");
+	$conn->query("insert into shopping.users(firstName, lastName, email, password, addressID, isAdmin) values 
+		('Abdullah', 'Chaudhry', 'abc@edu.pk', '123', 1, true), 
+		('Ahmad', 'Jarrar', 'ajk@edu.pk', 'jarrar', 3, false), 
+		('Shariq', 'Pervaiz', 'spv@edu.pk', 'shariq', 2, false)");
 	$conn->query("insert into shopping.categories(categoryName) values('Mobiles'),('Tablets'),('Home Appliances')");
 	$conn->query("insert into shopping.products(categoryID, productName, productDscrptn, 
 		price, imageURL, stock, sellerID) values
