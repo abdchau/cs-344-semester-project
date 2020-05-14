@@ -18,19 +18,16 @@
 
 	<div class="container signupformouter">
 
-  <form ng-controller="profile-ctrl"class="container signupform" >
+  <form ng-controller="profile-ctrl"class="container signupform my-5" >
   	<img class="mb-4" src="images/logo.jpg" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">SIGN UP</h1>
 	<h3 class="h3 mb-3 font-weight-normal">Please fill the following form</h3>
   		<div class="form-group row">
 
-      		<div class="col-sm-12">
+      		<div class="col-sm-6">
        			<input type="text" class="form-control" id="firstName" placeholder="First Name">
       		</div>
-    	</div>
-    	<div class="form-group row">
-
-      		<div class="col-sm-12">
+          <div class="col-sm-6">
        			<input type="text" class="form-control" id="lastName" placeholder="Last Name">
       		</div>
     	</div>
@@ -61,23 +58,19 @@
     	</div>
       <div class="form-group row">
 
-          <div class="col-sm-12">
-            <select class="custom-select d-block w-100" id="country" required="">
+          <div class="col-sm-4 mb-3">
+            <select class="custom-select d-block w-100" id="city" required="">
+              <option value="null">City</option>
               <option ng-repeat="city in cities" value="{{city.cityID}}">{{city.cityName}}</option>
             </select>
           </div>
-      </div>
-      <div class="form-group row">
-
-          <div class="col-sm-12">
+          <div class="col-sm-4 mb-3">
             <input type="text" class="form-control" id="phone" placeholder="Phone no">
           </div>
-      </div>
-      <div class="form-group row">
-
-          <div class="col-sm-12">
+          <div class="col-sm-4 mb-3">
             <input type="text" class="form-control" id="zipcode" placeholder="ZIP">
           </div>
+
       </div>
    		<fieldset class="form-group row">
 
@@ -107,10 +100,11 @@
         $('#submit').click(function(e){
           //e.preventDefault();
           console.log($('option:selected').val());
-          addUser($('#inputEmail').val(), $('#inputPassword').val(),
+          if ($('option:selected').val() != "null") {
+            addUser($('#inputEmail').val(), $('#inputPassword').val(),
               $('#firstName').val(), $('#lastName').val(), $('#address').val(),
               $('option:selected').val(), $('#zipcode').val());
-
+          }
         });
       });
     </script>

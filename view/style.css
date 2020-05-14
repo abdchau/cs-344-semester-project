@@ -39,10 +39,7 @@
 			box-shadow: 5px 10px 8px 10px #e3f2fd;
 		}
 		.form-signin{
-			width: 300px;
-			margin: auto;
 			text-align: center;
-			margin-top: 10%;
 			border-radius: 25px;
 			box-shadow: 5px 10px 8px 10px #e3f2fd;
 			padding: 20px;
@@ -50,7 +47,6 @@
 		.signupformouter{
 			margin: auto;
 			text-align: center;
-			margin-top: 10%;
 		}
 		.signupform{
 			padding: 5%;

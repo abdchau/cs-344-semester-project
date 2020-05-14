@@ -15,23 +15,22 @@
 	<div ng-controller="carousel-ctrl" class="container my-4">
 		<div class="carousel slide carouselIndex " data-ride="carousel">
 			<ol class="carousel-indicators">
-			  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-			  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-			  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+			  <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+			  <li data-target="#carouselIndicators" data-slide-to="1"></li>
+			  <li data-target="#carouselIndicators" data-slide-to="2"></li>
 			</ol>
 			<div class="carousel-inner">
-			  <div class="carousel-item active" ng-repeat="ft in featured">
-				<img src="{{ft.imageURL}}" class="d-block w-100" alt="...">
+			  <div class="carousel-item active" ng-repeat="ft in featured" ng-if="ft == featured[0]">
+			  	<div class="card-img-top" style="background: url('{{ft.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:250px">
+				  <div class="badge badge-pill badge-primary float-right m-3">Featured</div>
+				</div>
+			  </div>
+			  <div class="carousel-item" ng-repeat="ft in featured" ng-if="ft != featured[0]">
+			  	<div class="card-img-top" style="background: url('{{ft.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:250px">
+				  <div class="badge badge-pill badge-primary float-right m-3">Featured</div>
+				</div>
 			  </div>
 			</div>
-			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-			  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			  <span class="sr-only">Previous</span>
-			</a>
-			<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-			  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-			  <span class="sr-only">Next</span>
-			</a>
 		</div>
 	</div>
 

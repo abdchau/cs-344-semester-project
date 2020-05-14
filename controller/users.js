@@ -41,7 +41,7 @@ function checkCookie() {
 
 function verifyUser(email, password){
 	$.ajax({
-		type:'POST', 
+		type:'POST',
 		url: '../model/interface.php',
 		data: {user:{'email':email}, 'func':'getPassword'},
 		datatype: 'json',
@@ -72,7 +72,7 @@ function verifyUser(email, password){
 function addUser(email, password, firstName, lastName, address, city, zipcode){
 	console.log(email+ password+ firstName+ lastName+ address+ city+ zipcode);
 	$.ajax({
-		type:'POST', 
+		type:'POST',
 		url: '../model/interface.php',
 		data: {user:{'firstName':firstName, 'email':email, 'password':password, 'lastName':lastName,
 			'address':address, 'city':city, 'zipcode':zipcode}, 'func':'addUser'},
@@ -106,7 +106,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
 function addToCart(userID, quantity){
 	console.log(userID+" "+quantity);
 	$.ajax({
-		type:'POST', 
+		type:'POST',
 		url: '../model/interface.php',
 		data: {'userID':userID, 'quantity':quantity, 'productID':getUrlParameter('prd'),
 			'func':'addToCart'},
@@ -123,7 +123,7 @@ function addToCart(userID, quantity){
 
 function resetDB(){
 	$.ajax({
-		type:'POST', 
+		type:'POST',
 		url: '../model/interface.php',
 		data: {'func':'resetDB'},
 		datatype: 'json',
@@ -144,7 +144,7 @@ function signOut(){
 
 function deleteUser(userID) {
 	$.ajax({
-		type:'POST', 
+		type:'POST',
 		url: '../model/interface.php',
 		data: {'userID':userID, 'func':'deleteUser'},
 		datatype: 'json',
@@ -160,7 +160,7 @@ function deleteUser(userID) {
 
 function deleteProduct(productID) {
 	$.ajax({
-		type:'POST', 
+		type:'POST',
 		url: '../model/interface.php',
 		data: {'productID':productID, 'func':'deleteProduct'},
 		datatype: 'json',
@@ -176,7 +176,7 @@ function deleteProduct(productID) {
 
 function toggleAdmin(userID) {
 	$.ajax({
-		type:'POST', 
+		type:'POST',
 		url: '../model/interface.php',
 		data: {'userID':userID, 'func':'toggleAdmin'},
 		datatype: 'json',
@@ -192,7 +192,7 @@ function toggleAdmin(userID) {
 
 function removeCategory(categoryID) {
 	$.ajax({
-		type:'POST', 
+		type:'POST',
 		url: '../model/interface.php',
 		data: {'categoryID':categoryID, 'func':'removeCategory'},
 		datatype: 'json',
@@ -207,7 +207,7 @@ function removeCategory(categoryID) {
 }
 function editCategory(categoryID,newName) {
 	$.ajax({
-		type:'POST', 
+		type:'POST',
 		url: '../model/interface.php',
 		data: {'categoryID':categoryID, 'Name':newName, 'func':'editCategory'},
 		datatype: 'json',
@@ -223,7 +223,7 @@ function editCategory(categoryID,newName) {
 
 function addCategory(categoryName) {
 	$.ajax({
-		type:'POST', 
+		type:'POST',
 		url: '../model/interface.php',
 		data: {'categoryName':categoryName,'func':'addCategory'},
 		datatype: 'json',
@@ -239,7 +239,7 @@ function addCategory(categoryName) {
 
 function toggleFeatured(productID) {
 	$.ajax({
-		type:'POST', 
+		type:'POST',
 		url: '../model/interface.php',
 		data: {'productID':productID,'func':'toggleFeatured'},
 		datatype: 'json',
@@ -255,7 +255,7 @@ function toggleFeatured(productID) {
 
 function placeOrder(buyerID, amount, billingName, billingAddress, order_items){
 	$.ajax({
-		type:'POST', 
+		type:'POST',
 		url: '../model/interface.php',
 		data: {order:{'buyerID':buyerID, 'amount':amount, 'billingName':billingName,
 				'billingAddress':billingAddress, 'order_items':order_items},'func':'placeOrder'},
@@ -272,7 +272,7 @@ function placeOrder(buyerID, amount, billingName, billingAddress, order_items){
 
 function removeFromCart(userID, productID) {
 	$.ajax({
-		type:'POST', 
+		type:'POST',
 		url: '../model/interface.php',
 		data: {'userID':userID, 'productID':productID, 'func':'removeFromCart'},
 		datatype: 'json',

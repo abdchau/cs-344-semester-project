@@ -208,16 +208,15 @@
           console.log($('#inputAddCategoryName').val());
           addCategory($('#inputAddCategoryName').val());
         });
-        
+
         $('.openModal').click(function(){
           $('#inputEditCategoryName').val($(this).attr('data-categoryName'));
           $('#cat-edit').attr('data-categoryID', $(this).attr('data-categoryID'));
-                    
+
         });
         $('.add-cat').click(function(){
           $('#inputAddCategoryName').attr('placeholder','New category name');
-          console.log($('#inputAddCategoryName').attr('placeholder'));
-          
+          // console.log($('[ng-controller="category-ctrl"]'));
         });
         $('.feat-prod').click(function(){
           toggleFeatured($(this).attr('data-id'));
