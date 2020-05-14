@@ -142,9 +142,7 @@
                         <div class="col-sm-10">
                             <label for="inputCategory">Category:</label>
                             <select name="categoryID" class="form-control" id="inputCategory">
-                                <option ng-repeat="category in categories" value="{{category.categoryID}}">
-                                  {{category.categoryName}}
-                                </option>
+
                             </select>
                         </div>
 
@@ -265,9 +263,7 @@
           </div>
         </div>
     </div>
-    <div  id="cartIcon" style="position:fixed;bottom:20px;left:90%;" >
-        <a href=checkout.php><img height=80% width=80% src="images/cart.png"></a>
-</div>
+    <?php echo loadCartIcon(); ?>
 
 
   <script type="text/javascript">
@@ -281,6 +277,9 @@
     .controller('placed-order-ctrl', function ($scope){
       $scope.placedOrders = JSON.parse('<?php echo $placedOrders; ?>');
       console.log($scope.placedOrders);
+    })
+    .controller('upload-ctrl',function($scope){
+      $scope.Categories = JSON.parse('<?php echo getCategories($conn); ?>');
     })
     .controller('received-order-ctrl', function ($scope){
       $scope.receivedOrders = JSON.parse('<?php echo $receivedOrders; ?>');

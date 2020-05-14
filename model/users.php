@@ -107,6 +107,9 @@ if (isset($_POST['func'])){
 		echo resetDB($conn);
 		echo fillDummyData($conn);
 	}
+	if ($_POST['func']=='addUser'){
+		echo addUser($conn);
+	}
 	if ($_POST['func']=='addToCart'){
 		echo addToCart($conn);
 	}

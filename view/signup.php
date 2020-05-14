@@ -82,7 +82,7 @@
           </label>
         </div>
     <div class="form-group row">
-      <div class="offset-sm-2 col-sm-10" style="padding-top: 20px ">
+      <div class="offset-sm-2 col-sm-10" style="padding-top: 10%">
         <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">Create my account</button>
       </div>
     </div>

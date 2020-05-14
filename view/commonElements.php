@@ -101,4 +101,11 @@ function loadNavbar($categories_list, $user){
 	});
 </script>';
 }
+
+function loadCartIcon(){
+	echo '
+	<div  id="cartIcon">
+        <a href=checkout.php><img height=80% width=80% src="images/cart.png"></a>
+	</div>';
+}
 ?>

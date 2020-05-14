@@ -129,10 +129,11 @@
         <script>
           products = JSON.parse('<?php echo $products ?>');
           user = JSON.parse('<?php echo getUserJSON($conn); ?>');
+          cities = JSON.parse('<?php echo getCities($conn); ?>');
           App.controller('ListControl', function ($scope){
             $scope.total = 0;
             $scope.products = products;
-
+            $scope.cities = cities;
             angular.forEach($scope.products, function (value, index) {
                  $scope.total+= $scope.products[index].quantity*$scope.products[index].price
             });

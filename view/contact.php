@@ -49,14 +49,14 @@ However, if you still require more information or assistance, we’re here to he
     <p class="lead text-muted">Accurately selecting your specific issue from the drop-down lists below will enable us to direct your message to the right department. Once you select your issue, you will be able to contact us.</p>
       <div class="form-group row">
       
-          <div class="col-sm-10">
+          <div class="col-sm-12">
           Your Email Address:
             <input type="email" class="form-control" name="Email" >
           </div>
       </div>
       <div class="form-group row">
       
-          <div class="col-sm-10">
+          <div class="col-sm-12">
           
             <label for="city">How can we help you?</label>
             <select class="custom-select d-block w-100" id="country" required="">
@@ -70,27 +70,27 @@ However, if you still require more information or assistance, we’re here to he
           </div>
       </div>
       <div class="form-group row">
-          <div class="col-sm-10">
+          <div class="col-sm-12">
           Description and further details:
             <textarea type="text" class="form-control" rows="6"></textarea>
           </div>
       </div>
       <div class="form-group row">
-          <div class="col-sm-10">
+          <div class="col-sm-12">
           Name:
             <input type="text" class="form-control" name="name" >
           </div>
       </div>
       <div class="form-group row">
-          <div class="col-sm-10">
+          <div class="col-sm-12">
           Phone:
             <input type="email" class="form-control" name="Phone" >
           </div>
       </div>
       
-      <div class="col-sm-10">
+      <div class="col-sm-9">
     <div class="form-group row">
-      <div class="offset-sm-2 col-sm-10" style="padding-top: 20px ">
+      <div class="offset-sm-2 col-sm-12" style="padding-top: 20px ">
         <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">Submit</button>
       </div>
     </div>
@@ -134,14 +134,7 @@ However, if you still require more information or assistance, we’re here to he
 </div>
 
     
-	
-
-
-
-
-  <div  id="cartIcon" style="position:fixed;bottom:20px;left:90%;" >
-        <a href=checkout.php><img height=80% width=80% src="images/cart.png"></a>
-</div>
+	<?php echo loadCartIcon(); ?>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -16,7 +16,7 @@
 	<div class="col-md-7 order-md-1"style="padding: 5%;">
 		<img class="image-fluid" src="{{info.imageURL}}" style="max-width:100%">
 	</div>
-	<div class="col-md-5 order-md-2 mb-4"  style="padding: 5%;">
+	<div class="col-md-5 order-md-2 mb-4"  style="padding-right: 3%; padding-left: 8%">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-muted">Price</span>
         <span class="badge badge-secondary badge-pill">Rs {{info.price}}</span>
@@ -56,7 +56,7 @@
 			</div>
 			<div class="row">
 
-				<div class="col-lg-3" ng-repeat="product in products">
+				<div class="col-md-6 col-lg-3" ng-repeat="product in products">
 				<a href="productDetail.php?prd={{product.productID}}" class="text-decoration-none">
 					<div class="card mb-4 prcard product-info">
 					<div class="card-img-top" style="background: url('{{product.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:250px">
@@ -71,9 +71,7 @@
 
 			</div>
 		</div>
-	<div  id="cartIcon" style="position:fixed;bottom:20px;left:90%;" >
-        <a href=checkout.php><img height=80% width=80% src="images/cart.png"></a>
-	</div>
+	<?php echo loadCartIcon(); ?>
     <!-- Optional JavaScript -->
     <script type="text/javascript">
     	$('.minus-btn').on('click', function(e) {
