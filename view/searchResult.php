@@ -21,7 +21,6 @@
       <div class="alert alert-danger" ng-if="products == null">
         Oops! Sorry but we couldnt find any results in our inventory. Try searching something else.
       </div>
-<<<<<<< HEAD
         <a class="text-decoration-none" ng-repeat="product in products" href="productDetail.php?prd={{product.productID}}">
           <div class="row card m-3 prcard">
           <div class="row no-gutters">
@@ -39,27 +38,6 @@
           </div>
           </div>
         </a>
-=======
-        <div class="row" style="padding: 5%" ng-repeat="product in products">
-           <div class="card mb-3 prcard" style="width: 100%;">
-          <a href="productDetail.php?prd={{product.productID}}">
-				    <div class="row no-gutters">
-				      <div class="col-md-4">
-				        <div class="card-img-top" style="background: url('{{product.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:250px">
-              </div>
-				      </div>
-				      <div class="col-md-8">
-				        <div class="card-body">
-				          <h5 class="card-title">{{product.productName}}</h5>
-				          <p class="card-text">{{product.productDscrptn}}</p>
-				          <p class="card-text"><small class="text-muted">Price: Rs{{product.price}}</small></p>
-				        </div>
-				      </div>
-				    </div>
-          </a>
-			 	   </div>
-        </div>
->>>>>>> 8687ff52c2b59213070bbcf9b4d40b016b32bbb6
             <nav class="mx-auto">
                 <ul class="pagination">
                   <li class="page-item">

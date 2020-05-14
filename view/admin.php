@@ -207,6 +207,7 @@
         $('#cat-add').click(function(){
           console.log($('#inputAddCategoryName').val());
           addCategory($('#inputAddCategoryName').val());
+
         });
 
         $('.openModal').click(function(){
@@ -216,7 +217,6 @@
         });
         $('.add-cat').click(function(){
           $('#inputAddCategoryName').attr('placeholder','New category name');
-          // console.log($('[ng-controller="category-ctrl"]'));
         });
         $('.feat-prod').click(function(){
           toggleFeatured($(this).attr('data-id'));

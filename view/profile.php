@@ -142,7 +142,8 @@
                         <div class="col-sm-10">
                             <label for="inputCategory">Category:</label>
                             <select name="categoryID" class="form-control" id="inputCategory">
-
+                              <option value="null">Choose Category</option>
+                              <option ng-repeat="category in categories" value="{{category.categoryID}}">{{category.categoryName}}</option>
                             </select>
                         </div>
 
@@ -279,7 +280,7 @@
       console.log($scope.placedOrders);
     })
     .controller('upload-ctrl',function($scope){
-      $scope.Categories = JSON.parse('<?php echo getCategories($conn); ?>');
+      $scope.categories = JSON.parse('<?php echo getCategories($conn); ?>');
     })
     .controller('received-order-ctrl', function ($scope){
       $scope.receivedOrders = JSON.parse('<?php echo $receivedOrders; ?>');
