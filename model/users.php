@@ -142,6 +142,9 @@ if (isset($_POST['func'])){
 	if ($_POST['func']=='displayCart'){
 		echo displayCart($conn);
 	}
+	if ($_POST['func']=='removeFromCart'){
+		echo removeFromCart($conn);
+	}
 	if ($_POST['func']=='deleteUser'){
 		echo deleteUser($conn);
 	}

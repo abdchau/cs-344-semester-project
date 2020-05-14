@@ -62,6 +62,22 @@ function getCart($conn, $username){
 		return json_encode($arr).$conn->error;
 	}
 }
+function getProductsByID($conn, $username){
+	if ($username==null)
+		header('Location: signin.php');
+	else{
+		$result=$conn->query("select * from shopping.products where sellerID = ".$username['userID']);
+		if ($result->num_rows > 0) {
+		    while($row = $result->fetch_assoc()) {
+		        $arr[] = $row;
+		    }
+		}
+		else
+			$arr=null;
+		return json_encode($arr).$conn->error;
+	}
+}
+
 
 function getProducts($conn){
 	$result=$conn->query("select * from shopping.products as B join (select userID, firstName, lastName from shopping.users)A on A.userID=B.sellerID natural join shopping.categories");
