@@ -89,4 +89,18 @@ function getPlacedOrders($conn, $userID){
 	return json_encode($arr).$conn->error;
 }
 
+function getReceivedOrders($conn, $userID){
+	// return "{\"id\":2, \"shariq\":3}";
+	$result=$conn->query("select * from shopping.orders natural join shopping.order_item natural join (select * from shopping.products where sellerID = ".$userID.")A");
+
+	if ($result->num_rows > 0) {
+	    while($row = $result->fetch_assoc()) {
+	        $arr[] = $row;
+	    }
+	}
+	else
+		$arr=null;
+	return json_encode($arr).$conn->error;
+}
+
 ?>
