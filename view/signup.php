@@ -88,6 +88,7 @@
     </div>
   </form>
 </div>
+<?php echo loadFooter(); ?>
 
     <script type="text/javascript">
       console.log("hellooo");

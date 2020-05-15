@@ -54,7 +54,7 @@
 	</div>
 
 	<?php echo loadCartIcon(); ?>
-	<!-- Optional JavaScript -->
+	<?php echo loadFooter(); ?>
 
     <script>
       App.controller('CategoryInfoControl', function ($scope){

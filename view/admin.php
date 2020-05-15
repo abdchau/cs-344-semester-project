@@ -222,6 +222,8 @@
           </div>
         </div>
     </div>
+    <?php echo loadFooter(); ?>
+
 
     <script type="text/javascript">
       App.controller('users-ctrl', function ($scope){

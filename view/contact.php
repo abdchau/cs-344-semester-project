@@ -13,10 +13,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-    
+
     <title>Contact Us</title>
 
-    
+
 
     <script type="text/javascript">
       $(document).ready(function(){
@@ -32,14 +32,14 @@
   </head>
   <body ng-app="PageApp">
 	<!-- Just an image -->
-	
+
   <?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
   <section class="jumbotron text-center" style="background-color: white">
         <div class="container">
           <p>Got a Question?</p>
           <h1 class="jumbotron-heading">Contact Shopoholic</h1>
-          <p class="lead text-muted">At Shopoholic we believe in providing excellent Service to our Customers. 
+          <p class="lead text-muted">At Shopoholic we believe in providing excellent Service to our Customers.
 However, if you still require more information or assistance, we’re here to help and answer any question you might have. We look forward to hearing from you 🙂.</p>
         </div>
   </section>
@@ -48,16 +48,16 @@ However, if you still require more information or assistance, we’re here to he
     <img class="mb-4" src="images\logo.jpg" alt="" width="72" height="72" style="display: block;margin: auto;">
     <p class="lead text-muted">Accurately selecting your specific issue from the drop-down lists below will enable us to direct your message to the right department. Once you select your issue, you will be able to contact us.</p>
       <div class="form-group row">
-      
+
           <div class="col-sm-12">
           Your Email Address:
             <input type="email" class="form-control" name="Email" >
           </div>
       </div>
       <div class="form-group row">
-      
+
           <div class="col-sm-12">
-          
+
             <label for="city">How can we help you?</label>
             <select class="custom-select d-block w-100" id="country" required="">
               <option value="">Choose...</option>
@@ -87,7 +87,7 @@ However, if you still require more information or assistance, we’re here to he
             <input type="email" class="form-control" name="Phone" >
           </div>
       </div>
-      
+
       <div class="col-sm-9">
     <div class="form-group row">
       <div class="offset-sm-2 col-sm-12" style="padding-top: 20px ">
@@ -133,11 +133,9 @@ However, if you still require more information or assistance, we’re here to he
   </form>
 </div>
 
-    
-	<?php echo loadCartIcon(); ?>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    
+  <?php echo loadCartIcon(); ?>
+  <?php echo loadFooter(); ?>
+
   </body>
 </html>

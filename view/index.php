@@ -9,7 +9,6 @@
 <?php echo loadHeader("Home Page"); ?>
 
   <body ng-app="PageApp">
-
 	<?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
 	<div id="carouselIndicators" ng-controller="carousel-ctrl" class="container my-4">
@@ -28,7 +27,7 @@
 									<a href="productDetail.php?prd={{ft.productID}}" class="text-decoration-none text-white">
 									{{ft.productName}}
 									</a>
-								</h5>							
+								</h5>
 							</div>
 						</div>
 					</div>
@@ -43,7 +42,7 @@
 									{{ft.productName}}
 									</a>
 								</h5>
-								
+
 							</div>
 						</div>
 					</div>
@@ -80,6 +79,7 @@
 
 	</div>
 	<?php echo loadCartIcon(); ?>
+	<?php echo loadFooter(); ?>
 
 
 	<script type="text/javascript">

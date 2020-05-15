@@ -31,5 +31,6 @@
         </div>
     </div>
 </div>
+<?php echo loadFooter(); ?>
   </body>
 </html>

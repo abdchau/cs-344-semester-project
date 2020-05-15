@@ -49,26 +49,24 @@ function loadNavbar($categories_list, $user){
 				</li>
 			</ul>
 
-
-			<div class="input-group ml-3 my-2 col-md-4" ng-if="user != null">
-				<a class="nav-link" id="user_action_1" href="profile.php"><i class="fas fa-user-circle" style="font-size:1.4rem"></i></a>
+			<div class="navbar-nav input-group ml-auto col-md-2 p-0" ng-if="user != null">
+				<a class="nav-link p-0" id="user_action_1" href="profile.php"><i class="fas fa-user-circle" style="font-size:1.6rem"></i></a>
 				<div class="input-group-append">
-					<a class="nav-link" id="user_action_2" href="#"><i class="fas fa-sign-out-alt" style="font-size:1.4rem"></i></a>
+					<a class="nav-link p-0 ml-4" id="user_action_2" href="#"><i class="fas fa-sign-out-alt" style="font-size:1.6rem"></i></a>
 				</div>
     		</div>
-			<div class="input-group ml-3 my-2 col-md-4" ng-if="user == null">
-				<a class="nav-link" id="user_action_1" href="signup.php"><i class="fas fa-user-plus" style="font-size:1.4rem"></i></a>
+			<div class="navbar-nav input-group ml-auto col-md-2 p-0" ng-if="user == null">
+				<a class="nav-link p-0" id="user_action_1" href="signup.php"><i class="fas fa-user-plus" style="font-size:1.6rem"></i></a>
 				<div class="input-group-append">
-					<a class="nav-link" href="signin.php"><i class="fas fa-sign-in-alt" style="font-size:1.4rem"></i></a>
+					<a class="nav-link p-0 ml-4" href="signin.php"><i class="fas fa-sign-in-alt" style="font-size:1.6rem"></i></a>
 				</div>
     		</div>
 
-
-			<div class="input-group ml-3 my-2 col-md-4">
+			<div class="input-group my-2 col-md-4">
 				<input ng-model="query" class="form-control mr-1" id="search_bar" type="search" placeholder="Search">
 				<div class="input-group-append">
 					<a href="searchResult.php?query={{query}}">
-						<button  class="btn btn-outline-success mr-2" id="search_button" type="submit"><i class="fas fa-search"></i></button>
+						<button  class="btn btn-outline-success" id="search_button" type="submit"><i class="fas fa-search"></i></button>
 					</a>
 				</div>
     		</div>
@@ -107,5 +105,17 @@ function loadCartIcon(){
 	<div  id="cartIcon">
         <a href=checkout.php><img height=80% width=80% src="images/cart.png"></a>
 	</div>';
+}
+
+function loadFooter(){
+	echo '
+	<footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">© 2017-2019 Company Name</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>';
 }
 ?>

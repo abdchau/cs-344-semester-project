@@ -45,6 +45,6 @@
         <a href=signup.php class="btn btn-lg btn-primary btn-block">Create an account</a>
     </div>
 	</form>
-
+  <?php echo loadFooter(); ?>
     </body>
 </html>

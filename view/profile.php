@@ -298,7 +298,7 @@
         </div>
     </div>
     <?php echo loadCartIcon(); ?>
-
+    <?php echo loadFooter(); ?>
 
   <script type="text/javascript">
     console.log("hellooo");

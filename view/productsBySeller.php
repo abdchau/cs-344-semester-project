@@ -41,6 +41,8 @@
 	</div>
 
 	<?php echo loadCartIcon(); ?>
+    <?php echo loadFooter(); ?>
+
 
     <script>
       App.controller('SellerInfoControl', function ($scope){

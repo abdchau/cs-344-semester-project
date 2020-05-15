@@ -58,6 +58,7 @@
         </div>
 	</div>
  <?php echo loadCartIcon(); ?>
+ <?php echo loadFooter(); ?>
     <script>
 
       App.controller('SearchInfoControl', function ($scope){

@@ -75,6 +75,7 @@
 			</div>
 		</div>
 	<?php echo loadCartIcon(); ?>
+	<?php echo loadFooter(); ?>
     <!-- Optional JavaScript -->
     <script type="text/javascript">
     	$('.minus-btn').on('click', function(e) {
@@ -107,8 +108,5 @@
 			});
 		});
 	</script>
-
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
      </body>
 </html>
