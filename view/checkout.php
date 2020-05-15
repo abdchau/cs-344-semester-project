@@ -1,5 +1,7 @@
 <?php require '../model/interface.php';
   require 'commonElements.php';
+  if ($username==null)
+    header("Location: index.php");
   $products = getCart($conn, $username);
 ?>
 

@@ -53,7 +53,7 @@ function loadNavbar($categories_list, $user){
 		</ul>
 		<ul class="navbar-nav ml-auto" id="user_actions" ng-if="user != null">
 			<li class="nav-item mx-3">
-				<a class="nav-link" id="user_action_1" href="profile.php">Hello, {{user.firstName}}</a>
+				<a class="nav-link" id="user_action_1" href="profile.php">Hi, {{user.firstName}}</a>
 			</li>
 			<li class="nav-item mx-3">
 				<a class="nav-link" id="user_action_2" href="#">Sign Out</a>

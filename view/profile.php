@@ -27,7 +27,7 @@
             <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">Profile</a>
             <a class="nav-link" id="v-pills-cart-tab" data-toggle="pill" href="#v-pills-cart" role="tab" aria-controls="v-pills-cart" aria-selected="false">Cart</a>
             <a class="nav-link" id="v-upload-item-tab" data-toggle="pill" href="#v-pills-upload-item" role="tab" aria-controls="v-pills-upload-item" aria-selected="false">Upload Product</a>
-            <a class="nav-link" id="v-active-item-tab" data-toggle="pill" href="#v-pills-active-item" role="tab" aria-controls="v-pills-upload-item" aria-selected="false">Active Products</a>
+            <a class="nav-link" id="v-active-item-tab" data-toggle="pill" href="#v-pills-active-item" role="tab" aria-controls="v-pills-upload-item" aria-selected="false">Listed Products</a>
             <a class="nav-link" id="v-pills-orders-tab" data-toggle="pill" href="#v-pills-orders" role="tab" aria-controls="v-pills-orders" aria-selected="false">Active Orders</a>
             <a class="nav-link" id="v-pills-orders-received-tab" data-toggle="pill" href="#v-pills-orders-received" role="tab" aria-controls="v-pills-orders-received" aria-selected="false">Received Orders</a>
             <a class="nav-link" id="v-pills-password-change-tab" data-toggle="pill" href="#v-pills-password-change" role="tab" aria-controls="v-pills-password-change" aria-selected="false">Change Password</a>
@@ -239,7 +239,7 @@
                             <th scope="col">Price</th>
                             <th scope="col">Billing Name</th>
                             <th scope="col">Billing Address</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Actions</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -250,7 +250,8 @@
                             <td>{{item.price}}</td>
                             <td>{{item.billingName}}</td>
                             <td>{{item.billingAddress}}</td>
-                            <td><button data-id="{{item.orderID}}" type="button" class="btn btn-block-xs btn-outline-success my-auto rem-user">Complete</button></td>
+                            <td><button data-id="{{item.orderID}}" type="button" class="btn btn-block-xs btn-outline-success my-auto com-order">Complete</button>
+                            <button data-id="{{item.orderID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto del-order">Deny</button></td>
                           </tr>
                         </tbody>
                       </table>
@@ -335,15 +336,19 @@
     
     $('document').ready(function(){
       $('.rem-cart').click(function(){
-      // console.log($(this).attr('data-id'));
-      removeFromCart(JSON.parse('<?php echo getUserJSON($conn); ?>')['userID'], $(this).attr('data-id'));
-      console.log("hiiii");
-    });
-    $('.rem-active-prod').click(function(){
-
+          // console.log($(this).attr('data-id'));
+          removeFromCart(JSON.parse('<?php echo getUserJSON($conn); ?>')['userID'], $(this).attr('data-id'));
+          console.log("hiiii");
+      });
+      $('.rem-active-prod').click(function(){
           deleteProduct($(this).attr('data-id'));
-        });
-    
+      });
+      $('.del-order').click(function(){
+          deleteOrder($(this).attr('data-id'));
+      });
+      $('.com-order').click(function(){
+          completeOrder($(this).attr('data-id'));
+      });
     });
    
     $('#delete_account').click(function(){

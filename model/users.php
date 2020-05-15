@@ -119,74 +119,107 @@ function placeOrder($conn){
 	return "Order placed".$conn->error;
 }
 
+function deleteOrder($conn){
+	$conn->query("delete from shopping.orders where orderID=".$_POST['orderID']);
+	return "Order deleted".$conn->error;
+}
+
+function completeOrder($conn){
+	$result = $conn->query("select * from shopping.products natural join 
+		(select * from shopping.order_item where orderID=".$_POST['orderID'].")A");
+
+	if ($result->num_rows > 0){
+	    while($row = $result->fetch_assoc()) {
+	        $arr[] = $row;
+	    }
+	}
+
+	foreach ($arr as $key => $product) {
+		$quantity = $product['stock']-$product['quantity'];
+		$conn->query("update shopping.products set stock=$quantity where productID = ".
+			$product['productID']);
+	}
+	deleteOrder($conn);
+	return "Order completed".$conn->error;
+}
+
 function removeFromCart($conn){
 	$conn->query("delete from shopping.cart_item where userID=".$_POST['userID']." and productID=".$_POST['productID']);
 	return "Removed from cart".$conn->error;
 }
 
 if (isset($_POST['func'])){
-	if ($_POST['func']=='getPassword'){
-		echo getPassword($conn);
-	}
-	if ($_POST['func']=='changePassword'){
-		echo changePassword($conn);
-	}
-	if ($_POST['func']=='addUser'){
-		echo json_encode(array_keys($_POST));
-		echo (json_encode(array_keys($_POST['user'])));
-		echo addUser($conn);
-	}
-	if ($_POST['func']=='resetDB'){
-		echo resetDB($conn);
-		echo fillDummyData($conn);
-	}
-	if ($_POST['func']=='addUser'){
-		echo addUser($conn);
-	}
-	if ($_POST['func']=='changeUser'){
-		echo changeUser($conn);
-	}
-	if ($_POST['func']=='addToCart'){
-		echo addToCart($conn);
-	}
-	if ($_POST['func']=='displayCart'){
-		echo displayCart($conn);
-	}
-	if ($_POST['func']=='removeFromCart'){
-		echo removeFromCart($conn);
-	}
-	if ($_POST['func']=='deleteUser'){
-		echo deleteUser($conn);
-	}
-	if ($_POST['func']=='deleteProduct'){
-		echo deleteProduct($conn);
-	}
-	if ($_POST['func']=='toggleFeatured'){
-		echo toggleFeatured($conn);
-	}
-	if ($_POST['func']=='toggleAdmin'){
-		echo toggleAdmin($conn);
-	}
-	if ($_POST['func']=='removeAdmin'){
-		echo removeAdmin($conn);
-	}
-	if ($_POST['func']=='removeCategory'){
-		echo removeCategory($conn);
-	}
-	if ($_POST['func']=='editCategory'){
-		echo editCategory($conn);
-	}
-	if ($_POST['func']=='addCategory'){
-		echo addCategory($conn);
-	}
-	if ($_POST['func']=='addCity'){
-		echo addCity($conn);
-	}
-	if ($_POST['func']=='removeCity'){
-		echo removeCity($conn);
-	}
-	if ($_POST['func']=='placeOrder'){
-		echo placeOrder($conn);
+	switch ($_POST['func']) {
+		case 'getPassword':
+			echo getPassword($conn);
+			break;
+		case 'changePassword':
+			echo changePassword($conn);
+			break;
+		case 'addUser':
+			echo addUser($conn);
+			break;
+		case 'resetDB':
+			echo resetDB($conn);
+			echo fillDummyData($conn);
+			break;
+		case 'addUser':
+			echo addUser($conn);
+			break;
+		case 'changeUser':
+			echo changeUser($conn);
+			break;
+		case 'addToCart':
+			echo addToCart($conn);
+			break;
+		case 'displayCart':
+			echo displayCart($conn);
+			break;
+		case 'removeFromCart':
+			echo removeFromCart($conn);
+			break;
+		case 'deleteUser':
+			echo deleteUser($conn);
+			break;
+		case 'deleteProduct':
+			echo deleteProduct($conn);
+			break;
+		case 'deleteOrder':
+			echo deleteOrder($conn);
+			break;
+		case 'completeOrder':
+			echo completeOrder($conn);
+			break;
+		case 'toggleFeatured':
+			echo toggleFeatured($conn);
+			break;
+		case 'toggleAdmin':
+			echo toggleAdmin($conn);
+			break;
+		case 'removeAdmin':
+			echo removeAdmin($conn);
+			break;
+		case 'removeCategory':
+			echo removeCategory($conn);
+			break;
+		case 'editCategory':
+			echo editCategory($conn);
+			break;
+		case 'addCategory':
+			echo addCategory($conn);
+			break;
+		case 'addCity':
+			echo addCity($conn);
+			break;
+		case 'removeCity':
+			echo removeCity($conn);
+			break;
+		case 'placeOrder':
+			echo placeOrder($conn);
+			break;
+		default:
+			echo "No function specified";
+			break;
 	}
 }
 

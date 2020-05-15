@@ -174,6 +174,38 @@ function deleteProduct(productID) {
 	})
 }
 
+function deleteOrder(orderID) {
+	$.ajax({
+		type:'POST',
+		url: '../model/interface.php',
+		data: {'orderID':orderID, 'func':'deleteOrder'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			alert(response);
+			location.reload();
+		},
+		error: function(){console.log('post error');}
+	})
+}
+
+function completeOrder(orderID) {
+	$.ajax({
+		type:'POST',
+		url: '../model/interface.php',
+		data: {'orderID':orderID, 'func':'completeOrder'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			alert(response);
+			location.reload();
+		},
+		error: function(){console.log('post error');}
+	})
+}
+
 function toggleAdmin(userID) {
 	$.ajax({
 		type:'POST',
