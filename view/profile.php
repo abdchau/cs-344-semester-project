@@ -24,16 +24,16 @@
     <div ng-controller="nav-ctrl" class="row my-sm-5 mx-0">
         <div class="col-sm-3" id="tabs">
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">Profile</a>
-            <a class="nav-link" id="v-pills-cart-tab" data-toggle="pill" href="#v-pills-cart" role="tab" aria-controls="v-pills-cart" aria-selected="false">Cart</a>
-            <a class="nav-link" id="v-upload-item-tab" data-toggle="pill" href="#v-pills-upload-item" role="tab" aria-controls="v-pills-upload-item" aria-selected="false">Upload Product</a>
-            <a class="nav-link" id="v-active-item-tab" data-toggle="pill" href="#v-pills-active-item" role="tab" aria-controls="v-pills-upload-item" aria-selected="false">Listed Products</a>
-            <a class="nav-link" id="v-pills-orders-tab" data-toggle="pill" href="#v-pills-orders" role="tab" aria-controls="v-pills-orders" aria-selected="false">Active Orders</a>
-            <a class="nav-link" id="v-pills-orders-received-tab" data-toggle="pill" href="#v-pills-orders-received" role="tab" aria-controls="v-pills-orders-received" aria-selected="false">Received Orders</a>
-            <a class="nav-link" id="v-pills-password-change-tab" data-toggle="pill" href="#v-pills-password-change" role="tab" aria-controls="v-pills-password-change" aria-selected="false">Change Password</a>
-            <a class="nav-link" id="v-pills-delete-account-tab" data-toggle="pill" href="#v-pills-delete-account" role="tab" aria-controls="v-pills-delete-account" aria-selected="false">Delete Account</a>
+            <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true"><i class="fas fa-user-edit"></i>&nbsp; Profile</a>
+            <a class="nav-link" id="v-pills-cart-tab" data-toggle="pill" href="#v-pills-cart" role="tab" aria-controls="v-pills-cart" aria-selected="false"><i class="fas fa-shopping-cart"></i>&nbsp; Cart</a>
+            <a class="nav-link" id="v-upload-item-tab" data-toggle="pill" href="#v-pills-upload-item" role="tab" aria-controls="v-pills-upload-item" aria-selected="false"><i class="fas fa-upload"></i>&nbsp; Upload Product</a>
+            <a class="nav-link" id="v-active-item-tab" data-toggle="pill" href="#v-pills-active-item" role="tab" aria-controls="v-pills-upload-item" aria-selected="false"><i class="fas fa-list-alt"></i>&nbsp; Listed Products</a>
+            <a class="nav-link" id="v-pills-orders-tab" data-toggle="pill" href="#v-pills-orders" role="tab" aria-controls="v-pills-orders" aria-selected="false"><i class="fas fa-paper-plane"></i>&nbsp; Placed Orders</a>
+            <a class="nav-link" id="v-pills-orders-received-tab" data-toggle="pill" href="#v-pills-orders-received" role="tab" aria-controls="v-pills-orders-received" aria-selected="false"><i class="fas fa-arrow-alt-circle-down"></i>&nbsp; Received Orders</a>
+            <a class="nav-link" id="v-pills-password-change-tab" data-toggle="pill" href="#v-pills-password-change" role="tab" aria-controls="v-pills-password-change" aria-selected="false"><i class="fas fa-key"></i>&nbsp; Change Password</a>
+            <a class="nav-link" id="v-pills-delete-account-tab" data-toggle="pill" href="#v-pills-delete-account" role="tab" aria-controls="v-pills-delete-account" aria-selected="false"><i class="fas fa-eraser"></i>&nbsp; Delete Account</a>
           </div>
-            <a ng-if="isAdmin==true" class="nav-link" style="color: red" href="admin.php" >Open Admin Panel</a>
+            <a ng-if="isAdmin==true" class="nav-link" style="color: red" href="admin.php" ><i class="fas fa-random"></i>&nbsp; Admin Panel</a>
         </div>
 
 
@@ -101,7 +101,6 @@
             <div ng-controller="cart-ctrl" class="tab-pane fade" id="v-pills-cart" role="tabpanel" aria-labelledby="v-pills-cart-tab">
                 <div class="table-responsive">
                     <table class="table">
-                        <caption>List of users</caption>
                         <thead>
                           <tr>
                             <th scope="col">#</th>
@@ -117,7 +116,7 @@
                             <td>{{product.productName}}</td>
                             <td>{{product.price}}</td>
                             <td>{{product.quantity}}</td>
-                            <td><button data-id="{{product.productID}}" type="button" class="btn btn-outline-danger my-auto rem-cart">Remove</button></td>
+                            <td><button data-id="{{product.productID}}" type="button" class="btn btn-outline-danger my-auto rem-cart"><i class="fas fa-trash-alt"></i></button></td>
                           </tr>
 
                         </tbody>
@@ -177,7 +176,6 @@
             <div ng-controller="active-product-ctrl" class="tab-pane fade" id="v-pills-active-item" role="tabpanel" aria-labelledby="v-pills-active-item-tab">
                 <div class="table-responsive">
                     <table class="table">
-                        <caption>List of your products</caption>
                         <thead>
                           <tr>
                             <th scope="col">#</th>
@@ -193,7 +191,7 @@
                             <td>{{product.productName}}</td>
                             <td>{{product.price}}</td>
                             <td>{{product.stock}}</td>
-                            <td><button data-id="{{product.productID}}" type="button" class="btn btn-outline-danger my-auto rem-active-prod">Remove</button></td>
+                            <td><button data-id="{{product.productID}}" type="button" class="btn btn-outline-danger my-auto rem-active-prod"><i class="fas fa-trash-alt"></i></button></td>
                           </tr>
 
                         </tbody>
@@ -203,7 +201,6 @@
             <div ng-controller="placed-order-ctrl" class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
                 <div class="table-responsive">
                     <table class="table">
-                        <caption>Orders placed</caption>
                         <thead>
                           <tr>
                             <th scope="col">#</th>
@@ -230,7 +227,6 @@
             <div ng-controller="received-order-ctrl" class="tab-pane fade" id="v-pills-orders-received" role="tabpanel" aria-labelledby="v-pills-orders-received-tab">
                 <div class="table-responsive">
                     <table class="table">
-                        <caption>List of users</caption>
                         <thead>
                           <tr>
                             <th scope="col">#</th>
@@ -250,8 +246,11 @@
                             <td>{{item.price}}</td>
                             <td>{{item.billingName}}</td>
                             <td>{{item.billingAddress}}</td>
-                            <td><button data-id="{{item.orderID}}" type="button" class="btn btn-block-xs btn-outline-success my-auto com-order">Confirm</button>
-                            <button data-id="{{item.orderID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto del-order">Deny</button></td>
+                            <td>
+                              <div class="btn-group" role="group">
+                                <button data-id="{{item.orderID}}" type="button" class="btn btn-block-xs btn-outline-success my-auto com-order"><i class="fas fa-check"></i></button>
+                                <button data-id="{{item.orderID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto del-order"><i class="fas fa-ban"></i></button></td>
+                              </div>
                           </tr>
                         </tbody>
                       </table>
@@ -290,7 +289,7 @@
                         <div class="col-sm-10">
                             <h1 class="h3 mb-3 font-weight-normal">Delete Account</h1>
                             <h5 class="h5 mb-3 font-weight-normal">Are you sure you want to delete your account? All of your data will be permanently deleted and cannot be recovered later.</h5>
-                            <button class="btn btn-lg btn-danger btn-block" type="submit" id="delete_account">Yes, Delete my Account</button>
+                            <button class="btn btn-lg btn-danger btn-block" type="submit" id="delete_account">Yes, Delete my Account </button>
                         </div>
                     </div>
                 </form>

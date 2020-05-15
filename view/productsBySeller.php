@@ -1,25 +1,22 @@
 <?php require '../model/interface.php';
   require 'commonElements.php';
-  $categoryName = getCategoryName($conn);
-  $products = getProdsByCategory($conn);
+  $seller = getUserJSON($conn, $_GET['srd']);
+  $products = getProdsBySeller($conn);
 ?>
 
 <!doctype html>
 <html lang="en">
-<?php echo loadHeader("Category"); ?>
+  <?php echo loadHeader("Category"); ?>
 
   <body ng-app="PageApp">
 	<?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
-    <div class="album py-5 my-3 bg-light" ng-controller="SellerInfoControl">
-		<div class="container card shadow-lg">
-			<h3 class="display-4 mb-5 mr-auto">{{seller.firstName}} {{seller.lastName}}</h3>
-            <h4 class="display-4 mb-5 mr-auto">{{seller.email}}</h4>
-            </div>
-        </div>
-	</div>
 
 	<div class="album py-5 bg-light" ng-controller="SellerInfoControl">
+    <div class="row mx-5 my-3 alert alert-success">
+			<span class="mx-auto">Seller: {{seller.firstName}} {{seller.lastName}} <b>|</b>
+      Email: {{seller.email}}</span>
+    </div>
 		<div class="container card shadow-lg">
 			<h3 class="display-4 mb-5 mr-auto">Products</h3>
             <div class="row">
@@ -44,7 +41,7 @@
 
     <script>
       App.controller('SellerInfoControl', function ($scope){
-      $scope.seller = JSON.parse('<?php echo $categoryName ?>');
+      $scope.seller = JSON.parse('<?php echo $seller ?>');
       $scope.products = JSON.parse('<?php echo $products ?>');
       });
     </script>

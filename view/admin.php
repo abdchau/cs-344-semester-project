@@ -22,11 +22,11 @@
     <div class="row my-sm-5 mx-0">
         <div class="col-sm-3" id="tabs">
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link active" id="v-pills-user-tab" data-toggle="pill" href="#v-pills-user" role="tab" aria-controls="v-pills-user" aria-selected="true">Users</a>
-            <a class="nav-link" id="v-pills-products-tab" data-toggle="pill" href="#v-pills-products" role="tab" aria-controls="v-pills-products" aria-selected="false">Products</a>
-            <a class="nav-link" id="v-pills-categories-tab" data-toggle="pill" href="#v-pills-categories" role="tab" aria-controls="v-pills-categories" aria-selected="false">Categories</a>
-            <a class="nav-link" id="v-pills-cities-tab" data-toggle="pill" href="#v-pills-cities" role="tab" aria-controls="v-pills-cities" aria-selected="false">Cities</a>
-            <a class="nav-link" id="v-pills-other-tab" data-toggle="pill" href="#v-pills-other" role="tab" aria-controls="v-pills-other" aria-selected="false">Other Actions</a>
+            <a class="nav-link active" id="v-pills-user-tab" data-toggle="pill" href="#v-pills-user" role="tab" aria-controls="v-pills-user" aria-selected="true"><i class="fas fa-users"></i> &nbsp;Users</a>
+            <a class="nav-link" id="v-pills-products-tab" data-toggle="pill" href="#v-pills-products" role="tab" aria-controls="v-pills-products" aria-selected="false"><i class="fas fa-box-open"></i> &nbsp;Products</a>
+            <a class="nav-link" id="v-pills-categories-tab" data-toggle="pill" href="#v-pills-categories" role="tab" aria-controls="v-pills-categories" aria-selected="false"><i class="fas fa-sitemap"></i> &nbsp;Categories</a>
+            <a class="nav-link" id="v-pills-cities-tab" data-toggle="pill" href="#v-pills-cities" role="tab" aria-controls="v-pills-cities" aria-selected="false"><i class="fas fa-map-marked-alt"></i>&nbsp;&nbsp;Cities</a>
+            <a class="nav-link" id="v-pills-other-tab" data-toggle="pill" href="#v-pills-other" role="tab" aria-controls="v-pills-other" aria-selected="false"><i class="fas fa-cogs"></i> &nbsp;Other Actions</a>
           </div>
         </div>
 
@@ -50,9 +50,11 @@
                       <td>{{user.firstName}} {{user.lastName}}</td>
                       <td>{{user.email}}</td>
                       <td ng-if="user.userID!==adminID">
-                        <button ng-if="user.isAdmin==false" data-id="{{user.userID}}" data-placement="top" title="Grant admin privileges" data-toggle="tooltip" type="button" class="btn btn-block-xs btn-outline-success my-auto toggle-admin">Admin</button>
-                        <button ng-if="user.isAdmin==true" data-id="{{user.userID}}" data-placement="top" title="Revoke admin privileges" data-toggle="tooltip" type="button" class="btn btn-block-xs btn-success my-auto toggle-admin">Admin</button>
-                        <button data-id="{{user.userID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto rem-user">Remove</button>
+                        <div class="btn-group" role="group">
+                          <button ng-if="user.isAdmin==false" data-id="{{user.userID}}" data-placement="top" title="Grant admin privileges" data-toggle="tooltip" type="button" class="btn btn-block-xs btn-outline-success my-auto toggle-admin"><i class="fas fa-user-cog"></i></button>
+                          <button ng-if="user.isAdmin==true" data-id="{{user.userID}}" data-placement="top" title="Revoke admin privileges" data-toggle="tooltip" type="button" class="btn btn-block-xs btn-success my-auto toggle-admin"><i class="fas fa-user-cog"></i></button>
+                          <button data-id="{{user.userID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto rem-user"><i class="fas fa-trash-alt"></i></button>
+                        </div>
                       </td>
                     </tr>
                   </tbody>
@@ -82,9 +84,11 @@
                             <td>{{product.price}}</td>
                             <td>{{product.firstName}} {{product.lastName}}</td>
                             <td>
-                              <button ng-if="product.featured==false" data-id="{{product.productID}}" data-placement="top" title="Make featured product" data-toggle="tooltip" type="button" class="btn btn-block-xs btn-outline-success my-auto feat-prod">Feature</button>
-                              <button ng-if="product.featured==true" data-id="{{product.productID}}" data-placement="top" title="Unfeature product" data-toggle="tooltip" type="button" class="btn btn-block-xs btn-success my-auto feat-prod">Feature</button>
-                              <button data-id="{{product.productID}}" type="button" class="btn btn-outline-danger my-auto rem-prod">Remove</button>
+                              <div class="btn-group" role="group">
+                                <button ng-if="product.featured==false" data-id="{{product.productID}}" data-placement="top" title="Make featured product" data-toggle="tooltip" type="button" class="btn btn-block-xs btn-outline-success my-auto feat-prod"><i class="fa fa-star"></i></button>
+                                <button ng-if="product.featured==true" data-id="{{product.productID}}" data-placement="top" title="Unfeature product" data-toggle="tooltip" type="button" class="btn btn-block-xs btn-success my-auto feat-prod"><i class="fa fa-star"></i></button>
+                                <button data-id="{{product.productID}}" type="button" class="btn btn-outline-danger my-auto rem-prod"><i class="fas fa-trash-alt"></i></button>
+                              </div>
                             </td>
                           </tr>
 
@@ -110,8 +114,12 @@
                             <td>{{category.categoryID}}</td>
                             <td>{{category.categoryName}}</td>
                             <td>
-                              <button data-categoryID="{{category.categoryID}}" data-categoryName="{{category.categoryName}}" type="button" class="btn btn-block-xs btn-outline-success my-auto openModal" data-toggle="modal" data-target="#editModal">Edit</button>
-                              <button data-id ="{{category.categoryID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto rem-cat">Remove</button>
+                              <div class="btn-group" role="group">
+                                <div class="btn-group" role="group">
+                                  <button data-categoryID="{{category.categoryID}}" data-categoryName="{{category.categoryName}}" type="button" class="btn btn-block-xs btn-outline-success my-auto openModal" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></button>
+                                  <button data-id ="{{category.categoryID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto rem-cat"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                              </div>
                             </td>
                           </tr>
 
@@ -177,7 +185,7 @@
                             <td>{{city.cityID}}</td>
                             <td>{{city.cityName}}</td>
                             <td>
-                              <button data-id ="{{city.cityID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto rem-city">Remove</button>
+                              <button data-id ="{{city.cityID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto rem-city"><i class="fas fa-trash-alt"></i></button>
                             </td>
                           </tr>
 

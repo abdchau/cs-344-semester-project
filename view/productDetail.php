@@ -45,7 +45,7 @@
         <img src="images/plus.png" style="max-height: 90%; padding: 3%"alt="" />
       </button>
     </div>
-	<button class="btn btn-lg btn-primary btn-block" type="submit" id="add_to_cart">Add to Cart</button>
+	<button class="btn btn-lg btn-primary btn-block" type="submit" id="add_to_cart">Add to Cart <i class="fas fa-cart-plus"></i></button>
 </div>
     </div>
 </div>

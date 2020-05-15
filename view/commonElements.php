@@ -12,6 +12,7 @@ function loadHeader($title){
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<script src="..\controller\all.js"></script>
 		<script src="..\controller\jquery.js"></script>
 		<script src="..\controller\effects.js"></script>
 		<script src="..\controller\angular-1.3.14.js"></script>
@@ -26,7 +27,7 @@ function loadHeader($title){
 
 function loadNavbar($categories_list, $user){
 	return
-	'<nav ng-controller="navbar_ctrl" class="navbar sticky-top navbar-expand-lg navbar-light bg-faded shadow" style="background-color: #e3f2fd;">
+	'<nav ng-controller="navbar_ctrl" class="navbar sticky-top navbar-expand-md navbar-light bg-faded shadow" style="background-color: #e3f2fd;">
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	<span class="navbar-toggler-icon"></span>
 	</button>
@@ -53,10 +54,10 @@ function loadNavbar($categories_list, $user){
 		</ul>
 		<ul class="navbar-nav ml-auto" id="user_actions" ng-if="user != null">
 			<li class="nav-item mx-3">
-				<a class="nav-link" id="user_action_1" href="profile.php">Hi, {{user.firstName}}</a>
+				<a class="nav-link" id="user_action_1" href="profile.php"><i class="fas fa-user-circle" style="font-size:1.4rem"></i></a>
 			</li>
 			<li class="nav-item mx-3">
-				<a class="nav-link" id="user_action_2" href="#">Sign Out</a>
+				<a class="nav-link" id="user_action_2" href="#"><i class="fas fa-sign-out-alt" style="font-size:1.4rem"></i></a>
 			</li>
 		</ul>
 		<ul class="navbar-nav ml-auto" id="user_actions" ng-if="user == null">
@@ -64,13 +65,13 @@ function loadNavbar($categories_list, $user){
 				<a class="nav-link" id="user_action_1" href="signup.php">Sign Up</a>
 			</li>
 			<li class="nav-item mx-3">
-				<a class="nav-link" href="signin.php">Sign In</a>
+				<a class="nav-link" href="signin.php"><i class="fas fa-sign-in-alt" style="font-size:1.4rem"></i></a>
 			</li>
 		</ul>
 
 	<div class="form-inline my-2 my-lg-0">
 		<input ng-model="query" class="form-control mr-sm-2" id="search_bar" type="search" placeholder="Search">
-	<a href="searchResult.php?query={{query}}"><button  class="btn btn-outline-success my-2 my-sm-0" id="search_button" type="submit">Search</button></a>
+	<a href="searchResult.php?query={{query}}"><button  class="btn btn-outline-success my-2 my-sm-0" id="search_button" type="submit"><i class="fas fa-search"></i></button></a>
 	</div>
 	</div>
 </nav>

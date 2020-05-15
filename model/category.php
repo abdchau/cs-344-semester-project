@@ -8,10 +8,22 @@ function getProdsByCategory($conn){
 	$result = $conn->query("select * from shopping.products where categoryID = ".$_GET['crd']);
 	if ($result->num_rows > 0) {
     // output data of each row
-    while($row = $result->fetch_assoc()) {
-        $arr[] = $row;
-    }
+	    while($row = $result->fetch_assoc()) {
+	        $arr[] = $row;
+	    }
+	}
+
+	return json_encode($arr).$conn->error;
 }
+
+function getProdsBySeller($conn){
+	$result = $conn->query("select * from shopping.products where sellerID = ".$_GET['srd']);
+	if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+	        $arr[] = $row;
+	    }
+	}
 
 	return json_encode($arr).$conn->error;
 }

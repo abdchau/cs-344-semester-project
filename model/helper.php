@@ -26,8 +26,12 @@ function checkCookie($conn){
 	return $username;
 }
 
-function getUserJSON($conn){
-	if (checkCookie($conn)==null)
+function getUserJSON($conn, $userID=null){
+	if ($userID!=null) {
+		$username = $conn->query('select * from (select * from shopping.users where userID='.$userID.')A natural join shopping.addresses natural join shopping.cities;')->fetch_assoc();
+		return json_encode($username);
+	}
+	elseif (checkCookie($conn)==null)
 		return json_encode(null);
 	else{
 		return json_encode(checkCookie($conn));
