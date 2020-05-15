@@ -11,44 +11,44 @@
   <body ng-app="PageApp">
 
 	<?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
-
-	<div class="row mt-4" style="width:100%" ng-controller="InfoControl">
-	<div class="col-md-7 order-md-1"style="padding: 5%;">
-		<img class="image-fluid" src="{{info.imageURL}}" style="max-width:100%">
+	<div class="container row mx-auto my-5" ng-controller="InfoControl">
+		<div class="col-lg-8 mb-5">
+			<div class="card-img-top" style="background: url('{{info.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:400px">
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<h4 class="d-flex justify-content-between align-items-center mb-3">
+				<span class="text-muted">Price</span>
+				<span class="badge badge-secondary badge-pill">Rs {{info.price}}</span>
+			</h4>
+			<div class="card text-white bg-info mb-3">
+				<div class="card-header"><h4>Seller</h4></div>
+				<div class="card-body">
+					<a class="text-decoration-none text-light" href="productsBySeller.php?srd={{info.sellerID}}"><h5 class="card-title">{{info.firstName}} {{info.lastName}}</h5></a>
+				</div>
+			</div>
+			<div class="card border-info mb-3">
+				<div class="card-header">{{info.productName}}</div>
+				<div class="card-body text-info">
+					<h5 class="card-title"></h5>
+					<p class="card-text">{{info.productDscrptn}}</p>
+				</div>
+			</div>
+			<div class="mb-3">
+				<h3 style="width: 100%">QUANTITY :</h3>
+				<div class="quantity">
+					<button class="minus-btn stil" type="button" name="button">
+						<i class="fas fa-minus-circle" style="font-size:1.4rem"></i>
+					</button>
+					<input class="font-weight-bold" style="font-size:1.4rem" type="text" name="name" value="1" id="qtty">
+					<button class="plus-btn stil" type="button" name="button">
+						<i class="fas fa-plus-circle" style="font-size:1.4rem"></i>
+					</button>
+				</div>
+				<button class="btn btn-lg btn-primary btn-block" type="submit" id="add_to_cart">Add to Cart <i class="fas fa-cart-plus"></i></button>
+			</div>
+		</div>
 	</div>
-	<div class="col-md-5 order-md-2 mb-4"  style="padding-right: 3%; padding-left: 8%">
-      <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted">Price</span>
-        <span class="badge badge-secondary badge-pill">Rs {{info.price}}</span>
-      </h4>
-      <div class="card text-white bg-info mb-3" style="width: 100%">
-  <div class="card-header">Owner of the Product</div>
-  <div class="card-body">
-    <h5 class="card-title">{{info.firstName}} {{info.lastName}}</h5>
-  </div>
-</div>
-<div class="card border-info mb-3" style="width: 100%">
-  <div class="card-header">{{info.productName}}</div>
-  <div class="card-body text-info">
-    <h5 class="card-title"></h5>
-    <p class="card-text">{{info.productDscrptn}}</p>
-  </div>
-</div>
-<div class="row" style="padding: 5%">
-      <h3 style="width: 100%">QUANTITY :   </h3>
-	<div class="quantity">
-      <button class="minus-btn stil" type="button" name="button">
-        <img src="images/minus.png" style="max-height: 90%; padding: 3%" alt="" />
-      </button>
-      <input type="text" name="name" value="1" id="qtty">
-      <button class="plus-btn stil" type="button" name="button">
-        <img src="images/plus.png" style="max-height: 90%; padding: 3%"alt="" />
-      </button>
-    </div>
-	<button class="btn btn-lg btn-primary btn-block" type="submit" id="add_to_cart">Add to Cart <i class="fas fa-cart-plus"></i></button>
-</div>
-    </div>
-</div>
 <div class="container card shadow-lg mb-5" ng-controller="CardControl">
 			<div class="form-inline">
 				<h3 class="display-4 mb-3 mr-auto">Related Products</h3>

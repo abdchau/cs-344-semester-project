@@ -38,6 +38,14 @@ input:focus {
 	background-image: linear-gradient(to right, darkgray , lightgray, lightgray, lightgray,darkgray);
 	box-shadow: 5px 10px 8px 10px #e3f2fd;
 }
+
+.carousel-caption{
+	background-color: rgba(0,0,0,0.45);
+	border-radius: 15px;
+	width:fit-content;
+	margin:auto;
+}
+
 .form-signin{
 	text-align: center;
 	border-radius: 25px;

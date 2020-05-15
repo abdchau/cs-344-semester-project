@@ -12,25 +12,33 @@
 
 	<?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
-	<div ng-controller="carousel-ctrl" class="container my-4">
+	<div id="carouselIndicators" ng-controller="carousel-ctrl" class="container my-4">
 		<div class="carousel slide carouselIndex " data-ride="carousel">
 			<ol class="carousel-indicators">
-			  <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
-			  <li data-target="#carouselIndicators" data-slide-to="1"></li>
-			  <li data-target="#carouselIndicators" data-slide-to="2"></li>
+			  <li data-target="#carouselIndicators" data-slide-to="{{$index}}" class="active" ng-repeat="ft in featured" ng-if="ft == featured[0]"></li>
+			  <li data-target="#carouselIndicators" data-slide-to="{{$index}}" ng-repeat="ft in featured" ng-if="ft != featured[0]"></li>
 			</ol>
 			<div class="carousel-inner">
-			  <div class="carousel-item active" ng-repeat="ft in featured" ng-if="ft == featured[0]">
-			  	<div class="card-img-top" style="background: url('{{ft.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:500px">
-				  <div class="badge badge-pill badge-primary float-right m-3">Featured</div>
-				  {{ft.productName}}
-				</div>
-			  </div>
-			  <div class="carousel-item" ng-repeat="ft in featured" ng-if="ft != featured[0]">
-			  	<div class="card-img-top" style="background: url('{{ft.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:500px">
-				  <div class="badge badge-pill badge-primary float-right m-3">Featured</div>
-				</div>
-			  </div>
+				<a href="productDetail.php?prd={{ft.productID}}" class="text-decoration-none" ng-repeat="ft in featured" ng-if="ft == featured[0]">
+					<div class="carousel-item active">
+						<div class="card-img-top" style="background: url('{{ft.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:500px">
+							<div class="badge badge-pill badge-primary float-right m-3">Featured</div>
+							<div class="carousel-caption d-md-block">
+								<h5 class="mx-4">{{ft.productName}}</h5>
+							</div>
+						</div>
+					</div>
+				</a>
+				<a href="productDetail.php?prd={{ft.productID}}" class="text-decoration-none" ng-repeat="ft in featured" ng-if="ft != featured[0]">
+					<div class="carousel-item">
+						<div class="card-img-top" style="background: url('{{ft.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:500px">
+							<div class="badge badge-pill badge-primary float-right m-3">Featured</div>
+							<div class="carousel-caption d-md-block">
+								<h5 class="mx-4">{{ft.productName}}</h5>
+							</div>
+						</div>
+					</div>
+				</a>
 			</div>
 		</div>
 	</div>

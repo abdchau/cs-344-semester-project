@@ -28,79 +28,76 @@ function loadHeader($title){
 function loadNavbar($categories_list, $user){
 	return
 	'<nav ng-controller="navbar_ctrl" class="navbar sticky-top navbar-expand-md navbar-light bg-faded shadow" style="background-color: #e3f2fd;">
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	<span class="navbar-toggler-icon"></span>
-	</button>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-	<a class="navbar-brand mx-auto" href="index.php">
-	<img src="images\logo.jpg" width="30" height="30" alt=""> Shopoholic
-	</a>
-
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-	<ul class="navbar-nav mr-auto">
-	<li class="nav-item mx-3">
-		<a class="nav-link" id="home" href="index.php">Home <span class="sr-only">(current)</span></a>
-	</li>
-	<li class="nav-item dropdown mx-3">
-		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			Categories
+		<a class="navbar-brand mx-auto" href="index.php">
+			<img src="images\logo.jpg" width="30" height="30" alt=""> Shopoholic
 		</a>
-		<div class="dropdown-menu" id="categories_dropdown" aria-labelledby="navbarDropdownMenuLink">
-		<a ng-repeat="category in categories" class="dropdown-item" href="category.php?crd={{category.categoryID}}">{{category.categoryName}}</a>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item dropdown mx-2">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Categories
+					</a>
+					<div class="dropdown-menu" id="categories_dropdown" aria-labelledby="navbarDropdownMenuLink">
+						<a ng-repeat="category in categories" class="dropdown-item" href="category.php?crd={{category.categoryID}}">{{category.categoryName}}</a>
+					</div>
+				</li>
+				<li class="nav-item mx-2" id="contact_us">
+					<a class="nav-link" href="contact.php">Contact Us</a>
+				</li>
+			</ul>
+			<ul class="navbar-nav ml-auto" id="user_actions" ng-if="user != null">
+				<li class="nav-item mx-1">
+					<a class="nav-link" id="user_action_1" href="profile.php"><i class="fas fa-user-circle" style="font-size:1.4rem"></i></a>
+				</li>
+				<li class="nav-item mx-1">
+					<a class="nav-link" id="user_action_2" href="#"><i class="fas fa-sign-out-alt" style="font-size:1.4rem"></i></a>
+				</li>
+			</ul>
+			<ul class="navbar-nav ml-auto" id="user_actions" ng-if="user == null">
+				<li class="nav-item mx-1">
+					<a class="nav-link" id="user_action_1" href="signup.php"><i class="fas fa-user-plus" style="font-size:1.4rem"></i></a>
+				</li>
+				<li class="nav-item mx-1">
+					<a class="nav-link" href="signin.php"><i class="fas fa-sign-in-alt" style="font-size:1.4rem"></i></a>
+				</li>
+			</ul>
+			<form class="form-inline ml-3 my-2 my-md-0">
+				<input ng-model="query" class="form-control mr-1" id="search_bar" type="search" placeholder="Search">
+				<a href="searchResult.php?query={{query}}"><button  class="btn btn-outline-success my-2 my-sm-0" id="search_button" type="submit"><i class="fas fa-search"></i></button></a>
+    		</form>
 		</div>
-			<li class="nav-item mx-3" id="contact_us">
-				<a class="nav-link" href="contact.php">Contact Us</a>
-			</li>
-		</ul>
-		<ul class="navbar-nav ml-auto" id="user_actions" ng-if="user != null">
-			<li class="nav-item mx-3">
-				<a class="nav-link" id="user_action_1" href="profile.php"><i class="fas fa-user-circle" style="font-size:1.4rem"></i></a>
-			</li>
-			<li class="nav-item mx-3">
-				<a class="nav-link" id="user_action_2" href="#"><i class="fas fa-sign-out-alt" style="font-size:1.4rem"></i></a>
-			</li>
-		</ul>
-		<ul class="navbar-nav ml-auto" id="user_actions" ng-if="user == null">
-			<li class="nav-item mx-3">
-				<a class="nav-link" id="user_action_1" href="signup.php">Sign Up</a>
-			</li>
-			<li class="nav-item mx-3">
-				<a class="nav-link" href="signin.php"><i class="fas fa-sign-in-alt" style="font-size:1.4rem"></i></a>
-			</li>
-		</ul>
-
-	<div class="form-inline my-2 my-lg-0">
-		<input ng-model="query" class="form-control mr-sm-2" id="search_bar" type="search" placeholder="Search">
-	<a href="searchResult.php?query={{query}}"><button  class="btn btn-outline-success my-2 my-sm-0" id="search_button" type="submit"><i class="fas fa-search"></i></button></a>
-	</div>
-	</div>
-</nav>
+	</nav>
 
 
-<script type="text/javascript">
-	// Search on pressing enter
-	var input = document.getElementById("search_bar");
-	input.addEventListener("keyup", function(event) {
-		if (event.keyCode === 13) {
-			event.preventDefault();
-			document.getElementById("search_button").click();
-		}
-	});
-	var categories = JSON.parse(\''.$categories_list.'\');
+	<script type="text/javascript">
+		// Search on pressing enter
+		var input = document.getElementById("search_bar");
+		input.addEventListener("keyup", function(event) {
+			if (event.keyCode === 13) {
+				event.preventDefault();
+				document.getElementById("search_button").click();
+			}
+		});
+		var categories = JSON.parse(\''.$categories_list.'\');
 
-	$(document).ready(function(){
-		$("#user_action_2").click(function(){
-			signOut();
+		$(document).ready(function(){
+			$("#user_action_2").click(function(){
+				signOut();
+			})
 		})
-	})
 
-	var App = angular.module(\'PageApp\', []);
+		var App = angular.module(\'PageApp\', []);
 
-	App.controller(\'navbar_ctrl\', function ($scope){
-		$scope.categories = categories;
-		$scope.user = JSON.parse(\''.$user.'\');
-	});
-</script>';
+		App.controller(\'navbar_ctrl\', function ($scope){
+			$scope.categories = categories;
+			$scope.user = JSON.parse(\''.$user.'\');
+		});
+	</script>';
 }
 
 function loadCartIcon(){
