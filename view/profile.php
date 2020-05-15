@@ -250,7 +250,7 @@
                             <td>{{item.price}}</td>
                             <td>{{item.billingName}}</td>
                             <td>{{item.billingAddress}}</td>
-                            <td><button data-id="{{item.orderID}}" type="button" class="btn btn-block-xs btn-outline-success my-auto com-order">Complete</button>
+                            <td><button data-id="{{item.orderID}}" type="button" class="btn btn-block-xs btn-outline-success my-auto com-order">Confirm</button>
                             <button data-id="{{item.orderID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto del-order">Deny</button></td>
                           </tr>
                         </tbody>
@@ -333,7 +333,7 @@
       $scope.isAdmin = JSON.parse('<?php echo getUserJSON($conn); ?>')['isAdmin'];
       console.log($scope.categories);
     });
-    
+
     $('document').ready(function(){
       $('.rem-cart').click(function(){
           // console.log($(this).attr('data-id'));
@@ -350,7 +350,7 @@
           completeOrder($(this).attr('data-id'));
       });
     });
-   
+
     $('#delete_account').click(function(){
       deleteUser(JSON.parse('<?php echo getUserJSON($conn); ?>')['userID']);
       window.location.href = 'index.php';
