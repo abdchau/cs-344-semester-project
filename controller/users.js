@@ -1,7 +1,7 @@
-var script = document.createElement('script');
-script.src = '../controller/jquery.js';
-script.type = 'text/javascript';
-document.getElementsByTagName('head')[0].appendChild(script);
+// var script = document.createElement('script');
+// script.src = '../controller/jquery.js';
+// script.type = 'text/javascript';
+// document.getElementsByTagName('head')[0].appendChild(script);
 
 //================START COOKIE CODE==================
 function setCookie(cname, cvalue, exhours){
@@ -226,6 +226,38 @@ function addCategory(categoryName) {
 		type:'POST',
 		url: '../model/interface.php',
 		data: {'categoryName':categoryName,'func':'addCategory'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			alert(response);
+			location.reload();
+		},
+		error: function(){console.log('post error');}
+	})
+}
+
+function removeCity(cityID) {
+	$.ajax({
+		type:'POST',
+		url: '../model/interface.php',
+		data: {'cityID':cityID, 'func':'removeCity'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			alert(response);
+			location.reload();
+		},
+		error: function(){console.log('post error');}
+	})
+}
+
+function addCity(cityName) {
+	$.ajax({
+		type:'POST',
+		url: '../model/interface.php',
+		data: {'cityName':cityName,'func':'addCity'},
 		datatype: 'json',
 		success: function(response){
 

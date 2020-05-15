@@ -96,6 +96,16 @@ function addCategory($conn){
 	return "Category added".$conn->error;
 }
 
+function removeCity($conn){
+	$conn->query("delete from shopping.cities where cityID=".$_POST['cityID']);
+	return "City deleted".$conn->error;
+}
+
+function addCity($conn){
+	$conn->query("insert into shopping.cities (cityName) values ('".$_POST['cityName']."')");
+	return "City added".$conn->error;
+}
+
 function placeOrder($conn){
 	$conn->query("insert into shopping.orders(buyerID, amount, billingName, billingAddress, timeCreated)
 		values ('".$_POST['order']['buyerID']."', '".$_POST['order']['amount']."', '".$_POST['order']['billingName']."', '".$_POST['order']['billingAddress']."', '".date("Y-m-d H:i:s")."')");
@@ -168,6 +178,12 @@ if (isset($_POST['func'])){
 	}
 	if ($_POST['func']=='addCategory'){
 		echo addCategory($conn);
+	}
+	if ($_POST['func']=='addCity'){
+		echo addCity($conn);
+	}
+	if ($_POST['func']=='removeCity'){
+		echo removeCity($conn);
 	}
 	if ($_POST['func']=='placeOrder'){
 		echo placeOrder($conn);
