@@ -1,5 +1,8 @@
 <?php require '../model/interface.php';
   require 'commonElements.php';
+  if (!isset($_GET['crd'])) {
+    header('Location: 404.php');
+  }
   $categoryName = getCategoryName($conn);
   $products = getProdsByCategory($conn);
 ?>

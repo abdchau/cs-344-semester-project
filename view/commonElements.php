@@ -13,8 +13,6 @@ function loadHeader($title){
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 		<script src="..\controller\all.js"></script>
-		<script src="..\controller\jquery.js"></script>
-		<script src="..\controller\effects.js"></script>
 		<script src="..\controller\angular-1.3.14.js"></script>
 		<script src="..\controller\users.js"></script>
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
@@ -50,26 +48,30 @@ function loadNavbar($categories_list, $user){
 					<a class="nav-link" href="contact.php">Contact Us</a>
 				</li>
 			</ul>
-			<ul class="navbar-nav ml-auto" id="user_actions" ng-if="user != null">
-				<li class="nav-item mx-1">
-					<a class="nav-link" id="user_action_1" href="profile.php"><i class="fas fa-user-circle" style="font-size:1.4rem"></i></a>
-				</li>
-				<li class="nav-item mx-1">
+
+
+			<div class="input-group ml-3 my-2 col-md-4" ng-if="user != null">
+				<a class="nav-link" id="user_action_1" href="profile.php"><i class="fas fa-user-circle" style="font-size:1.4rem"></i></a>
+				<div class="input-group-append">
 					<a class="nav-link" id="user_action_2" href="#"><i class="fas fa-sign-out-alt" style="font-size:1.4rem"></i></a>
-				</li>
-			</ul>
-			<ul class="navbar-nav ml-auto" id="user_actions" ng-if="user == null">
-				<li class="nav-item mx-1">
-					<a class="nav-link" id="user_action_1" href="signup.php"><i class="fas fa-user-plus" style="font-size:1.4rem"></i></a>
-				</li>
-				<li class="nav-item mx-1">
+				</div>
+    		</div>
+			<div class="input-group ml-3 my-2 col-md-4" ng-if="user == null">
+				<a class="nav-link" id="user_action_1" href="signup.php"><i class="fas fa-user-plus" style="font-size:1.4rem"></i></a>
+				<div class="input-group-append">
 					<a class="nav-link" href="signin.php"><i class="fas fa-sign-in-alt" style="font-size:1.4rem"></i></a>
-				</li>
-			</ul>
-			<form class="form-inline ml-3 my-2 my-md-0">
+				</div>
+    		</div>
+
+
+			<div class="input-group ml-3 my-2 col-md-4">
 				<input ng-model="query" class="form-control mr-1" id="search_bar" type="search" placeholder="Search">
-				<a href="searchResult.php?query={{query}}"><button  class="btn btn-outline-success my-2 my-sm-0" id="search_button" type="submit"><i class="fas fa-search"></i></button></a>
-    		</form>
+				<div class="input-group-append">
+					<a href="searchResult.php?query={{query}}">
+						<button  class="btn btn-outline-success mr-2" id="search_button" type="submit"><i class="fas fa-search"></i></button>
+					</a>
+				</div>
+    		</div>
 		</div>
 	</nav>
 

@@ -19,26 +19,35 @@
 			  <li data-target="#carouselIndicators" data-slide-to="{{$index}}" ng-repeat="ft in featured" ng-if="ft != featured[0]"></li>
 			</ol>
 			<div class="carousel-inner">
-				<a href="productDetail.php?prd={{ft.productID}}" class="text-decoration-none" ng-repeat="ft in featured" ng-if="ft == featured[0]">
-					<div class="carousel-item active">
+				<div data-interval="4000" class="carousel-item active" ng-repeat="ft in featured" ng-if="ft == featured[0]">
+					<div>
 						<div class="card-img-top" style="background: url('{{ft.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:500px">
 							<div class="badge badge-pill badge-primary float-right m-3">Featured</div>
 							<div class="carousel-caption d-md-block">
-								<h5 class="mx-4">{{ft.productName}}</h5>
+									<h5 class="mx-4">
+									<a href="productDetail.php?prd={{ft.productID}}" class="text-decoration-none text-white">
+									{{ft.productName}}
+									</a>
+								</h5>							
 							</div>
 						</div>
 					</div>
-				</a>
-				<a href="productDetail.php?prd={{ft.productID}}" class="text-decoration-none" ng-repeat="ft in featured" ng-if="ft != featured[0]">
-					<div class="carousel-item">
+				</div>
+				<div data-interval="4000" class="carousel-item" ng-repeat="ft in featured" ng-if="ft != featured[0]">
+					<div>
 						<div class="card-img-top" style="background: url('{{ft.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:500px">
 							<div class="badge badge-pill badge-primary float-right m-3">Featured</div>
 							<div class="carousel-caption d-md-block">
-								<h5 class="mx-4">{{ft.productName}}</h5>
+								<h5 class="mx-4">
+									<a href="productDetail.php?prd={{ft.productID}}" class="text-decoration-none text-white">
+									{{ft.productName}}
+									</a>
+								</h5>
+								
 							</div>
 						</div>
 					</div>
-				</a>
+				</div>
 			</div>
 		</div>
 	</div>

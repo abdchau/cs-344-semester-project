@@ -1,5 +1,8 @@
 <?php require '../model/interface.php';
 	require 'commonElements.php';
+	if (!isset($_GET['prd'])) {
+		header('Location: 404.php');
+	}
 	$relatedProds = getRelatedProducts($conn);
 	$info = getInfo($conn);
 ?>

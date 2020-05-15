@@ -1,5 +1,8 @@
 <?php require '../model/interface.php';
   require 'commonElements.php';
+  if (!isset($_GET['srd'])) {
+    header('Location: 404.php');
+  }
   $seller = getUserJSON($conn, $_GET['srd']);
   $products = getProdsBySeller($conn);
 ?>

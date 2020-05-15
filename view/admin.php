@@ -1,7 +1,7 @@
 <?php require '../model/interface.php';
   require 'commonElements.php';
   if ($username==null || $username['isAdmin']==false)
-    header("Location: index.php");
+    header("Location: 404.php");
   $users = getUsers($conn);
 ?>
 
