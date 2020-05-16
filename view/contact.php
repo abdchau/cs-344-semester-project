@@ -76,13 +76,11 @@ However, if you still require more information or assistance, we’re here to he
           </div>
       </div>
       <div class="form-group row">
-          <div class="col-sm-12">
+          <div class="col-sm-6">
           Name:
             <input type="text" class="form-control" name="name" >
           </div>
-      </div>
-      <div class="form-group row">
-          <div class="col-sm-12">
+          <div class="col-sm-6">
           Phone:
             <input type="email" class="form-control" name="Phone" >
           </div>
@@ -111,7 +109,7 @@ However, if you still require more information or assistance, we’re here to he
                <div class="card border-0">
                   <div class="card-body text-center">
                      <a href="https://www.google.com/maps/place/NUST/@33.6428817,72.9904797,17z/data=!3m1!4b1!4m5!3m4!1s0x38df9675aaaaaaab:0xc5180922c44eb86b!8m2!3d33.6428817!4d72.9926684" style="color: black">
-                      <i class="fa fa-map-marker fa-5x mb-3" aria-hidden="true"></i>
+                      <i class="fa fa-map-marker-alt fa-5x mb-3" aria-hidden="true"></i>
                     <h4 class="text-uppercase mb-5">office loaction</h4>
                    <address>NUST H-12, Islamabad</address>
                  </a>

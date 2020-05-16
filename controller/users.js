@@ -216,7 +216,7 @@ function toggleAdmin(userID) {
 
 			console.log('post success');
 			alert(response);
-			location.reload();
+			//location.reload();
 		},
 		error: function(){console.log('post error');}
 	})
@@ -232,7 +232,7 @@ function removeCategory(categoryID) {
 
 			console.log('post success');
 			alert(response);
-			location.reload();
+			//location.reload();
 		},
 		error: function(){console.log('post error');}
 	})
@@ -311,7 +311,6 @@ function toggleFeatured(productID) {
 
 			console.log('post success');
 			alert(response);
-			location.reload();
 		},
 		error: function(){console.log('post error');}
 	})

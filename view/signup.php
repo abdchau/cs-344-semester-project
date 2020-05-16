@@ -24,10 +24,10 @@
 	<h3 class="h3 mb-3 font-weight-normal">Please fill the following form</h3>
   		<div class="form-group row">
 
-      		<div class="col-sm-6">
+      		<div class="col-sm-6 my-2">
        			<input type="text" class="form-control" id="firstName" placeholder="First Name">
       		</div>
-          <div class="col-sm-6">
+          <div class="col-sm-6 my-2">
        			<input type="text" class="form-control" id="lastName" placeholder="Last Name">
       		</div>
     	</div>
@@ -58,16 +58,13 @@
     	</div>
       <div class="form-group row">
 
-          <div class="col-sm-4 mb-3">
+          <div class="col-sm-6 mb-3">
             <select class="custom-select d-block w-100" id="city" required="">
               <option value="null">City</option>
               <option ng-repeat="city in cities" value="{{city.cityID}}">{{city.cityName}}</option>
             </select>
           </div>
-          <div class="col-sm-4 mb-3">
-            <input type="text" class="form-control" id="phone" placeholder="Phone no">
-          </div>
-          <div class="col-sm-4 mb-3">
+          <div class="col-sm-6 mb-3">
             <input type="text" class="form-control" id="zipcode" placeholder="ZIP">
           </div>
 
@@ -77,7 +74,7 @@
       <div class="col-sm-10">
         <div class="form-check" style="text-align: left;">
           <label class="form-check-label">
-            <input class="form-check-input" type="radio">
+            <input class="form-check-input" id="radio" type="radio">
             I agree to the <a href="#">terms and user</a> conditions
           </label>
         </div>
@@ -101,11 +98,22 @@
         $('#submit').click(function(e){
           //e.preventDefault();
           console.log($('option:selected').val());
-          if ($('option:selected').val() != "null") {
-            addUser($('#inputEmail').val(), $('#inputPassword').val(),
-              $('#firstName').val(), $('#lastName').val(), $('#address').val(),
-              $('option:selected').val(), $('#zipcode').val());
+          console.log($('#firstName').val());
+          if($('#radio').is(':checked')){
+	          if ($('option:selected').val() != "null" && $('#inputEmail').val()!= "" && $('#inputPassword').val() != "" &&
+	              $('#firstName').val() != "" && $('#lastName').val() != "" && $('#address').val() != "" &&
+	              $('#zipcode').val() != "" ) 
+	          {
+	            addUser($('#inputEmail').val(), $('#inputPassword').val(),
+	              $('#firstName').val(), $('#lastName').val(), $('#address').val(),
+	              $('option:selected').val(), $('#zipcode').val());
+	          }
+	          else
+	          	alert("Please fill all the fields in this form!");
           }
+          else
+          	alert("Please check terms and user conditions");
+
         });
       });
     </script>
