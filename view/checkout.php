@@ -138,12 +138,19 @@
         <script>
           $(document).ready(function(){
             $('#buy').click(function(){
-              var billingName = $('#firstName').val()+' '+$('#lastName').val();
-              var billingAddress = $('#address').val()+' '+$('#address2').val()+' '+$('#city').val()+' '+$('#zip').val();
-              var amount = parseInt($('#total').html());
-              console.log(amount);
-              var buyerID = user['userID'];
-              placeOrder(buyerID, amount, billingName, billingAddress, products);
+              if(products == null)
+              {
+                alert("cant place order due to empty cart");
+              }
+              else
+              {
+                var billingName = $('#firstName').val()+' '+$('#lastName').val();
+                var billingAddress = $('#address').val()+' '+$('#address2').val()+' '+$('#city').val()+' '+$('#zip').val();
+                var amount = parseInt($('#total').html());
+                console.log(amount);
+                var buyerID = user['userID'];
+                placeOrder(buyerID, amount, billingName, billingAddress, products);
+              }            
             });
           });
         </script>
