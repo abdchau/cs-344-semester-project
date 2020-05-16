@@ -191,13 +191,41 @@
                             <td>{{product.productName}}</td>
                             <td>{{product.price}}</td>
                             <td>{{product.stock}}</td>
-                            <td><button data-id="{{product.productID}}" type="button" class="btn btn-outline-danger my-auto rem-active-prod"><i class="fas fa-trash-alt"></i></button></td>
+
+                            <td><div class="btn-group" role="group">
+                                <div class="btn-group" role="group">
+                                  <button data-productID="{{product.productID}}" data-productStock="{{product.stock}}" type="button" class="btn btn-block-xs btn-outline-success my-auto openModal" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></button>
+                                  <button data-id="{{product.productID}}" type="button" class="btn btn-outline-danger my-auto rem-active-prod"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                              </div>
+                            </td>
                           </tr>
 
                         </tbody>
                       </table>
                   </div>
             </div>
+
+            <div class="modal fade" id="editModal" data-backdrop="static" tabindex="-1" role="dialog">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Edit Product Stock</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <input name="categoryName" type="text" class="form-control" id="inputEditProductStock" placeholder="E.g Smartphone">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"  id="stock-edit">Save Changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div ng-controller="placed-order-ctrl" class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
                 <div class="table-responsive">
                     <table class="table">
@@ -248,7 +276,7 @@
                             <td>{{item.billingAddress}}</td>
                             <td>
                               <div class="btn-group" role="group">
-                                <button data-id="{{item.orderID}}" type="button" class="btn btn-block-xs btn-outline-success my-auto com-order"><i class="fas fa-check"></i></button>
+                                <button data-stock="{{item.stock}}" data-qtty="{{item.quantity}}" data-id="{{item.orderID}}" type="button" class="btn btn-block-xs btn-outline-success my-auto com-order"><i class="fas fa-check"></i></button>
                                 <button data-id="{{item.orderID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto del-order"><i class="fas fa-ban"></i></button></td>
                               </div>
                           </tr>
@@ -302,6 +330,7 @@
 
   <script type="text/javascript">
     console.log("hellooo");
+    receivedOrders = JSON.parse('<?php echo $receivedOrders; ?>');
     App.controller('profile-data-ctrl', function ($scope){
       $scope.user = JSON.parse('<?php echo getUserJSON($conn); ?>');
       $scope.cities = JSON.parse('<?php echo getCities($conn); ?>');
@@ -321,7 +350,8 @@
       $scope.categories = JSON.parse('<?php echo getCategories($conn); ?>');
     })
     .controller('received-order-ctrl', function ($scope){
-      $scope.receivedOrders = JSON.parse('<?php echo $receivedOrders; ?>');
+      $scope.receivedOrders = receivedOrders;
+      console.log("received order");
       console.log($scope.receivedOrders);
     })
     .controller('upload-prod-ctrl', function ($scope){
@@ -345,14 +375,29 @@
       $('.del-order').click(function(){
           deleteOrder($(this).attr('data-id'));
       });
+      $('.openModal').click(function(){
+          $('#inputEditProductStock').val($(this).attr('data-productStock'));
+          $('#stock-edit').attr('data-productID', $(this).attr('data-productID'));
+
+        });
+
       $('.com-order').click(function(){
-          completeOrder($(this).attr('data-id'));
+          if($(this).attr('data-stock')<$(this).attr('data-qtty'))
+          {
+            alert("you dont have enough items in your inventory!");
+          }
+          else
+            completeOrder($(this).attr('data-id'));
       });
     });
 
     $('#delete_account').click(function(){
       deleteUser(JSON.parse('<?php echo getUserJSON($conn); ?>')['userID']);
       window.location.href = 'index.php';
+    });
+    $('#stock-edit').click(function(){
+      console.log($('#inputEditProductStock').val());
+      editStock($(this).attr('data-productID'),$('#inputEditProductStock').val());
     });
     $('#save_changes').click(function(){
       var userID=JSON.parse('<?php echo getUserJSON($conn); ?>')['userID'];

@@ -2,9 +2,10 @@
 
 function getInfo($conn)
 {
-	return json_encode($conn->query("select productName,productDscrptn,categoryID,price,firstName,lastName, imageURL, sellerID from
+	return json_encode($conn->query("select productName,productDscrptn,categoryID,price,firstName,lastName, imageURL, sellerID, stock from
 		shopping.products,shopping.users where products.sellerID = users.userID and productID = ".$_GET['prd'])->fetch_assoc());
 }
+
 
 function getFeaturedProducts($conn){
 	$result = $conn->query("select * from shopping.products where featured = true");

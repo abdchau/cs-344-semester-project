@@ -77,6 +77,11 @@ input:focus {
 		left:65%;
 	}
 }
+@media (max-width: 900px){
+	#cartIcon{
+		left:80%;
+	}
+}
 
 .prcard{
 	transition: box-shadow 0.3s;

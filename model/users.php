@@ -91,6 +91,10 @@ function editCategory($conn){
 	$conn->query("update shopping.categories set categoryName= '".$_POST['Name']."' where categoryID =".$_POST['categoryID']);
 	return "Category edited".$conn->error;
 }
+function editStock($conn){
+	$conn->query("update shopping.products set stock= '".$_POST['stock']."' where productID =".$_POST['productID']);
+	return "Stock edited".$conn->error;
+}
 function addCategory($conn){
 	$conn->query("insert into shopping.categories (categoryName) values ('".$_POST['categoryName']."')");
 	return "Category added".$conn->error;
@@ -204,6 +208,9 @@ if (isset($_POST['func'])){
 			break;
 		case 'editCategory':
 			echo editCategory($conn);
+			break;
+		case 'editStock':
+			echo editStock($conn);
 			break;
 		case 'addCategory':
 			echo addCategory($conn);

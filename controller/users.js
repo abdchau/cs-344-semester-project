@@ -252,6 +252,21 @@ function editCategory(categoryID,newName) {
 		error: function(){console.log('post error');}
 	})
 }
+function editStock(productID,newStock) {
+	$.ajax({
+		type:'POST',
+		url: '../model/interface.php',
+		data: {'productID':productID, 'stock':newStock, 'func':'editStock'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			alert(response);
+			location.reload();
+		},
+		error: function(){console.log('post error');}
+	})
+}
 
 function addCategory(categoryName) {
 	$.ajax({

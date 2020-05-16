@@ -43,7 +43,7 @@
 					<button class="minus-btn stil" type="button" name="button">
 						<i class="fas fa-minus-circle" style="font-size:1.4rem"></i>
 					</button>
-					<input class="font-weight-bold" style="font-size:1.4rem" type="text" name="name" value="1" id="qtty">
+					<input class="font-weight-bold" style="font-size:1.4rem" type="text" name="name" value="0" id="qtty">
 					<button class="plus-btn stil" type="button" name="button">
 						<i class="fas fa-plus-circle" style="font-size:1.4rem"></i>
 					</button>
@@ -66,7 +66,7 @@
 					</div>
 						<div class="card-body">
 						<h5 class="card-title text-secondary">{{product.productName}}</h5>
-						<h6 class="card-title text-success">{{product.price}}</h6>
+						<h6 class="text-success">Rs {{product.price}} <span class="text-danger" ng-if="product.stock == 0" style="font-size: 70%; float: right"> *Out of stock</span></h6>
 						</div>
 					</div>
 				</a>
@@ -78,6 +78,7 @@
 	<?php echo loadFooter(); ?>
     <!-- Optional JavaScript -->
     <script type="text/javascript">
+    	prdInfo = JSON.parse('<?php echo $info ?>');
     	$('.minus-btn').on('click', function(e) {
     		if($('#qtty').val() != 1)
             {
@@ -86,7 +87,10 @@
         });
 
         $('.plus-btn').on('click', function(e) {
-            $('#qtty').val(parseInt($('#qtty').val())+1);
+        	if(prdInfo.stock == $('#qtty').val())
+        		alert('Your quantity has reached our inventory limit');
+        	else
+            	$('#qtty').val(parseInt($('#qtty').val())+1);
         });
     </script>
 
@@ -94,7 +98,7 @@
 		  App.controller('CardControl', function ($scope){
     		$scope.products = JSON.parse('<?php echo $relatedProds ?>');
     		console.log($scope.products)
-    		$scope.info = JSON.parse('<?php echo $info ?>');
+    		$scope.info = prdInfo
     		console.log($scope.info)
   		});
       	App.controller('InfoControl', function ($scope){
