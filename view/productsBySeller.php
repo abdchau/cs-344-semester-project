@@ -16,10 +16,21 @@
 
 
 	<div class="album py-5 bg-light" ng-controller="SellerInfoControl">
-    <div class="row mx-5 my-3 alert alert-success">
-			<span class="mx-auto">Seller: {{seller.firstName}} {{seller.lastName}} <b>|</b>
-      Email: {{seller.email}}</span>
-    </div>
+
+  <div class="container card shadow my-3">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <div class="card-img-top" style="background: url('images/profile.png'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:200px">
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+              <h3 class="card-title mt-4 text-secondary">{{seller.firstName}} {{seller.lastName}}</h3>
+                <h5 class="card-title mt-3 text-secondary">Email: {{seller.email}}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
 		<div class="container card shadow-lg">
 			<h3 class="display-4 mb-5 mr-auto">Products</h3>
             <div class="row">
