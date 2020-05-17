@@ -140,7 +140,7 @@
             $('#buy').click(function(){
               if(products == null)
               {
-                alert("cant place order due to empty cart");
+                alert("You must have something in your cart to place an order");
               }
               else
               {

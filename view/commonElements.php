@@ -50,12 +50,12 @@ function loadNavbar($categories_list, $user){
 			</ul>
 
 			<div class="navbar-nav p-0" ng-if="user != null" id="user_actions">
-				<a class="nav-link p-0 mr-4" id="user_action_1" href="profile.php"><i class="fas fa-user-circle" style="font-size:1.6rem"></i><span class="nav-item" id="label"> {{user.firstName}}</span></a>
-				<a class="nav-link p-0 mr-3" id="user_action_2" href="#"><i class="fas fa-sign-out-alt" style="font-size:1.85rem"></i><span class="nav-item" id="label"> Sign Out</span></a>
+				<a class="nav-link p-0 mr-4" id="user_action_1" href="profile.php"><i class="fas fa-user-circle" style="font-size:1.7rem"></i><span class="nav-item" id="label"> {{user.firstName}}</span></a>
+				<a class="nav-link p-0 mr-3" id="user_action_2" href="#"><i class="fas fa-sign-out-alt" style="font-size:1.7rem"></i><span class="nav-item" id="label"> Sign Out</span></a>
     		</div>
 			<div class="navbar-nav p-0" ng-if="user == null" id="user_actions">
-				<a class="nav-link p-0 mr-4" id="user_action_1" href="signup.php"><i class="fas fa-user-plus" style="font-size:1.6rem"></i><span class="nav-item" id="label"> Sign Up</span></a>
-				<a class="nav-link p-0 mr-3" id="user_action_2" href="signin.php"><i class="fas fa-sign-in-alt" style="font-size:1.85rem"></i><span class="nav-item" id="label"> Sign In</span></a>
+				<a class="nav-link p-0 mr-4" id="user_action_1" href="signup.php"><i class="fas fa-user-plus" style="font-size:1.7rem"></i><span class="nav-item" id="label"> Sign Up</span></a>
+				<a class="nav-link p-0 mr-3" id="user_action_2" href="signin.php"><i class="fas fa-sign-in-alt" style="font-size:1.7rem"></i><span class="nav-item" id="label"> Sign In</span></a>
     		</div>
 
 			<div class="input-group my-2 col-md-4" id="search">

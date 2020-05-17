@@ -43,7 +43,7 @@
 					<button class="minus-btn stil" type="button" name="button">
 						<i class="fas fa-minus-circle" style="font-size:1.4rem"></i>
 					</button>
-					<input class="font-weight-bold" style="font-size:1.4rem" type="text" name="name" value="0" id="qtty">
+					<input class="font-weight-bold" style="font-size:1.4rem" type="text" name="name" value="1" id="qtty">
 					<button class="plus-btn stil" type="button" name="button">
 						<i class="fas fa-plus-circle" style="font-size:1.4rem"></i>
 					</button>
@@ -80,7 +80,7 @@
     <script type="text/javascript">
     	prdInfo = JSON.parse('<?php echo $info ?>');
     	$('.minus-btn').on('click', function(e) {
-    		if($('#qtty').val() != 1)
+    		if($('#qtty').val() > 1)
             {
                 $('#qtty').val(parseInt($('#qtty').val())-1);
             }
@@ -108,7 +108,13 @@
 	<script>
 		$(document).ready(function(){
 			$('#add_to_cart').click(function(){
-				addToCart( '<?php echo $username["userID"] ?>', parseInt($('#qtty').val()));
+				var userID = '<?php echo $username["userID"] ?>';
+				if (userID===""){
+					alert('You need to be logged in to access your cart');
+					window.location.href = 'signin.php';
+				}
+				else
+					addToCart( userID, parseInt($('#qtty').val()));
 			});
 		});
 	</script>

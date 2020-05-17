@@ -4,22 +4,22 @@ create database shopping;
 
 create table shopping.cities(
 		cityID int primary key auto_increment,
-		cityName varchar(20)
+		cityName varchar(50)
 );
 
 create table shopping.addresses(
 		addressID int primary key auto_increment,
 		address varchar(80),
-		postcode varchar(5),
+		postcode varchar(10),
 		cityID int, foreign key (cityID) references shopping.cities(cityID) on delete cascade
 );
 
 create table shopping.users(
 	userID int primary key auto_increment,
-	firstName varchar(20),
-	lastName varchar(20),
-	email varchar(20) unique not null,
-	password varchar(20),
+	firstName varchar(80),
+	lastName varchar(80),
+	email varchar(50) unique not null,
+	password varchar(80),
 	isAdmin boolean default false,
 	addressID int, foreign key(addressID) references shopping.addresses(addressID) on delete cascade
 );
@@ -33,9 +33,9 @@ create table shopping.products(
 	productID int primary key auto_increment,
     categoryID int, foreign key(categoryID) references shopping.categories(categoryID) on delete cascade,
     productName varchar(80),
-    productDscrptn varchar(200),
+    productDscrptn varchar(1000),
     price int,
-    imageURL varchar(100),
+    imageURL varchar(500),
     stock int,
 	featured boolean default false,
     sellerID int, foreign key(sellerID) references shopping.users(userID) on delete cascade
