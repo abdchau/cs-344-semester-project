@@ -74,7 +74,7 @@
       <div class="col-sm-10">
         <div class="form-check" style="text-align: left;">
           <label class="form-check-label">
-            <input class="form-check-input" id="radio" type="radio">
+            <input class="form-check-input" id="checkbox" type="checkbox">
             I agree to the <a href="#">terms and user</a> conditions
           </label>
         </div>
@@ -99,10 +99,10 @@
           //e.preventDefault();
           console.log($('option:selected').val());
           console.log($('#firstName').val());
-          if($('#radio').is(':checked')){
+          if($('#checkbox').is(':checked')){
 	          if ($('option:selected').val() != "null" && $('#inputEmail').val()!= "" && $('#inputPassword').val() != "" &&
 	              $('#firstName').val() != "" && $('#lastName').val() != "" && $('#address').val() != "" &&
-	              $('#zipcode').val() != "" ) 
+	              $('#zipcode').val() != "" )
 	          {
 	            addUser($('#inputEmail').val(), $('#inputPassword').val(),
 	              $('#firstName').val(), $('#lastName').val(), $('#address').val(),

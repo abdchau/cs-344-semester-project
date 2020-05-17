@@ -15,14 +15,8 @@
   <body ng-app="PageApp">
     <?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tabs" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    </nav>
-
-    <div ng-controller="nav-ctrl" class="row my-sm-5 mx-0">
-        <div class="col-sm-3" id="tabs">
+    <div ng-controller="nav-ctrl" class="row my-sm-5 mx-0 mt-3">
+        <div class="col-sm-3 bg-light mb-3" id="tabs">
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true"><i class="fas fa-user-edit"></i>&nbsp; Profile</a>
             <a class="nav-link" id="v-pills-cart-tab" data-toggle="pill" href="#v-pills-cart" role="tab" aria-controls="v-pills-cart" aria-selected="false"><i class="fas fa-shopping-cart"></i>&nbsp; Cart</a>
@@ -35,8 +29,6 @@
           </div>
             <a ng-if="isAdmin==true" class="nav-link" style="color: red" href="admin.php" ><i class="fas fa-random"></i>&nbsp; Admin Panel</a>
         </div>
-
-
 
 
 
@@ -92,12 +84,6 @@
                     </div>
                 </form>
             </div>
-
-
-
-
-
-
             <div ng-controller="cart-ctrl" class="tab-pane fade" id="v-pills-cart" role="tabpanel" aria-labelledby="v-pills-cart-tab">
                 <div class="table-responsive">
                     <table class="table">
@@ -152,7 +138,6 @@
                               <option ng-repeat="category in categories" value="{{category.categoryID}}">{{category.categoryName}}</option>
                             </select>
                         </div>
-
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-10">
@@ -205,7 +190,6 @@
                       </table>
                   </div>
             </div>
-
             <div class="modal fade" id="editModal" data-backdrop="static" tabindex="-1" role="dialog">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -225,7 +209,6 @@
                 </div>
               </div>
             </div>
-
             <div ng-controller="placed-order-ctrl" class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
                 <div class="table-responsive">
                     <table class="table">

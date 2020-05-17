@@ -49,20 +49,16 @@ function loadNavbar($categories_list, $user){
 				</li>
 			</ul>
 
-			<div class="navbar-nav input-group ml-auto col-md-2 p-0" ng-if="user != null">
-				<a class="nav-link p-0" id="user_action_1" href="profile.php"><i class="fas fa-user-circle" style="font-size:1.6rem"></i></a>
-				<div class="input-group-append">
-					<a class="nav-link p-0 ml-4" id="user_action_2" href="#"><i class="fas fa-sign-out-alt" style="font-size:1.6rem"></i></a>
-				</div>
+			<div class="navbar-nav p-0" ng-if="user != null" id="user_actions">
+				<a class="nav-link p-0 mr-4" id="user_action_1" href="profile.php"><i class="fas fa-user-circle" style="font-size:1.6rem"></i><span class="nav-item" id="label"> {{user.firstName}}</span></a>
+				<a class="nav-link p-0 mr-3" id="user_action_2" href="#"><i class="fas fa-sign-out-alt" style="font-size:1.85rem"></i><span class="nav-item" id="label"> Sign Out</span></a>
     		</div>
-			<div class="navbar-nav input-group ml-auto col-md-2 p-0" ng-if="user == null">
-				<a class="nav-link p-0" id="user_action_1" href="signup.php"><i class="fas fa-user-plus" style="font-size:1.6rem"></i></a>
-				<div class="input-group-append">
-					<a class="nav-link p-0 ml-4" href="signin.php"><i class="fas fa-sign-in-alt" style="font-size:1.6rem"></i></a>
-				</div>
+			<div class="navbar-nav p-0" ng-if="user == null" id="user_actions">
+				<a class="nav-link p-0 mr-4" id="user_action_1" href="signup.php"><i class="fas fa-user-plus" style="font-size:1.6rem"></i><span class="nav-item" id="label"> Sign Up</span></a>
+				<a class="nav-link p-0 mr-3" id="user_action_2" href="signin.php"><i class="fas fa-sign-in-alt" style="font-size:1.85rem"></i><span class="nav-item" id="label"> Sign In</span></a>
     		</div>
 
-			<div class="input-group my-2 col-md-4">
+			<div class="input-group my-2 col-md-4" id="search">
 				<input ng-model="query" class="form-control mr-1" id="search_bar" type="search" placeholder="Search">
 				<div class="input-group-append">
 					<a href="searchResult.php?query={{query}}">
@@ -114,7 +110,7 @@ function loadFooter(){
     <ul class="list-inline">
       <li class="list-inline-item"><a href="#">Privacy</a></li>
       <li class="list-inline-item"><a href="#">Terms</a></li>
-      <li class="list-inline-item"><a href="#">Support</a></li>
+      <li class="list-inline-item"><a href="scontact.php">Support</a></li>
     </ul>
   </footer>';
 }

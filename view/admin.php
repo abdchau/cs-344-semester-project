@@ -13,14 +13,9 @@
 
   <body ng-app="PageApp">
     <?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tabs" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    </nav>
 
-    <div class="row my-sm-5 mx-0">
-        <div class="col-sm-3" id="tabs">
+    <div class="row my-sm-5 mx-0 mt-3">
+        <div class="col-sm-3 bg-light mb-3" id="tabs">
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <a class="nav-link active" id="v-pills-user-tab" data-toggle="pill" href="#v-pills-user" role="tab" aria-controls="v-pills-user" aria-selected="true"><i class="fas fa-users"></i> &nbsp;Users</a>
             <a class="nav-link" id="v-pills-products-tab" data-toggle="pill" href="#v-pills-products" role="tab" aria-controls="v-pills-products" aria-selected="false"><i class="fas fa-box-open"></i> &nbsp;Products</a>

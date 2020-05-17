@@ -40,12 +40,12 @@ function getCategories($conn){
 	return json_encode($arr).$conn->error;
 }
 
-function getCategoriesWithProds($conn, $limit=4){
-	$cats = $conn->query("select * from shopping.categories");
+function getCategoriesWithProds($conn, $catLimit=3, $prodLimit=4){
+	$cats = $conn->query("select * from shopping.categories limit $catLimit");
 
 	if ($cats->num_rows > 0){
 	    while($category = $cats->fetch_assoc()){
-	        $prods = $conn->query("select * from shopping.products where categoryID=".$category['categoryID']." limit $limit");
+	        $prods = $conn->query("select * from shopping.products where categoryID=".$category['categoryID']." limit $prodLimit");
 	        $category['products'] = array();
 
 			if ($prods->num_rows > 0){
