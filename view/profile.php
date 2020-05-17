@@ -16,7 +16,7 @@
     <?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
     <div ng-controller="nav-ctrl" class="row my-sm-5 mx-0 mt-3">
-        <div class="col-sm-3 bg-light mb-3" id="tabs">
+        <div class="col-sm-3 bg-light mb-3 rounded" id="tabs">
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true"><i class="fas fa-user-edit"></i>&nbsp; Profile</a>
             <a class="nav-link" id="v-pills-cart-tab" data-toggle="pill" href="#v-pills-cart" role="tab" aria-controls="v-pills-cart" aria-selected="false"><i class="fas fa-shopping-cart"></i>&nbsp; Cart</a>
@@ -86,7 +86,7 @@
             </div>
             <div ng-controller="cart-ctrl" class="tab-pane fade" id="v-pills-cart" role="tabpanel" aria-labelledby="v-pills-cart-tab">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
@@ -160,7 +160,7 @@
             </div>
             <div ng-controller="active-product-ctrl" class="tab-pane fade" id="v-pills-active-item" role="tabpanel" aria-labelledby="v-pills-active-item-tab">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
@@ -211,7 +211,7 @@
             </div>
             <div ng-controller="placed-order-ctrl" class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
@@ -237,7 +237,7 @@
             </div>
             <div ng-controller="received-order-ctrl" class="tab-pane fade" id="v-pills-orders-received" role="tabpanel" aria-labelledby="v-pills-orders-received-tab">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                           <tr>
                             <th scope="col">#</th>

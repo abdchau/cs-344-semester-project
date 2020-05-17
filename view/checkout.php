@@ -24,7 +24,7 @@
     <p class="lead">Your cart is displayed below. Please fill the required details and press the checkout button to complete your order.</p>
   </div>
 
-  <div class="row" ng-controller="ListControl">
+  <div class="row mb-5" ng-controller="ListControl">
     <div class="col-md-4 order-md-2 mb-4"  >
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-muted">Your cart</span>
@@ -111,9 +111,8 @@
       </form>
     </div>
   </div>
-  <?php echo loadFooter(); ?>
 </div>
-
+<?php echo loadFooter(); ?>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -150,7 +149,7 @@
                 console.log(amount);
                 var buyerID = user['userID'];
                 placeOrder(buyerID, amount, billingName, billingAddress, products);
-              }            
+              }
             });
           });
         </script>

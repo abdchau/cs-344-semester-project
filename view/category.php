@@ -26,7 +26,7 @@
 							      </div>
                         <div class="card-body">
                         <h5 class="card-title text-secondary">{{product.productName}}</h5>
-                        <h6 class="text-success">Rs {{product.price}} <span class="text-danger" ng-if="product.stock == 0" style="font-size: 70%; float: right"> *Out of stock</span></h6>
+                        <h6 class="text-success">Rs {{product.price}} <span class="text-warning" ng-if="product.stock > 0 && product.stock <11" style="font-size: 70%; float: right"> *Limited stock</span><span class="text-danger" ng-if="product.stock == 0" style="font-size: 70%; float: right"> *Out of stock</span></h6>
                         </div>
                     </div>
                 </a>

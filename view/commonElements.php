@@ -36,7 +36,7 @@ function loadNavbar($categories_list, $user){
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item dropdown mx-2">
+				<li class="nav-item dropdown mx-3">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Categories
 					</a>
@@ -44,7 +44,7 @@ function loadNavbar($categories_list, $user){
 						<a ng-repeat="category in categories" class="dropdown-item" href="category.php?crd={{category.categoryID}}">{{category.categoryName}}</a>
 					</div>
 				</li>
-				<li class="nav-item mx-2" id="contact_us">
+				<li class="nav-item mx-3" id="contact_us">
 					<a class="nav-link" href="contact.php">Contact Us</a>
 				</li>
 			</ul>
@@ -105,12 +105,12 @@ function loadCartIcon(){
 
 function loadFooter(){
 	echo '
-	<footer class="my-5 pt-5 text-muted text-center text-small">
+	<footer class="pt-4 pb-2 bg-dark text-light text-center text-small">
     <p class="mb-1">© 2020-Present Shopoholic</p>
     <ul class="list-inline">
       <li class="list-inline-item"><a href="#">Privacy</a></li>
       <li class="list-inline-item"><a href="#">Terms</a></li>
-      <li class="list-inline-item"><a href="scontact.php">Support</a></li>
+      <li class="list-inline-item"><a href="contact.php">Support</a></li>
     </ul>
   </footer>';
 }

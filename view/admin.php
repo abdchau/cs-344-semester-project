@@ -15,7 +15,7 @@
     <?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
     <div class="row my-sm-5 mx-0 mt-3">
-        <div class="col-sm-3 bg-light mb-3" id="tabs">
+        <div class="col-sm-3 bg-light mb-3 rounded" id="tabs">
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <a class="nav-link active" id="v-pills-user-tab" data-toggle="pill" href="#v-pills-user" role="tab" aria-controls="v-pills-user" aria-selected="true"><i class="fas fa-users"></i> &nbsp;Users</a>
             <a class="nav-link" id="v-pills-products-tab" data-toggle="pill" href="#v-pills-products" role="tab" aria-controls="v-pills-products" aria-selected="false"><i class="fas fa-box-open"></i> &nbsp;Products</a>
@@ -29,8 +29,7 @@
           <div class="tab-content" id="v-pills-tabContent">
             <div ng-controller="users-ctrl" class="tab-pane fade show active" id="v-pills-user" role="tabpanel" aria-labelledby="v-pills-user-tab">
               <div class="table-responsive">
-                <table class="table">
-                  <caption>List of users</caption>
+                <table class="table table-hover">
                   <thead>
                     <tr>
                       <th scope="col">User ID</th>
@@ -59,8 +58,7 @@
 
             <div ng-controller="product-ctrl" class="tab-pane fade" id="v-pills-products" role="tabpanel" aria-labelledby="v-pills-products-tab">
                   <div class="table-responsive">
-                    <table class="table">
-                        <caption>List of products</caption>
+                    <table class="table table-hover">
                         <thead>
                           <tr>
                             <th scope="col">Product ID</th>
@@ -93,10 +91,9 @@
             </div>
 
             <div ng-controller="category-ctrl" class="tab-pane fade" id="v-pills-categories" role="tabpanel" aria-labelledby="v-pills-categories-tab">
-              <button type="button" class="btn btn-outline-success btn-lg my-auto add-cat" data-toggle="modal" data-target="#addModal">Add New Category</button>
+            <button id="add-cat-btn" type="button" class="btn btn-outline-success btn-lg mb-2 mx-3 add-cat" data-toggle="modal" data-target="#addModal">Add New Category</button>
                 <div class="table-responsive">
-                    <table class="table">
-                        <caption>List of products</caption>
+                    <table class="table table-hover">
                         <thead>
                           <tr>
                             <th scope="col">Category ID</th>
@@ -164,10 +161,9 @@
             </div>
 
             <div ng-controller="city-ctrl" class="tab-pane fade" id="v-pills-cities" role="tabpanel" aria-labelledby="v-pills-cities-tab">
-              <button type="button" class="btn btn-outline-success btn-lg my-auto add-city" data-toggle="modal" data-target="#addModalCity">Add New City</button>
+              <button id="add-city-btn" type="button" class="btn btn-outline-success btn-lg mb-2 mx-3 add-city" data-toggle="modal" data-target="#addModalCity">Add New City</button>
                 <div class="table-responsive">
-                    <table class="table">
-                        <caption>List of cities</caption>
+                    <table class="table table-hover">
                         <thead>
                           <tr>
                             <th scope="col">City ID</th>
@@ -211,7 +207,7 @@
 
             <div class="tab-pane fade" id="v-pills-other" role="tabpanel" aria-labelledby="v-pills-other-tab">
               <div class="col-sm-6 mx-auto">
-                <button type="button" class="btn btn-danger btn-lg btn-block my-auto" id="resetDB">Reset Database</button>
+                <button type="button" class="btn btn-danger btn-lg btn-block my-5" id="resetDB">Reset Database</button>
               </div>
             </div>
           </div>
