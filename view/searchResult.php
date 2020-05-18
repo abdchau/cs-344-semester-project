@@ -6,12 +6,7 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <?php echo loadHeader("Search Results"); ?>
-
-	<title>Search Results</title>
-
-  </head>
+  <?php echo loadHeader("Search Results"); ?>
   <body ng-app="PageApp">
 	<?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 

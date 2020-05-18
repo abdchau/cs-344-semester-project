@@ -16,7 +16,7 @@ require 'interface.php';
 		move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
 		$conn->query("insert into shopping.products(categoryID, productName, productDscrptn,
 		price, imageURL, stock, sellerID) values
-		(".$_POST['categoryID'].", '".$_POST['productName']."', '".$_POST['description']."', ".$_POST['price'].", '".$target_file."', ".$_POST['stock'].", ".$username['userID'].")");
+		(".$_POST['categoryID'].", '".$_POST['productName']."', '".str_replace("\r\n","",$_POST['description'])."', ".$_POST['price'].", '".$target_file."', ".$_POST['stock'].", ".$username['userID'].")");
 		echo $_POST['price'].$conn->error;
 		header("Location: ../view/profile.php");
 	}

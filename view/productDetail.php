@@ -34,7 +34,7 @@
 				<div class="card-header">{{info.productName}}</div>
 				<div class="card-body text-info">
 					<h5 class="card-title"></h5>
-					<p class="card-text">{{info.productDscrptn}}</p>
+					<p class="card-text" ng-bind-html="renderHtml(info.productDscrptn)"></p>
 				</div>
 			</div>
 			<div class="mb-3">
@@ -76,7 +76,7 @@
 		</div>
 	<?php echo loadCartIcon(); ?>
 	<?php echo loadFooter(); ?>
-    <!-- Optional JavaScript -->
+
     <script type="text/javascript">
     	prdInfo = JSON.parse('<?php echo $info ?>');
     	$('.minus-btn').on('click', function(e) {
@@ -99,11 +99,14 @@
     		$scope.products = JSON.parse('<?php echo $relatedProds ?>');
     		console.log($scope.products)
     		$scope.info = prdInfo
-    		console.log($scope.info)
   		});
-      	App.controller('InfoControl', function ($scope){
-        	$scope.info = JSON.parse('<?php echo $info ?>');
-    	});
+      	App.controller('InfoControl',['$scope', '$http', '$sce',
+			function ($scope, $http, $sce) {
+				$scope.info = JSON.parse('<?php echo $info ?>');
+				$scope.renderHtml = function (htmlCode) {
+					return $sce.trustAsHtml(htmlCode);
+				}
+    	}]);
     </script>
 	<script>
 		$(document).ready(function(){
@@ -120,3 +123,4 @@
 	</script>
      </body>
 </html>
+

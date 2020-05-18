@@ -2,36 +2,10 @@
   require 'commonElements.php';
 ?>
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
 <!doctype html>
 <html lang="en">
-  <head>
-    <?php echo loadHeader("Contact us"); ?>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-
-    <title>Contact Us</title>
-
-
-
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $('#signin').click(function(e){
-          e.preventDefault();
-          verifyUser($('#inputEmail').val(), $('#inputPassword').val());
-
-        });
-      });
-    </script>
-
-
-  </head>
+  <?php echo loadHeader("Contact us"); ?>
   <body ng-app="PageApp">
-	<!-- Just an image -->
 
   <?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
@@ -135,5 +109,15 @@ However, if you still require more information or assistance, we’re here to he
   <?php echo loadCartIcon(); ?>
   <?php echo loadFooter(); ?>
 
+
+  <script type="text/javascript">
+      $(document).ready(function(){
+        $('#signin').click(function(e){
+          e.preventDefault();
+          verifyUser($('#inputEmail').val(), $('#inputPassword').val());
+
+        });
+      });
+    </script>
   </body>
 </html>

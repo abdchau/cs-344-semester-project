@@ -7,9 +7,7 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <?php echo loadHeader("User"); ?>
-  </head>
+  <?php echo loadHeader("Admin"); ?>
 
   <body ng-app="PageApp">
     <?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
@@ -213,8 +211,6 @@
           </div>
         </div>
     </div>
-    <?php echo loadFooter(); ?>
-
 
     <script type="text/javascript">
       App.controller('users-ctrl', function ($scope){

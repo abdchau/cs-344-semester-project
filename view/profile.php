@@ -9,9 +9,7 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <?php echo loadHeader("User"); ?>
-  </head>
+  <?php echo loadHeader("Profile"); ?>
   <body ng-app="PageApp">
     <?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
@@ -309,10 +307,8 @@
         </div>
     </div>
     <?php echo loadCartIcon(); ?>
-    <?php echo loadFooter(); ?>
 
   <script type="text/javascript">
-    console.log("hellooo");
     receivedOrders = JSON.parse('<?php echo $receivedOrders; ?>');
     App.controller('profile-data-ctrl', function ($scope){
       $scope.user = JSON.parse('<?php echo getUserJSON($conn); ?>');
@@ -399,7 +395,7 @@
       else
         alert('Confirm password does not match');
     });
-
   </script>
+  <script>tinymce.init({selector:"textarea"});</script>
   </body>
 </html>
