@@ -9,7 +9,7 @@
 
 <!doctype html>
 <html lang="en">
-<?php echo loadHeader("Category"); ?>
+<?php echo loadHeader('Category details'); ?>
 
   <body ng-app="PageApp">
 	<?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>

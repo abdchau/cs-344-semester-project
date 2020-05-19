@@ -9,7 +9,7 @@
 
 <!doctype html>
 <html lang="en">
-  	<?php echo loadHeader("ProductDetail"); ?>
+  	<?php echo loadHeader('Product details'); ?>
 
   <body ng-app="PageApp">
 
@@ -79,6 +79,9 @@
 
     <script type="text/javascript">
     	prdInfo = JSON.parse('<?php echo $info ?>');
+    	if(prdInfo.stock == 0)
+    		$('#qtty').val('0');
+
     	$('.minus-btn').on('click', function(e) {
     		if($('#qtty').val() > 1)
             {
@@ -111,13 +114,17 @@
 	<script>
 		$(document).ready(function(){
 			$('#add_to_cart').click(function(){
-				var userID = '<?php echo $username["userID"] ?>';
-				if (userID===""){
-					alert('You need to be logged in to access your cart');
-					window.location.href = 'signin.php';
-				}
-				else
-					addToCart( userID, parseInt($('#qtty').val()));
+				if($('#qtty').val() == 0)
+					alert('Quantity must not be 0');
+				else{
+					var userID = '<?php echo $username["userID"] ?>';
+					if (userID===""){
+						alert('You need to be logged in to access your cart');
+						window.location.href = 'signin.php';
+					}
+					else
+						addToCart( userID, parseInt($('#qtty').val()));
+				}	
 			});
 		});
 	</script>

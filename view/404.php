@@ -5,7 +5,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <?php echo loadHeader("User"); ?>
+    <?php echo loadHeader("Page not found!"); ?>
 
   </head>
   <body ng-app="PageApp">
