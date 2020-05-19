@@ -1,5 +1,4 @@
 <?php 
-
 require 'connect.php';
 
 $conn = connectDB();
@@ -11,9 +10,10 @@ if (!checkDB($conn)){
 	resetDB($conn);
 	fillDummyData($conn);
 }
-
-$username = checkCookie($conn);
-
+$username=null;
+if (isset($_SESSION['userID'])) {
+	$username = checkUser($conn);
+}
 
 require '../model/category.php';
 require 'products.php';

@@ -17,25 +17,22 @@ function fillDummyData($conn){
 	return "Dummy data filled ".$conn->error;
 }
 
-function checkCookie($conn){
+function checkUser($conn){
 	$username = null;
-	if (isset($_COOKIE['userID'])){
-		$username = $conn->query('select * from (select * from shopping.users where userID='.$_COOKIE['userID'].')A natural join shopping.addresses natural join shopping.cities;')->fetch_assoc();
+	if (isset($_SESSION['userID'])){
+		$username = $conn->query('select * from (select * from shopping.users where userID='.$_SESSION['userID'].')A natural join shopping.addresses natural join shopping.cities;')->fetch_assoc();
 	}
 
 	return $username;
 }
 
 function getUserJSON($conn, $userID=null){
-	if ($userID!=null) {
-		$username = $conn->query('select * from (select * from shopping.users where userID='.$userID.')A natural join shopping.addresses natural join shopping.cities;')->fetch_assoc();
-		return json_encode($username);
+	if ($userID==null && !isset($_SESSION['userID'])) {
+		return 'null';
 	}
-	elseif (checkCookie($conn)==null)
-		return json_encode(null);
-	else{
-		return json_encode(checkCookie($conn));
-	}
+	$userID=$_SESSION['userID'];
+	$username = $conn->query('select * from (select * from shopping.users where userID='.$userID.')A natural join shopping.addresses natural join shopping.cities;')->fetch_assoc();
+	return json_encode($username);
 }
 
 function getUsers($conn){

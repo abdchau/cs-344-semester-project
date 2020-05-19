@@ -1,8 +1,24 @@
 <?php
 
-function getPassword($conn){
-	$result=$conn->query("select userID, password from shopping.users where email='".$_POST['user']['email']."'");
-	return json_encode($result->fetch_assoc());
+function verifyUser($conn){
+	$result=$conn->query("select * from shopping.users where email='".$_POST['user']['email']."'")->fetch_assoc();
+	// echo $conn->error.$result['password'];
+	if (isset($result['password'])) {
+		if ($result['password']==$_POST['user']['password']) {
+			$_SESSION['userID'] = $result['userID'];
+			return "{\"userID\":".$result['userID'].",\"res\":1}";
+		}
+		else
+			return "{\"res\":-1}";
+	}
+	else
+		return "{\"res\":0}";
+}
+
+function signOut(){
+	session_unset();
+	session_destroy();
+	return "Signed out yay";
 }
 
 function changePassword($conn){
@@ -154,8 +170,11 @@ function removeFromCart($conn){
 
 if (isset($_POST['func'])){
 	switch ($_POST['func']) {
-		case 'getPassword':
-			echo getPassword($conn);
+		case 'verifyUser':
+			echo verifyUser($conn);
+			break;
+		case 'signOut':
+			echo signOut();
 			break;
 		case 'changePassword':
 			echo changePassword($conn);

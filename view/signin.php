@@ -1,7 +1,10 @@
-<?php require '../model/interface.php';
+<?php 
+require '../model/interface.php';
+
   require 'commonElements.php';
   if (getUserJSON($conn)!="null") {
-    header("Location: index.php");
+    // header("Location: index.php");
+    echo getUserJSON($conn);
   }
 ?>
 <!doctype html>

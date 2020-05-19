@@ -82,10 +82,12 @@ function loadNavbar($categories_list, $user){
 			}
 		});
 		var categories = JSON.parse(\''.$categories_list.'\');
+		var user = JSON.parse(\''.$user.'\');
 
 		$(document).ready(function(){
 			$("#user_action_2").click(function(){
-				signOut();
+				if(user!==null)
+					signOut();
 			})
 		})
 
@@ -93,7 +95,7 @@ function loadNavbar($categories_list, $user){
 
 		App.controller(\'navbar_ctrl\', function ($scope){
 			$scope.categories = categories;
-			$scope.user = JSON.parse(\''.$user.'\');
+			$scope.user = user;
 		});
 	</script>';
 }
@@ -101,7 +103,7 @@ function loadNavbar($categories_list, $user){
 function loadCartIcon(){
 	echo '
 	<div  id="cartIcon">
-        <a href=checkout.php><img height=80% width=80% src="images/cart.png"></a>
+        <a href=checkout.php><img height=80% width=80% src="../view/images/cart.png"></a>
 	</div>';
 }
 
