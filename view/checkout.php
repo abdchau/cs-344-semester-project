@@ -15,7 +15,7 @@
 
 <body class="bg-light" ng-app="PageApp">
 
-  <?php echo loadNavbar(getCategories($conn), getUserJson($conn), $conn); ?>
+  <?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
     <div class="container">
   <div class="py-5 text-center">

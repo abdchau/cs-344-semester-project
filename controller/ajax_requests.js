@@ -43,7 +43,7 @@ function signOut(){
 
 			console.log('post success');
 			console.log(response);
-			window.location.href='index.php';
+			window.location.href='signin.php';
 		},
 		error: function(){console.log('post error');}
 	})

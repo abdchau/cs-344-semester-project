@@ -27,7 +27,7 @@ function changePassword($conn){
 }
 
 function addUser($conn){
-	if (getPassword($conn)=="null"){
+	if (!isset(verifyUser($conn)['password'])){
 		$conn->multi_query("insert into shopping.addresses(address, postcode, cityID)
 			values('".$_POST['user']['address']."', '".$_POST['user']['zipcode']."', ".$_POST['user']['city'].");");
 
