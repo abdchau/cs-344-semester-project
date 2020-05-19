@@ -2,8 +2,6 @@
 	require 'commonElements.php';
 	$categories = getCategoriesWithProds($conn);
 	$featured = getFeaturedProducts($conn);
-	print_r($_SESSION);
-	echo getUserJSON($conn);
 ?>
 
 <!doctype html>
@@ -11,7 +9,7 @@
 <?php echo loadHeader("Home Page"); ?>
 
   <body ng-app="PageApp">
-	<?php echo loadNavbar(getCategories($conn), getUserJSON($conn), $conn); ?>
+	<?php echo loadNavbar(getCategories($conn), getUserJSON($conn)); ?>
 
 	<div id="carouselIndicators" ng-controller="carousel-ctrl" class="container my-4">
 		<div class="carousel slide carouselIndex " data-ride="carousel">
