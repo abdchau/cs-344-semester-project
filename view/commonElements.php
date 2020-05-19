@@ -15,7 +15,7 @@ function loadHeader($title){
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
 		<script src="..\controller\all.js"></script>
 		<script src="..\controller\angular-1.3.14.js"></script>
-		<script src="..\controller\users.js"></script>
+		<script src="..\controller\ajax_requests.js"></script>
 		<script src="https://cdn.tiny.cloud/1/zwbn6qqqealuplt84tnh9jxqtnbs4a3lnd02e6wzz98y2pc3/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

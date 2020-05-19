@@ -17,6 +17,6 @@ $username = checkCookie($conn);
 
 require '../model/category.php';
 require 'products.php';
-require '../model/users.php';
+require '../model/service_ajax.php';
 
 ?>
