@@ -388,12 +388,10 @@
     $('#change_password').click(function(e){
       e.preventDefault();
       var user = JSON.parse('<?php echo getUserJSON($conn); ?>');
-      if ($('#inputOldPassword').val() !== user['password'])
-        alert('Old password does not match');
-      else if ($('#inputNewPassword').val() === $('#confirmNewPassword').val())
-        changePassword($('#inputNewPassword').val(), user['userID']);
-      else
+      if ($('#inputNewPassword').val() !== $('#confirmNewPassword').val())
         alert('Confirm password does not match');
+      else
+        changePassword($('#inputOldPassword').val(), $('#inputNewPassword').val(), user['userID']);
     });
   </script>
   <script>tinymce.init({selector:"textarea"});</script>

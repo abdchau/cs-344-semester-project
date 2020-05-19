@@ -328,17 +328,25 @@ function removeFromCart(userID, productID) {
 	})
 }
 
-function changePassword(newPassword, userID) {
+function changePassword(oldPassword, newPassword, userID) {
 	$.ajax({
 		type:'POST',
 		url: '../model/interface.php',
-		data: {'userID':userID, 'password':newPassword, 'func':'changePassword'},
+		data: {'userID':userID, 'password':newPassword, 'oldPassword':oldPassword, 'func':'changePassword'},
 		datatype: 'json',
 		success: function(response){
 
 			console.log('post success');
-			alert(response+". You will have to log in again with your new password");
-			signOut();
+
+			response=JSON.parse(response);
+			if (response['res']===0) {
+				alert("Old password does not match");
+				return;
+			}
+			else{
+				alert("Password updated. You will have to log in again with your new password");
+				signOut();
+			}
 			// location.reload();
 		},
 		error: function(){console.log('post error');}

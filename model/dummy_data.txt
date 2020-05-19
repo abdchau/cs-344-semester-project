@@ -4,9 +4,9 @@ insert into shopping.addresses(address, postcode, cityID) values
 		('St 96, H69', '44000', 1), ('Model Town', '23432', 2), ('Siall', '63453', 3);
 
 insert into shopping.users(firstName, lastName, email, password, addressID, isAdmin) values 
-		('Abdullah', 'Chaudhry', 'abc@edu.pk', '123', 1, true), 
-		('Ahmad', 'Jarrar', 'ajk@edu.pk', 'jarrar', 3, false), 
-		('Shariq', 'Pervaiz', 'spv@edu.pk', 'shariq', 2, false);
+		('Abdullah', 'Chaudhry', 'abc@edu.pk', md5('123'), 1, true), 
+		('Ahmad', 'Jarrar', 'ajk@edu.pk', md5('jarrar'), 3, false), 
+		('Shariq', 'Pervaiz', 'spv@edu.pk', md5('shariq'), 2, false);
 
 insert into shopping.categories(categoryName) values('Mobiles'),('Tablets'),('Home Appliances');
 

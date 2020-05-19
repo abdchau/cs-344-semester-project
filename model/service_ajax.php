@@ -4,7 +4,7 @@ function verifyUser($conn){
 	$result=$conn->query("select * from shopping.users where email='".$_POST['user']['email']."'")->fetch_assoc();
 
 	if (isset($result['password'])) {
-		if ($result['password']==$_POST['user']['password']) {
+		if ($result['password']==md5($_POST['user']['password'])) {
 			$_SESSION['userID'] = $result['userID'];
 			return "{\"userID\":".$result['userID'].",\"res\":1}";
 		}
@@ -22,8 +22,16 @@ function signOut(){
 }
 
 function changePassword($conn){
-	$conn->query("update shopping.users set password='".$_POST['password']."' where userID=".$_POST['userID']);
-	return "Password updated".$conn->error;
+	$password=$conn->query("select password from shopping.users where userID=".$_POST['userID'])
+							->fetch_assoc()['password'];
+
+	$oldPassword = md5($_POST['oldPassword']);
+	if ($password==$oldPassword) {
+		$conn->query("update shopping.users set password=md5('".$_POST['password']."') where userID=".$_POST['userID']);
+		return "{\"res\":1}";
+	}
+	return "{\"res\":0}";
+
 }
 
 function addUser($conn){
@@ -32,7 +40,7 @@ function addUser($conn){
 			values('".$_POST['user']['address']."', '".$_POST['user']['zipcode']."', ".$_POST['user']['city'].");");
 
 		$conn->query("insert into shopping.users(firstName, lastName, email, password, addressID) values
-		('".$_POST['user']['firstName']."', '".$_POST['user']['lastName']."', '".$_POST['user']['email']."', '".$_POST['user']['password']."', $conn->insert_id)");
+		('".$_POST['user']['firstName']."', '".$_POST['user']['lastName']."', '".$_POST['user']['email']."', md5('".$_POST['user']['password']."'), $conn->insert_id)");
 		//echo $conn->error. ''. json_encode($addressID);
 		return "User added successfully".$conn->error;
 	}
