@@ -2,7 +2,7 @@
 
 function verifyUser($conn){
 	$result=$conn->query("select * from shopping.users where email='".$_POST['user']['email']."'")->fetch_assoc();
-	// echo $conn->error.$result['password'];
+
 	if (isset($result['password'])) {
 		if ($result['password']==$_POST['user']['password']) {
 			$_SESSION['userID'] = $result['userID'];

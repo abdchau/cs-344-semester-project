@@ -3,8 +3,7 @@ require '../model/interface.php';
 
   require 'commonElements.php';
   if (getUserJSON($conn)!="null") {
-    // header("Location: index.php");
-    echo getUserJSON($conn);
+    header("Location: index.php");
   }
 ?>
 <!doctype html>

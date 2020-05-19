@@ -4,7 +4,7 @@
   $placedOrders = getPlacedOrders($conn, $username['userID']);
   $receivedOrders = getReceivedOrders($conn, $username['userID']);
   if ($username==null)
-    header("Location: index.php");
+    header("Location: signin.php");
 ?>
 
 <!doctype html>
