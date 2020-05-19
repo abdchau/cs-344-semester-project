@@ -26,11 +26,12 @@ function checkUser($conn){
 	return $username;
 }
 
-function getUserJSON($conn, $userID=null){
-	if ($userID==null && !isset($_SESSION['userID'])) {
+function getUserJSON($conn, $userID=-1){
+	if ($userID==-1 && !isset($_SESSION['userID'])) {
 		return 'null';
 	}
-	$userID=$_SESSION['userID'];
+	if (isset($_SESSION['userID']) and $userID==-1)
+		$userID=$_SESSION['userID'];
 	$username = $conn->query('select * from (select * from shopping.users where userID='.$userID.')A natural join shopping.addresses natural join shopping.cities;')->fetch_assoc();
 	return json_encode($username);
 }
