@@ -55,8 +55,10 @@ function getCities($conn){
 	    while($row = $result->fetch_assoc()) {
 	        $arr[] = $row;
 	    }
+	    return json_encode($arr).$conn->error;
 	}
-	return json_encode($arr).$conn->error;
+	else
+		return json_encode(null);
 }
 
 function checkDB($conn){
@@ -74,8 +76,10 @@ function getQuestions($conn){
 	    while($row = $result->fetch_assoc()) {
 	        $arr[] = $row;
 	    }
+	    return json_encode($arr).$conn->error;
 	}
-	return json_encode($arr).$conn->error;
+	else
+		return json_encode(null);
 }
 
 function getMessages($conn){
@@ -85,8 +89,10 @@ function getMessages($conn){
 	    while($row = $result->fetch_assoc()) {
 	        $arr[] = $row;
 	    }
+	    return json_encode($arr).$conn->error;
 	}
-	return json_encode($arr).$conn->error;
+	else
+		return json_encode(null);
 }
 
 ?>

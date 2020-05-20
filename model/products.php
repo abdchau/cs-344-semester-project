@@ -28,9 +28,10 @@ function getRelatedProducts($conn){
 	    while($row = $result->fetch_assoc()) {
 	        $arr[] = $row;
 	    }
+	    return json_encode($arr).$conn->error;
 	}
-
-	return json_encode($arr).$conn->error;
+	else
+		return json_encode(null);
 }
 
 function searchProducts($conn){
