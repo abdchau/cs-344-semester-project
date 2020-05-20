@@ -7,8 +7,12 @@ function getInfo($conn)
 }
 
 
-function getFeaturedProducts($conn){
-	$result = $conn->query("select * from shopping.products where featured = true");
+function getFeaturedProducts($conn, $limit=true){
+	$sql = "select * from shopping.products where featured = true";
+	if ($limit)
+		$sql .= " limit 3";
+
+	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 	    // output data of each row
 	    while($row = $result->fetch_assoc()) {
@@ -34,7 +38,7 @@ function getRelatedProducts($conn){
 		return json_encode(null);
 }
 function getBestProducts($conn){
-	$result = $conn->query("select * from shopping.products order by bought desc limit 0,5");
+	$result = $conn->query("select * from shopping.products where bought>0 order by bought desc limit 0,5");
 	if ($result->num_rows > 0) {
 	    // output data of each row
 	    while($row = $result->fetch_assoc()) {

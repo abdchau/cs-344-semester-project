@@ -21,7 +21,7 @@
 				<div data-interval="4000" class="carousel-item active" ng-repeat="ft in featured" ng-if="ft == featured[0]">
 					<div>
 						<div class="card-img-top" style="background: url('{{ft.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:500px">
-							<div class="badge badge-pill badge-primary float-right m-3">Featured</div>
+							<a class="text-decoration-none" href="featuredProducts.php"><div class="badge badge-pill badge-primary float-right m-3">Featured</div></a>
 							<div class="carousel-caption d-md-block">
 									<h5 class="mx-4">
 									<a href="productDetail.php?prd={{ft.productID}}" class="text-decoration-none text-white">
@@ -35,7 +35,7 @@
 				<div data-interval="4000" class="carousel-item" ng-repeat="ft in featured" ng-if="ft != featured[0]">
 					<div>
 						<div class="card-img-top" style="background: url('{{ft.imageURL}}'); background-size:contain; background-position: center center;background-repeat:no-repeat; min-height:500px">
-							<div class="badge badge-pill badge-primary float-right m-3">Featured</div>
+							<a class="text-decoration-none" href="featuredProducts.php"><div class="badge badge-pill badge-primary float-right m-3">Featured</div></a>
 							<div class="carousel-caption d-md-block">
 								<h5 class="mx-4">
 									<a href="productDetail.php?prd={{ft.productID}}" class="text-decoration-none text-white">
@@ -51,6 +51,14 @@
 		</div>
 	</div>
 
+	<div class="container">
+		<a class="text-decoration-none" href="bestSellers.php"><div class="alert alert-info text-center">
+		  Discover our best selling products!
+		</div></a>
+		<a class="text-decoration-none" href="topVendors.php"><div class="alert alert-info text-center">
+		  Discover our top vendors!
+		</div></a>
+	</div>
 
 	<div ng-controller="main_body_controller" class="container-fluid mx-0 px-0" >
 		<div class="album py-5 bg-light" ng-repeat="category in categories">

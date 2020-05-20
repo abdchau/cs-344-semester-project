@@ -49,7 +49,7 @@ require 'commonElements.php';
 
 	      <div class="col-xl-3 col-sm-6 mb-5 mx-auto">
 	        <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556834133/avatar-2_f8dowd.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-	          <h5 class="mb-0">Ahmad Jarrar</h5><span class="small text-uppercase text-muted">COO - Founder</span>
+	          <h5 class="mb-0">Ahmad Jarrar</h5><span class="small text-uppercase text-muted">Janitor</span>
 	          <ul class="social mb-0 list-inline mt-3">
 	            <li class="list-inline-item"><a href="https://www.facebook.com" class="social-link"><i class="fab fa-facebook-square"></i></a></li>
 	            <li class="list-inline-item"><a href="https://twitter.com" class="social-link"><i class="fab fa-twitter-square"></i></a></li>

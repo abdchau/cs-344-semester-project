@@ -22,8 +22,7 @@ create table shopping.users(
 	password varchar(80),
 	isAdmin boolean default false,
 	addressID int, foreign key(addressID) references shopping.addresses(addressID) on delete cascade,
-	productsSold int default 0,
-	productsBought int default 0
+	productsSold int default 0
 );
 
 create table shopping.categories(

@@ -97,7 +97,7 @@ function getMessages($conn){
 
 
 function getTopVendors($conn){
-	$result = $conn->query("select * from shopping.users order by productsSold desc limit 0,5");
+	$result = $conn->query("select * from shopping.users where productsSold>0 order by productsSold desc limit 0,5");
 	if ($result->num_rows > 0) {
 	    // output data of each row
 	    while($row = $result->fetch_assoc()) {
@@ -106,7 +106,6 @@ function getTopVendors($conn){
 		    return json_encode($arr).$conn->error;
 	}
 	else
-		echo "string";
 		return json_encode(null);
 }
 

@@ -5,7 +5,7 @@ require 'commonElements.php';
 
 <!doctype html>
 <html lang="en">
-	<?php echo loadHeader("FAQs"); ?>
+	<?php echo loadHeader("Site Map"); ?>
 
 	<body ng-app="PageApp">
 	<?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
@@ -14,10 +14,12 @@ require 'commonElements.php';
 
   <section id="sec1">
 
-    <span class="h2">Products</span>&nbsp;&nbsp;&nbsp; <span>(These will open with preset queries)</span>
+    <span class="h2">Products</span>&nbsp;&nbsp;&nbsp; <span class="d-none d-xs-none d-sm-none d-md-inline">(These will open with preset queries)</span>
     <div class="row">
       <div class="col-md-5">
         <ul>
+          <li><a href="featuredProducts.php">Featured Products</a></li>
+          <li><a href="bestSellers.php">Best Selling Products</a></li>
           <li><a href="productDetail.php?prd=1">Product Details</a></li>
           <li><a href="category.php?crd=1">Products by Category</a></li>
           <li><a href="productsBySeller.php?srd=1">Products by Seller</a></li>
@@ -28,7 +30,7 @@ require 'commonElements.php';
   </section>
   <section id="sec2">
 
-    <span class="h2">User</span>&nbsp;&nbsp;&nbsp; <span>(You must be logged in to open these pages)</span>
+    <span class="h2">User</span>&nbsp;&nbsp;&nbsp; <span class="d-none d-xs-none d-sm-none d-md-inline">(You must be logged in to open these pages)</span>
     <div class="row">
       <div class="col-md-5">
         <ul>
@@ -36,13 +38,14 @@ require 'commonElements.php';
           <li><a href="admin.php">Admin - only for admin users</a></li>
           <li><a href="index.php">Home</a></li>
           <li><a href="checkout.php">Checkout</a></li>
+          <li><a href="topVendors.php">Top Vendors</a></li>
         </ul>
       </div>
     </div>
   </section>
   <section id="sec3">
 
-    <span class="h2">Miscellaneous</span>&nbsp;&nbsp;&nbsp; <span>(Different kinds of pages)</span>
+    <span class="h2">Miscellaneous</span>&nbsp;&nbsp;&nbsp; <span class="d-none d-xs-none d-sm-none d-md-inline">(Different kinds of pages)</span>
     <div class="row">
       <div class="col-md-5">
         <ul>

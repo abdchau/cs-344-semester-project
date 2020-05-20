@@ -3,10 +3,10 @@ insert into shopping.cities(cityName) values ('Islamabad'), ('Lahore'), ('Faisal
 insert into shopping.addresses(address, postcode, cityID) values
 		('St 96, H69', '44000', 1), ('Model Town', '23432', 2), ('Siall', '63453', 3);
 
-insert into shopping.users(firstName, lastName, email, password, addressID, isAdmin) values 
-		('Abdullah', 'Chaudhry', 'abc@edu.pk', md5('123'), 1, true), 
-		('Ahmad', 'Jarrar', 'ajk@edu.pk', md5('jarrar'), 3, false), 
-		('Shariq', 'Pervaiz', 'spv@edu.pk', md5('shariq'), 2, false);
+insert into shopping.users(firstName, lastName, email, password, addressID, isAdmin, productsSold) values 
+		('Abdullah', 'Chaudhry', 'abc@edu.pk', md5('123'), 1, true, 3), 
+		('Ahmad', 'Jarrar', 'ajk@edu.pk', md5('jarrar'), 3, false, 2), 
+		('Shariq', 'Pervaiz', 'spv@edu.pk', md5('shariq'), 2, false, 0);
 
 insert into shopping.categories(categoryName) values('Mobiles'),('Tablets'),('Home Appliances');
 
@@ -27,12 +27,12 @@ insert into shopping.products(categoryID, productName, productDscrptn,
 	(2, 'Apple iPad 3', 'Big screen looks nice 10.5-inch', 399,
 		'../view/images/products/Apple-iPad-mini-3.jpg',5, 3);
 
-insert into shopping.products(categoryID, productName, productDscrptn, price, imageURL, stock, sellerID, featured)
+insert into shopping.products(categoryID, productName, productDscrptn, price, imageURL, stock, sellerID, featured, bought)
 	values
 	(3, 'Samsung SmartTV', '40-inch screen parental controls and other features', 1199,
-		'../view/images/products/samsung_smart_tv.jpg', 6, 2, true),
+		'../view/images/products/samsung_smart_tv.jpg', 6, 2, true, 3),
 	(1, 'Samsung Galaxy S8', 'Has edge round metal finish', 599,
-		'../view/images/products/samsung_galaxy_s8.jpeg', 3, 1, true);
+		'../view/images/products/samsung_galaxy_s8.jpeg', 3, 1, true, 5);
 
 insert into shopping.question_type(question) values
 	("I have a question related to delivery of my product"),
