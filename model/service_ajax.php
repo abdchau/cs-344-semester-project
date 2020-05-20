@@ -156,10 +156,13 @@ function deleteOrder($conn){
 function completeOrder($conn){
 	$product = $conn->query("select stock, quantity, userID, productsSold from shopping.products natural join 
 			(select * from shopping.order_item where orderID=".$_POST['orderID'].
+			" and productID=".$_POST['productID'].")A")->fetch_assoc();
+	$oldBought = $conn->query("select bought from shopping.products where productID =".$_POST['productID'])->fetch_assoc();
+	$newBought = $oldBought['bought']+$product['quantity'];
 			" and productID=".$_POST['productID'].")A join shopping.users on sellerID=userID")->fetch_assoc();
 
 	$quantity = $product['stock']-$product['quantity'];
-	$conn->query("update shopping.products set stock=$quantity where productID = ".
+	$conn->query("update shopping.products set stock=$quantity,bought=$newBought where productID = ".
 		$_POST['productID']);
 	$conn->query("delete from shopping.order_item where productID = ".$_POST['productID'].
 			" and orderID=".$_POST['orderID']);
