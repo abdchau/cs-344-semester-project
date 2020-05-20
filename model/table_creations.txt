@@ -37,6 +37,7 @@ create table shopping.products(
     price int,
     imageURL varchar(500),
     stock int,
+	bought int default 0,
 	featured boolean default false,
     sellerID int, foreign key(sellerID) references shopping.users(userID) on delete cascade
 );
