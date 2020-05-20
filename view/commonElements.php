@@ -112,8 +112,9 @@ function loadFooter(){
 	<footer class="footer mt-auto pt-4 pb-2 bg-light text-muted text-center text-small">
     <p class="mb-1">© 2020-Present Shopoholic</p>
     <ul class="list-inline">
-      <li class="list-inline-item"><a href="#">Privacy</a></li>
-      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="faqs.php">FAQs</a></li>
+      <li class="list-inline-item"><a href="aboutus.php">About Us</a></li>
+      <li class="list-inline-item"><a href="sitemap.php">Site Map</a></li>
       <li class="list-inline-item"><a href="contact.php">Support</a></li>
     </ul>
   </footer>';
