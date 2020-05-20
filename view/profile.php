@@ -257,8 +257,8 @@
                             <td>{{item.billingAddress}}</td>
                             <td>
                               <div class="btn-group" role="group">
-                                <button data-stock="{{item.stock}}" data-qtty="{{item.quantity}}" data-id="{{item.orderID}}" type="button" class="btn btn-block-xs btn-outline-success my-auto com-order"><i class="fas fa-check"></i></button>
-                                <button data-id="{{item.orderID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto del-order"><i class="fas fa-ban"></i></button></td>
+                                <button data-stock="{{item.stock}}" data-qtty="{{item.quantity}}" data-id="{{item.orderID}}" data-pID="{{item.productID}}" type="button" class="btn btn-block-xs btn-outline-success my-auto com-order"><i class="fas fa-check"></i></button>
+                                <button data-id="{{item.orderID}}" data-pID="{{item.productID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto del-order"><i class="fas fa-ban"></i></button></td>
                               </div>
                           </tr>
                         </tbody>
@@ -352,7 +352,7 @@
           deleteProduct($(this).attr('data-id'));
       });
       $('.del-order').click(function(){
-          deleteOrder($(this).attr('data-id'));
+          deleteOrder($(this).attr('data-id'), $(this).attr('data-pID'));
       });
       $('.openModal').click(function(){
           $('#inputEditProductStock').val($(this).attr('data-productStock'));
@@ -361,12 +361,13 @@
         });
 
       $('.com-order').click(function(){
-          if($(this).attr('data-stock')<$(this).attr('data-qtty'))
+          if(parseInt($(this).attr('data-stock'))<parseInt($(this).attr('data-qtty')))
           {
+            console.log($(this).attr('data-stock')+' '+$(this).attr('data-qtty'))
             alert("you dont have enough items in your inventory!");
           }
           else
-            completeOrder($(this).attr('data-id'));
+            completeOrder($(this).attr('data-id'), $(this).attr('data-pID'));
       });
     });
 

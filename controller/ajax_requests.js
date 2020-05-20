@@ -148,11 +148,11 @@ function deleteProduct(productID) {
 	})
 }
 
-function deleteOrder(orderID) {
+function deleteOrder(orderID, productID) {
 	$.ajax({
 		type:'POST',
 		url: '../model/interface.php',
-		data: {'orderID':orderID, 'func':'deleteOrder'},
+		data: {'orderID':orderID, 'productID':productID, 'func':'deleteOrder'},
 		datatype: 'json',
 		success: function(response){
 
@@ -163,15 +163,16 @@ function deleteOrder(orderID) {
 	})
 }
 
-function completeOrder(orderID) {
+function completeOrder(orderID, productID) {
 	$.ajax({
 		type:'POST',
 		url: '../model/interface.php',
-		data: {'orderID':orderID, 'func':'completeOrder'},
+		data: {'orderID':orderID, 'productID':productID, 'func':'completeOrder'},
 		datatype: 'json',
 		success: function(response){
 
 			console.log('post success');
+			alert(response);
 			location.reload();
 		},
 		error: function(){console.log('post error');}

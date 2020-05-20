@@ -84,7 +84,7 @@
       </div>
     </div>
   </form>
-</div>
+</div></div>
 <?php echo loadFooter(); ?>
 
     <script type="text/javascript">

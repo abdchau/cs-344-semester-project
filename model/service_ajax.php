@@ -148,26 +148,21 @@ function placeOrder($conn){
 }
 
 function deleteOrder($conn){
-	$conn->query("delete from shopping.orders where orderID=".$_POST['orderID']);
+	$conn->query("delete from shopping.order_item where productID = ".
+			$_POST['productID']." and orderID=".$_POST['orderID']);
 	return "Order deleted".$conn->error;
 }
 
 function completeOrder($conn){
-	$result = $conn->query("select * from shopping.products natural join 
-		(select * from shopping.order_item where orderID=".$_POST['orderID'].")A");
+	$product = $conn->query("select stock, quantity from shopping.products natural join 
+			(select * from shopping.order_item where orderID=".$_POST['orderID'].
+			" and productID=".$_POST['productID'].")A")->fetch_assoc();
 
-	if ($result->num_rows > 0){
-	    while($row = $result->fetch_assoc()) {
-	        $arr[] = $row;
-	    }
-	}
-
-	foreach ($arr as $key => $product) {
-		$quantity = $product['stock']-$product['quantity'];
-		$conn->query("update shopping.products set stock=$quantity where productID = ".
-			$product['productID']);
-	}
-	deleteOrder($conn);
+	$quantity = $product['stock']-$product['quantity'];
+	$conn->query("update shopping.products set stock=$quantity where productID = ".
+		$_POST['productID']);
+	$conn->query("delete from shopping.order_item where productID = ".$_POST['productID']." and orderID=".$_POST['orderID']);
+	echo $_POST['productID']." ".$_POST['orderID'];
 	return "Order completed".$conn->error;
 }
 
