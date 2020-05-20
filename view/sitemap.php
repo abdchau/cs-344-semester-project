@@ -23,7 +23,7 @@ require 'commonElements.php';
           <li><a href="productsBySeller.php?srd=1">Products by Seller</a></li>
         </ul>
       </div>
-     
+
     </div>
   </section>
   <section id="sec2">

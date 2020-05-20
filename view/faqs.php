@@ -66,12 +66,39 @@ require 'commonElements.php';
 	      <div class="card-body">
 	        Shopoholic has won the following awards:<br><br>
 	        <ul>
-	        	<li>Pakistan Best E-Commerce Website 2018</li>
-	        	<li>Pakistan Best E-Commerce Website 2019</li>
 	        	<li>Pakistan Best E-Commerce Website 2020</li>
-	        	<li>Pakistan Best E-Commerce Website 2017</li>
-	        	<li>Pakistan Best E-Commerce Website 2016</li>
+	        	<li>Pakistan Best Online Electronics Store 2020</li>
+				<li>Highest Customer Satisfaction Rating in 2020</li>
+				<li>#1 in Top Emerging Startups 2020</li>
 	        </ul>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="card">
+	    <div class="card-header" id="headingFive">
+	      <h5 class="mb-0">
+	        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+	          HOW DO I PAY FOR GOODS?
+	        </button>
+	      </h5>
+	    </div>
+	    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+	      <div class="card-body">
+	        For now only Cash on delivery is supported. We will be adding more payment options soon.
+	      </div>
+	    </div>
+	  </div>
+	  <div class="card">
+	    <div class="card-header" id="headingSix">
+	      <h5 class="mb-0">
+	        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+	          WHERE DO I REACH OUT FOR COMPLAINTS AND SUGGESTIONS?
+	        </button>
+	      </h5>
+	    </div>
+	    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+	      <div class="card-body">
+	        Multiple options to reach aout to us are provided on our <a href="contact.php">support page</a>.
 	      </div>
 	    </div>
 	  </div>

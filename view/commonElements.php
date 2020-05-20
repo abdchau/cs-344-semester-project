@@ -115,7 +115,6 @@ function loadFooter(){
       <li class="list-inline-item"><a href="faqs.php">FAQs</a></li>
       <li class="list-inline-item"><a href="aboutus.php">About Us</a></li>
       <li class="list-inline-item"><a href="sitemap.php">Site Map</a></li>
-      <li class="list-inline-item"><a href="contact.php">Support</a></li>
     </ul>
   </footer>';
 }
