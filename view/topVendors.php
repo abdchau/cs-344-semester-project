@@ -1,9 +1,7 @@
 <?php require '../model/interface.php';
   require 'commonElements.php';
-  if (!isset($_GET['srd'])) {
-    header('Location: 404.php');
-  }
-  $Sellers = getTopVendors($conn);
+
+  $sellers = getTopVendors($conn);
 ?>
 
 <!doctype html>
@@ -14,7 +12,7 @@
 	<?php echo loadNavbar(getCategories($conn), getUserJson($conn)); ?>
 
 	<div class="album py-5 bg-light" ng-controller="SellerInfoControl">
-        <a href="productsBySeller.php?srd={{seller.sellerID}}" ng-repeat="seller in sellers">
+        <a href="productsBySeller.php?srd={{seller.userID}}" ng-repeat="seller in sellers">
         <div class="container card shadow my-3">
             <div class="row no-gutters">
                 <div class="col-md-4">
