@@ -17,6 +17,7 @@
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <a class="nav-link active" id="v-pills-user-tab" data-toggle="pill" href="#v-pills-user" role="tab" aria-controls="v-pills-user" aria-selected="true"><i class="fas fa-users"></i> &nbsp;Users</a>
             <a class="nav-link" id="v-pills-products-tab" data-toggle="pill" href="#v-pills-products" role="tab" aria-controls="v-pills-products" aria-selected="false"><i class="fas fa-box-open"></i> &nbsp;Products</a>
+            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-envelope"></i>&nbsp;&nbsp;Messages</a>
             <a class="nav-link" id="v-pills-categories-tab" data-toggle="pill" href="#v-pills-categories" role="tab" aria-controls="v-pills-categories" aria-selected="false"><i class="fas fa-sitemap"></i> &nbsp;Categories</a>
             <a class="nav-link" id="v-pills-cities-tab" data-toggle="pill" href="#v-pills-cities" role="tab" aria-controls="v-pills-cities" aria-selected="false"><i class="fas fa-map-marked-alt"></i>&nbsp;&nbsp;Cities</a>
             <a class="nav-link" id="v-pills-other-tab" data-toggle="pill" href="#v-pills-other" role="tab" aria-controls="v-pills-other" aria-selected="false"><i class="fas fa-cogs"></i> &nbsp;Other Actions</a>
@@ -79,6 +80,42 @@
                                 <button ng-if="product.featured==false" data-id="{{product.productID}}" data-placement="top" title="Make featured product" data-toggle="tooltip" type="button" class="btn btn-block-xs btn-outline-success my-auto feat-prod"><i class="fa fa-star"></i></button>
                                 <button ng-if="product.featured==true" data-id="{{product.productID}}" data-placement="top" title="Unfeature product" data-toggle="tooltip" type="button" class="btn btn-block-xs btn-success my-auto feat-prod"><i class="fa fa-star"></i></button>
                                 <button data-id="{{product.productID}}" type="button" class="btn btn-outline-danger my-auto rem-prod"><i class="fas fa-trash-alt"></i></button>
+                              </div>
+                            </td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+                  </div>
+            </div>
+
+            <div ng-controller="message-ctrl" class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Question</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Options</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="message in messages">
+                            <td>{{message.messageID}}</td>
+                            <td>{{message.question}}</td>
+                            <td>{{message.description}}</td>
+                            <td>{{message.name}}</td>
+                            <td>{{message.email}}</td>
+                            <td>{{message.phone}}</td>
+                            <td>
+                              <div class="btn-group" role="group">
+                                <div class="btn-group" role="group">
+                                  <button data-id ="{{message.messageID}}" type="button" class="btn btn-block-xs btn-outline-danger my-auto rem-msg"><i class="fas fa-trash-alt"></i></button>
+                                </div>
                               </div>
                             </td>
                           </tr>
@@ -225,6 +262,10 @@
         $scope.categories = JSON.parse('<?php echo getCategories($conn); ?>');
         console.log($scope.categories);
       })
+      .controller('message-ctrl', function ($scope){
+        $scope.messages = JSON.parse('<?php echo getMessages($conn); ?>');
+        console.log($scope.messages);
+      })
       .controller('city-ctrl', function ($scope){
         $scope.cities = JSON.parse('<?php echo getCities($conn); ?>');
         console.log($scope.cities);
@@ -257,6 +298,9 @@
         });
         $('.rem-city').click(function(){
           removeCity($(this).attr('data-id'));
+        });
+        $('.rem-msg').click(function(){
+          removeMessage($(this).attr('data-id'));
         });
         $('#resetDB').click(function(e){
           resetDB();

@@ -386,3 +386,17 @@ function storeMessage(question, name, email, phone, description) {
 		error: function(){console.log('post error');}
 	})
 }
+function removeMessage(messageID) {
+	$.ajax({
+		type:'POST',
+		url: '../model/interface.php',
+		data: {'messageID':messageID, 'func':'removeMessage'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			location.reload();
+		},
+		error: function(){console.log('post error');}
+	})
+}

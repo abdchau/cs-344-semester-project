@@ -172,11 +172,16 @@ function removeFromCart($conn){
 }
 
 function storeMessage($conn){
-	$conn->query("insert into shopping.question_type(question) values('".$_POST['question']."')");
-	$conn->query("insert into shopping.messages(questionID, name, email, phone, description) values($conn->insert_id, '".
-			$_POST['name']."', '".$_POST['email']."', '".$_POST['phone']."', '".$_POST['description']."')");
+	$conn->query("insert into shopping.messages(questionID, name, email, phone, description) values(".
+		$_POST['question'].", '".$_POST['name']."', '".$_POST['email']."', '".
+		$_POST['phone']."', '".$_POST['description']."')");
 
 	return "Message saved.".$conn->error;
+}
+
+function removeMessage($conn){
+	$conn->query("delete from shopping.messages where messageID=".$_POST['messageID']);
+	return "Message deleted".$conn->error;
 }
 
 if (isset($_POST['func'])){
@@ -256,6 +261,9 @@ if (isset($_POST['func'])){
 			break;
 		case 'storeMessage':
 			echo storeMessage($conn);
+			break;
+		case 'removeMessage':
+			echo removeMessage($conn);
 			break;
 		default:
 			echo "No function specified";
