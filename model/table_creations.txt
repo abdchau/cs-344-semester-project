@@ -66,3 +66,17 @@ create table shopping.order_item(
     primary key (orderID, productID),
     quantity int
 );
+
+create table shopping.question_type(
+	questionID int primary key auto_increment,
+	question varchar(200)
+);
+
+create table shopping.messages(
+	messageID int primary key auto_increment,
+	questionID int, foreign key(questionID) references shopping.question_type(questionID) on delete cascade,
+	name varchar(100),
+	email varchar(100),
+	phone varchar(20),
+	description varchar(500)
+);

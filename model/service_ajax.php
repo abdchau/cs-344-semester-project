@@ -171,6 +171,14 @@ function removeFromCart($conn){
 	return "Removed from cart".$conn->error;
 }
 
+function storeMessage($conn){
+	$conn->query("insert into shopping.question_type(question) values('".$_POST['question']."')");
+	$conn->query("insert into shopping.messages(questionID, name, email, phone, description) values($conn->insert_id, '".
+			$_POST['name']."', '".$_POST['email']."', '".$_POST['phone']."', '".$_POST['description']."')");
+
+	return "Message saved.".$conn->error;
+}
+
 if (isset($_POST['func'])){
 	switch ($_POST['func']) {
 		case 'verifyUser':
@@ -245,6 +253,9 @@ if (isset($_POST['func'])){
 			break;
 		case 'placeOrder':
 			echo placeOrder($conn);
+			break;
+		case 'storeMessage':
+			echo storeMessage($conn);
 			break;
 		default:
 			echo "No function specified";

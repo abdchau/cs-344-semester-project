@@ -67,4 +67,15 @@ function checkDB($conn){
 		return false;
 }
 
+function getQuestions($conn){
+	$result = $conn->query("select * from shopping.question_type");
+	if ($result->num_rows > 0) {
+	    // output data of each row
+	    while($row = $result->fetch_assoc()) {
+	        $arr[] = $row;
+	    }
+	}
+	return json_encode($arr).$conn->error;
+}
+
 ?>

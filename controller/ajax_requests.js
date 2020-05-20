@@ -369,3 +369,20 @@ function changeUser(userID, email, firstName, lastName, address, city, zipcode) 
 		error: function(){console.log('post error');}
 	})
 }
+
+function storeMessage(question, name, email, phone, description) {
+	$.ajax({
+		type:'POST',
+		url: '../model/interface.php',
+		data: {"question":question, "name":name, "phone":phone, "email":email,
+					"description":description, 'func':'storeMessage'},
+		datatype: 'json',
+		success: function(response){
+
+			console.log('post success');
+			alert(response);
+			location.reload();
+		},
+		error: function(){console.log('post error');}
+	})
+}

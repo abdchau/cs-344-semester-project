@@ -33,3 +33,10 @@ insert into shopping.products(categoryID, productName, productDscrptn, price, im
 		'../view/images/products/samsung_smart_tv.jpg', 6, 2, true),
 	(1, 'Samsung Galaxy S8', 'Has edge round metal finish', 599,
 		'../view/images/products/samsung_galaxy_s8.jpeg', 3, 1, true);
+
+insert into shopping.question_type(question) values
+	("I have a question related to delivery of my product"),
+	("I have an issue buying or selling"),
+	("I have a technical issue"),
+	("I want to report a fraud"),
+	("I have a question about my account");

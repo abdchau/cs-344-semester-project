@@ -88,7 +88,7 @@
 <?php echo loadFooter(); ?>
 
     <script type="text/javascript">
-      console.log("hellooo");
+
       App.controller('profile-ctrl', function ($scope){
         $scope.cities = JSON.parse('<?php echo getCities($conn); ?>');
       });
